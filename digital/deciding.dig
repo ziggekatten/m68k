@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>A20</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="-280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>A21</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="-220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>A22</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>A23</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="-100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>LDS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="60"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>CS Mem 1 Even</string>
+        </entry>
+      </elementAttributes>
+      <pos x="680" y="-1320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>UDS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1160" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Or</elementName>
+      <elementAttributes>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>Inputs</string>
+          <int>5</int>
+        </entry>
+      </elementAttributes>
+      <pos x="-140" y="-220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>CS Mem 1 Odd</string>
+        </entry>
+      </elementAttributes>
+      <pos x="680" y="-1160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Or</elementName>
+      <elementAttributes>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="520" y="-1180"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="-1160" y="160"/>
+      <p2 x="500" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="-1160" y="-100"/>
+      <p2 x="-420" y="-100"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="-1320"/>
+      <p2 x="680" y="-1320"/>
+    </wire>
+    <wire>
+      <p1 x="-380" y="-200"/>
+      <p2 x="-140" y="-200"/>
+    </wire>
+    <wire>
+      <p1 x="600" y="-1160"/>
+      <p2 x="680" y="-1160"/>
+    </wire>
+    <wire>
+      <p1 x="-400" y="-140"/>
+      <p2 x="-140" y="-140"/>
+    </wire>
+    <wire>
+      <p1 x="-60" y="-180"/>
+      <p2 x="440" y="-180"/>
+    </wire>
+    <wire>
+      <p1 x="-480" y="-180"/>
+      <p2 x="-140" y="-180"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-1140"/>
+      <p2 x="520" y="-1140"/>
+    </wire>
+    <wire>
+      <p1 x="-1160" y="-280"/>
+      <p2 x="-360" y="-280"/>
+    </wire>
+    <wire>
+      <p1 x="-1160" y="-220"/>
+      <p2 x="-380" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="-360" y="-220"/>
+      <p2 x="-140" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="-1180"/>
+      <p2 x="520" y="-1180"/>
+    </wire>
+    <wire>
+      <p1 x="-1160" y="60"/>
+      <p2 x="-400" y="60"/>
+    </wire>
+    <wire>
+      <p1 x="-1160" y="-160"/>
+      <p2 x="-480" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="-420" y="-160"/>
+      <p2 x="-140" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="-420" y="-160"/>
+      <p2 x="-420" y="-100"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-1140"/>
+      <p2 x="500" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="-360" y="-280"/>
+      <p2 x="-360" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="-1320"/>
+      <p2 x="440" y="-1180"/>
+    </wire>
+    <wire>
+      <p1 x="440" y="-1180"/>
+      <p2 x="440" y="-180"/>
+    </wire>
+    <wire>
+      <p1 x="-380" y="-220"/>
+      <p2 x="-380" y="-200"/>
+    </wire>
+    <wire>
+      <p1 x="-480" y="-180"/>
+      <p2 x="-480" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="-400" y="-140"/>
+      <p2 x="-400" y="60"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
