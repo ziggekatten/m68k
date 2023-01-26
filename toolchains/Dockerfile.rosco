@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS llvm-builder
+FROM ubuntu:22.04 AS rosco-builder
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NONINTERACTIVE=1
 RUN apt update \
