@@ -46,8 +46,11 @@ void TRAP11_HANDLER(void)                       __attribute__((alias("GENERIC_HA
 void TRAP12_HANDLER(void)                       __attribute__((alias("GENERIC_HANDLER"))); // TRAP #12 Instruction Vector 
 void TRAP13_HANDLER(void)                       __attribute__((alias("GENERIC_HANDLER"))); // TRAP #13 Instruction Vector 
 void TRAP14_HANDLER(void)                       __attribute__((alias("GENERIC_HANDLER"))); // TRAP #14 Instruction Vector 
-void TRAP15_HANDLER(void)                       __attribute__((alias("GENERIC_HANDLER"))); // TRAP #15 Instruction Vector 
-
+void TRAP15_HANDLER(void)                       __attribute__((alias("GENERIC_HANDLER"))); // TRAP #15 Instruction Vector
+void FP_UNORDERD_COND_HANDLER(void)             __attribute__((alias("GENERIC_HANDLER"))); // FP Branch or Set on Unordered Condition  
+void FP_INEXACT_RESULT_HANDLER(void)            __attribute__((alias("GENERIC_HANDLER"))); // FP Inexact Result
+void FP_DIVIDE_BY_ZERO_HANDLER(void)            __attribute__((alias("GENERIC_HANDLER"))); // FP Divide by Zero
+void FP_UNDERFLOW_HANDLER(void)                 __attribute__((alias("GENERIC_HANDLER"))); // FP Underflow
 
 /*We add reset and exception vector table with pointers as an array. we place it in our 
 * own .ipl-vectors section in .elf binary to ensure code ends up starting at 0x00000000
