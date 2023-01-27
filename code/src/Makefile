@@ -10,4 +10,4 @@ main.o:main.c
 #	$(CC) $(CFLAGS) -o $(OUTDIR)/$@ $^
 
 clean:
-	rm -rf *.o *.elf
+	rm -rf $(OUTDIR)/*.o *.elf
