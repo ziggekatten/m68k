@@ -101,7 +101,11 @@ uint32_t vectors[] __attribute__ ((section (".ipl-vector"))) = {
     (uint32_t)&TRAP12_HANDLER,
     (uint32_t)&TRAP13_HANDLER,
     (uint32_t)&TRAP14_HANDLER,
-    (uint32_t)&TRAP15_HANDLER
+    (uint32_t)&TRAP15_HANDLER,
+    (uint32_t)&FP_UNORDERD_COND_HANDLER,
+    (uint32_t)&FP_INEXACT_RESULT_HANDLER,
+    (uint32_t)&FP_DIVIDE_BY_ZERO_HANDLER,
+    (uint32_t)&FP_UNDERFLOW_HANDLER
 };
 
 void BUS_ERROR_HANDLER(void)
