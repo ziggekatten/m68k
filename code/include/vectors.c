@@ -51,6 +51,13 @@ void FP_UNORDERD_COND_HANDLER(void)             __attribute__((alias("GENERIC_HA
 void FP_INEXACT_RESULT_HANDLER(void)            __attribute__((alias("GENERIC_HANDLER"))); // FP Inexact Result
 void FP_DIVIDE_BY_ZERO_HANDLER(void)            __attribute__((alias("GENERIC_HANDLER"))); // FP Divide by Zero
 void FP_UNDERFLOW_HANDLER(void)                 __attribute__((alias("GENERIC_HANDLER"))); // FP Underflow
+void FP_OPERAND_ERROR_HANDLER(void)             __attribute__((alias("GENERIC_HANDLER"))); // FP Operand Error
+void FP_OVERFLOW_HANDLER(void)                  __attribute__((alias("GENERIC_HANDLER"))); // FP Overflow
+void FP_SIGNAL_NAN_HANDLER(void)                __attribute__((alias("GENERIC_HANDLER"))); // FP Signaling NAN
+void FP_UNIMPL_DATA_TYPE_HANDLER(void)          __attribute__((alias("GENERIC_HANDLER"))); // FP Unimplemented Data Type (Defined for MC68040) 
+
+
+
 
 /*We add reset and exception vector table with pointers as an array. we place it in our 
 * own .ipl-vectors section in .elf binary to ensure code ends up starting at 0x00000000
@@ -105,7 +112,11 @@ uint32_t vectors[] __attribute__ ((section (".ipl-vector"))) = {
     (uint32_t)&FP_UNORDERD_COND_HANDLER,
     (uint32_t)&FP_INEXACT_RESULT_HANDLER,
     (uint32_t)&FP_DIVIDE_BY_ZERO_HANDLER,
-    (uint32_t)&FP_UNDERFLOW_HANDLER
+    (uint32_t)&FP_UNDERFLOW_HANDLER,
+    (uint32_t)&FP_OPERAND_ERROR_HANDLER,
+    (uint32_t)&FP_OVERFLOW_HANDLER,
+    (uint32_t)&FP_SIGNAL_NAN_HANDLER,
+    (uint32_t)&FP_UNIMPL_DATA_TYPE_HANDLER
 };
 
 void BUS_ERROR_HANDLER(void)
