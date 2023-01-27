@@ -1,9 +1,9 @@
 /*
-Author: Mats Brorson
-Date: 2023-0127
-
-All definition for the mb68k SBC memory map is found here
-
+* Author: Mats Brorson
+* Date: 2023-0127
+*
+* All definition for the mb68k SBC memory map is found here
+*
 */
 
 

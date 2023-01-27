@@ -1,9 +1,8 @@
 /*
-Author: Mats Brorson
-Date: 2023-01-27
-
-Mat
-
+* Author: Mats Brorson
+* Date: 2023-01-27
+* 
+* Main program
 */
 #include "../include/vectors.c"
 
