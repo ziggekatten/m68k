@@ -8,10 +8,10 @@
 
 //ROM start address
 #define ROM_BASE        0x00000000
-#define ROM_SIZE        (ROMBASE + 0x000FFFFF) // 1 MB of ROM (2 * 512k)
+#define ROM_SIZE        (ROM_BASE + 0x000FFFFF) // 1 MB of ROM (2 * 512k)
 //RAM start address
 #define RAM_BASE        0x00100000
-
+#define RAM_ZIZE        (RAM_BASE + 0x000FFFFF) 
 
 
 // Stack pointer start (must be even. remember, sp is decreased BEFORE adding data to stack)

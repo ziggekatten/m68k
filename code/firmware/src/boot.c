@@ -4,11 +4,20 @@
 *
 * @Description: Motorola 68000/68010 vector table and reset handler to be initialized at boot time, and act as entrypoint
 * for code execution. An special .elf section(.ipl-section) to be used by linker to place the 32-bit addresses for entrypoint 
+* at the correct place.
 */
 #include "hwdefs.h"
 #define RESERVED 0
-#define USER_DEFINED 0
+#define USER_DEFINED 0xAABBCCDD
 typedef unsigned long int uint32_t;
+extern uint32_t _etext;
+extern uint32_t _sdata;
+extern uint32_t _edata;
+extern uint32_t _la_data;
+
+extern uint32_t _sbss;
+extern uint32_t _ebss;
+
 
 // Main prototype
 int main(void);
@@ -332,7 +341,7 @@ uint32_t vectors[] __attribute__ ((section (".ipl_vector"))) = {
 
 void BUS_ERROR_HANDLER(void)
 {
-
+    while(1);
 }
 
 // Generic exception hanler
@@ -342,10 +351,27 @@ void GENERIC_HANDLER(void)
 }
 
 
-// This function is the entrypoint of execution and it's adress is set in boot as long at memory location: 0x00000004
+// This function is the entrypoint of execution and it's address is set in boot as long at memory location: 0x00000004
 void RESET_HANDLER(void)
 {
-    // Need to copy stuff from ROM to RAM heere....
+	//copy .data section to SRAM
+	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;
+ 	uint32_t *ptrDestination = (uint32_t*)&_sdata; //ram
+	uint32_t *ptrSource = (uint32_t*)&_la_data; //flash
+
+	for(uint32_t i =0 ; i < size ; i++)
+	{
+		*ptrDestination++ = *ptrSource++;
+	}
+
+	//Zero out the .bss section in RAM
+	size = (uint32_t)&_ebss - (uint32_t)&_sbss;
+ 	ptrDestination = (uint32_t*)&_sbss;
+    
+	for(uint32_t i =0 ; i < size ; i++)
+	{
+		*ptrDestination++ = 0;
+	}   
 
     // Then execute the main function linked with this file
     main();
