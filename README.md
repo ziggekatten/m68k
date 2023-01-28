@@ -18,7 +18,7 @@ Initial hardware:
 ## Version info
 0.1.2 - Milestone. I finally got the grips on gcc, linkerscripts, memory maps etc. Building an ELF and object dump an binary now generates binary file with an valid reset vector. What a fun ride it have been.
 
-0.1.1 - Milestone. Got a fre running CPU stepping through memory and blinking leds, by tying databus to ground (all zeros) throug pulldown resistors
+0.1.1 - Milestone. Got a free running CPU stepping through memory and blinking leds, by tying databus to ground (all zeros) throug pulldown resistors
 
 ## Folder structure
 
