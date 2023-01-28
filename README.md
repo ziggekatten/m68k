@@ -3,10 +3,14 @@ A over ambitious project to build a usable computer from scratch. Based on bits 
 
 - Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the ELF format, but also how an toolchain works in more details.
 - Build C-stdlib baesd on newlib (https://sourceware.org/newlib/)
+- Serial interface and an HW-moitor as initial I/=
+- 
 
 Initial hardware:
 - CPU: MC68010@12MHz
 - DUART: MC68681
+- 2 * 512K FLASH ROM
+- 2 x 512K SRAM
 - A bunch of 74LS/HCT chips
 - A bunch of breadboards
 - Some GAL's to replace discrete glue logic in the end
