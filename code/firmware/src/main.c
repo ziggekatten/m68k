@@ -5,7 +5,7 @@
 * @Description: Main program
 */
 
-void main()
+int main(void)
 {
     while(1);
 };

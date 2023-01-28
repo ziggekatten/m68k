@@ -6,8 +6,8 @@
 * for code execution. An special .elf section(.ipl-section) to be used by linker to place the 32-bit addresses for entrypoint 
 */
 #include "hwdefs.h"
-#define RESERVED 0x00000000
-#define USER_DEFINED 0x00000000
+#define RESERVED 0
+#define USER_DEFINED 0
 typedef unsigned long int uint32_t;
 
 // Main prototype
@@ -71,7 +71,7 @@ void MMU_ACCESS_VIOLATION_HANDLER(void)         __attribute__((alias("GENERIC_HA
 /*We add reset and exception vector table with pointers as an array. we place it in our 
 * own .ipl-vectors section in .elf binary to ensure code ends up starting at 0x00000000
 */
-uint32_t vectors[] __attribute__ ((section (".ipl-vector"))) = {
+uint32_t vectors[] __attribute__ ((section (".ipl_vector"))) = {
     STACK_POINTER,
     (uint32_t)&RESET_HANDLER,
     (uint32_t)&BUS_ERROR_HANDLER,
@@ -340,6 +340,7 @@ void GENERIC_HANDLER(void)
 {
     while(1);
 }
+
 
 // This function is the entrypoint of execution and it's adress is set in boot as long at memory location: 0x00000004
 void RESET_HANDLER(void)
