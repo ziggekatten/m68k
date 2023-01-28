@@ -25,4 +25,5 @@ USER linuxbrew
 RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 RUN ./home/linuxbrew/.linuxbrew/Homebrew/bin/brew tap rosco-m68k/toolchain
 RUN ./home/linuxbrew/.linuxbrew/Homebrew/bin/brew install gcc-cross-m68k@10 vasm-all
-
+RUN echo 'PATH=\${PATH}:/home/linuxbrew/.linuxbrew/bin:' >> ./home/linuxbrew/.linuxbrew/.profile
+RUN brew tap rosco-m68k/toolchain && brew install gcc-cross-m68k@11 vasm-m68k srecord
