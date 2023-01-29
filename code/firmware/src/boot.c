@@ -76,9 +76,6 @@ void MMU_CONFIG_ERROR_Handler(void)             __attribute__((alias("Generic_Ha
 void MMU_ILLEGAL_OPERATION_Handler(void)        __attribute__((alias("Generic_Handler"))); // MMU Illegal Operation Error
 void MMU_ACCESS_VIOLATION_Handler(void)         __attribute__((alias("Generic_Handler"))); // MMU Access Level Violation Error
 
-
-
-
 /*We add reset and exception vector table with pointers as an array. we place it in our 
 * own .ipl-vectors section in .elf binary to ensure code ends up starting at 0x00000000
 */
@@ -378,5 +375,8 @@ void Reset_Handler(void)
     /* Then execute the main function linked with this file (will be overwritten by 
     * linker as we only have the prototype here), and not the funcction itself */
     main();
+
+    /* Just in case main terminates */
+    while(1);
 
 }

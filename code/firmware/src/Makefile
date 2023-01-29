@@ -11,7 +11,9 @@ boot.o:boot.c
 	$(CC) $(CFLAGS) $^ -o $@ 
 
 firmware.elf: boot.o main.o
-	$(CC) $(LDFLAGS) $^ -o $@ 
+	$(CC) $(LDFLAGS) $^ -o $@
+firmware.bin: firmware.elf
+	m68k-elf-objcopy -O binary firmware.elf firmware.bin
 clean:
 	rm -rf *.o *.elf *.map *.bin
 
