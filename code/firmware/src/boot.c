@@ -7,7 +7,8 @@
 * at the correct place.
 */
 
-#include "hwdefs.h"
+#include "include/hwdefs.h"
+#include "include/serial.h"
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
 typedef unsigned long int uint32_t;
@@ -371,6 +372,8 @@ void Reset_Handler(void)
 	{
 		*ptrDestination++ = 0;
 	}   
+
+    /*TODO: Set up and initialize serial I/O */
 
     /* Then execute the main function linked with this file (will be overwritten by 
     * linker as we only have the prototype here), and not the funcction itself */

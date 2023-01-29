@@ -5,8 +5,8 @@
 * @Description: All definition for the mb68k SBC memory map is found here
 * Memory map is quite simple: ROM at the base (1 MB), followedd by 14 MB SRAM, leaving top 1 MB for I/O space
 */
-#ifndef _HWDEFS
-#define _HWDEFS
+#ifndef _MB68K_HWDEFS_H
+#define _MB68K_HWDEFS_H
 
 /* ROM start address */
 #define ROM_BASE        0x00000000
@@ -21,6 +21,6 @@
 
 
 /* MC68661 DUART definitions */
-#define MFP_BASE_ADDR        0x00300000 // Base I/O memory mapped addres of the DUART
+#define DUART_BASE      0x00300000 // Base I/O memory mapped address of the DUART
 
 #endif
