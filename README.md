@@ -12,7 +12,7 @@ Initial hardware:
 - 2 x 512K SRAM
 - A bunch of 74LS/HCT chips
 - A bunch of breadboards
-- Some GAL's to replace discrete glue logic in the end
+- Some PAL/GAL's to replace discrete glue logic in the end
 - Reset circuitry based on 555 timer and with both a reset button as well as an single step function, using DTACK.
 
 ## Version history
