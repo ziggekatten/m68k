@@ -9,6 +9,7 @@
 
 #include "include/hwdefs.h"
 #include "include/mc68681.h"
+#include "include/boot.h"
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
 typedef unsigned long int uint32_t;
@@ -23,7 +24,7 @@ extern uint32_t _ebss;
 
 
 // Main prototype
-int main(void);
+//int kmain(void);
 
 /* Entrypoint prototype. This function is the start of code execution after vectors are set */
 void Reset_Handler(void);
@@ -377,7 +378,7 @@ void Reset_Handler(void)
 
     /* Then execute the main function linked with this file (will be overwritten by 
     * linker as we only have the prototype here), and not the funcction itself */
-    main();
+    kmain();
 
     /* Just in case main terminates */
     while(1);
