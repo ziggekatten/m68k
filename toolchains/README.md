@@ -10,6 +10,8 @@ Yes, especially simulators are gold when developing for homebrew hardware. Poppi
 The code can be found at: https://github.com/BSVC/bsvc
 clone, make and make install and you are up and running. Requires wish and xterm though (apt install xterm wish on Ubuntu or in my case, latest version of Pop!_OS), and the UI...well, time have not been friendly to this app....but it works! It booted my firmware completely written in C. Now I can start messing with serial stuff. It comes with ssome samples including Tutor(!) using an xterm as serial I/O.
 
+TODO: Maybe evolve this codebase and udate UI???
+
 Apart from that, the EASy68k emulator is a good tool if you are into assembler and no pheripherals. The UI is WAY better than sim68000, but no peripherals built in. You can find it here: http://www.easy68k.com/
 
 

@@ -1,5 +1,5 @@
 # Firmware source code
-This is the base forlder for all firmware code, including header files 
+This is the base folder for all firmware code, including header files 
 
 ## Folder structure
 
