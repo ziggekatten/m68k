@@ -15,7 +15,8 @@ firmware.elf: boot.o main.o
 
 firmware.bin: firmware.elf
 	m68k-elf-objcopy -O binary firmware.elf firmware.bin
+	m68k-elf-objcopy -O srec firmware.elf firmware.h68
 
 clean:
-	rm -rf *.o *.elf *.map *.bin
+	rm -rf *.o *.elf *.map *.bin *h68 *.s19 *.srec
 
