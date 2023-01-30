@@ -7,7 +7,7 @@
 #ifndef _SERIAL
 #define _SERIAL
 
-/*prototypes for initializing Serial commmunication */
+/*prototype for initializing Serial commmunication */
 void Init_Serial(void);
 
 #endif
