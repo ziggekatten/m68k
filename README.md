@@ -1,7 +1,7 @@
 # m68k
 A over ambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. Some decisions made from my part:
 
-- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more details.
+- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more details. I would like to use Zig (primary) or Rust (secondary), but as an non compiler wizard, this is currently on the back foot, and O'l trusted C will do.
 - Build my own stdlib based on newlib (https://sourceware.org/newlib/)
 - Serial interface and an HW-moitor as initial I/0 path to the SBC 
 
@@ -16,6 +16,8 @@ Initial hardware:
 - Reset circuitry based on 555 timer and with both a reset button as well as an single step function, using DTACK.
 
 ## Version history
+0.1.4 - Milestone. Got my bare Firmware (just ending in an loop) running in sim68000
+0.1.3 - Just a bunch of renaming and updates of README files. In essence, cleaning up my own mess
 0.1.2 - Milestone. I finally got the grips on gcc, linkerscripts, .map files etc. Building an ELF and object dump an binary now generates binary file with an valid reset vector and correct sections copied to RAM. What a fun ride it have been.
 
 0.1.1 - Milestone. Got a free running CPU stepping through memory and blinking leds, by tying databus to ground (all zeros) throug pulldown resistors
