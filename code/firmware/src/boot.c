@@ -8,8 +8,8 @@
 */
 
 #include "hwdefs.h"
-#define RESERVED 0
-#define USER_DEFINED 0x00000000
+#define RESERVED 0 // Set all reserved vectors to zero
+#define USER_DEFINED 0 // Set all user definable vectors to 0
 typedef unsigned long int uint32_t;
 
 /* Symbols created by linker to be used for copying .data to correct addresses i RAM and clearing .bss */
@@ -338,6 +338,7 @@ uint32_t vectors[] __attribute__ ((section (".ipl_vector"))) = {
     USER_DEFINED
 };
 
+/* bus error handler*/
 void BUS_ERROR_Handler(void)
 {
     while(1);
@@ -349,12 +350,11 @@ void Generic_Handler(void)
     while(1);
 }
 
-
-/* This function is the entrypoint of execution and it's address is set in boot as long at memory location: 0x00000004 */
+/* This function is the entrypoint of execution and it's address is set on boot at memory location: 0x00000004 */
 void Reset_Handler(void)
 {
-	/* copy .data section to SRAM */
-	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;
+	/* copy .data section to RAM */
+	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata; // gets the size of .data section
  	uint32_t *ptrDestination = (uint32_t*)&_sdata; //ram
 	uint32_t *ptrSource = (uint32_t*)&_la_data; //flash
 
@@ -364,7 +364,7 @@ void Reset_Handler(void)
 	}
 
 	/* Zero out the .bss section in RAM */
-	size = (uint32_t)&_ebss - (uint32_t)&_sbss;
+	size = (uint32_t)&_ebss - (uint32_t)&_sbss; // Gets the size of .bss
  	ptrDestination = (uint32_t*)&_sbss;
     
 	for(uint32_t i =0 ; i < size ; i++)

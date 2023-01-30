@@ -6,7 +6,6 @@ MEMORY
   SRAM(rwx):ORIGIN =0x00100000,LENGTH =1024K
 }
 
-
 SECTIONS
 {
   .text :
