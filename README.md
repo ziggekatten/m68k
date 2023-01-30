@@ -17,7 +17,9 @@ Initial hardware:
 
 ## Version history
 0.1.4 - Milestone. Got my bare Firmware (just ending in an loop) running in sim68000
+
 0.1.3 - Just a bunch of renaming and updates of README files. In essence, cleaning up my own mess
+
 0.1.2 - Milestone. I finally got the grips on gcc, linkerscripts, .map files etc. Building an ELF and object dump an binary now generates binary file with an valid reset vector and correct sections copied to RAM. What a fun ride it have been.
 
 0.1.1 - Milestone. Got a free running CPU stepping through memory and blinking leds, by tying databus to ground (all zeros) throug pulldown resistors
