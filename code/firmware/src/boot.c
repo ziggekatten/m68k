@@ -8,7 +8,7 @@
 */
 
 #include "include/hwdefs.h"
-#include "include/serial.h"
+#include "include/mc68681.h"
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
 typedef unsigned long int uint32_t;
