@@ -1,8 +1,11 @@
 # Firmware source code
+This is the base forlder for all firmware code, including header files 
 
 ## Folder structure
+
 | File/folder       | Description                                                                            |
 |-------------------|----------------------------------------------------------------------------------------|
+| hwdefs            | Various basic declarations of hardware specific memory map etc.                        |
 | boot.c            | Struct and prototypes for reset vectors, and the entrypoint of the firmware            |
 | m68681.c          | Functions for initialize and use the MC68681 DUART                                     |
 | main.c            | Digital simulator for messing with glue logic and generation WinCUPL code in the end   |
