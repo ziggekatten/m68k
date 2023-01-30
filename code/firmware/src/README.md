@@ -3,14 +3,15 @@ This is the base forlder for all firmware code, including header files
 
 ## Folder structure
 
-| File/folder       | Description                                                                            |
-|-------------------|----------------------------------------------------------------------------------------|
-| hwdefs            | Various basic declarations of hardware specific memory map etc.                        |
-| boot.c            | Struct and prototypes for reset vectors, and the entrypoint of the firmware            |
-| m68681.c          | Functions for initialize and use the MC68681 DUART                                     |
-| main.c            | Digital simulator for messing with glue logic and generation WinCUPL code in the end   |
-| firmware.ld       | Linker file to ensure that structs and vectors end up at the right place when building |                                      |
-| Makefile          | Makefile                                                                               |
+| File/folder       | Description                                                                              |
+|-------------------|------------------------------------------------------------------------------------------|
+| include/hwdefs.h  | Various basic declarations of hardware specific memory map etc.                          |
+| include/mc68681.h | Prototypes for functions related tio serial communication via DUART                      |
+| boot.c            | Struct and prototypes for reset vectors, and the entrypoint of the firmware              |
+| m68681.c          | Functions for initialize and use the MC68681 DUART                                       |
+| main.c            | Placeholder for monitor logic                                                            |
+| firmware.ld       | Linker script to ensure that structs and vectors end up at the right place when building |                                      |
+| Makefile          | Makefile                                                                                 |
 
 ## Building
 
@@ -19,5 +20,5 @@ Building is simple:
 make clean
 make all
 
-Generates .o files for each C-file, an complete .elf, as well as an raw binary in .bin
+Generates .o files for each C-file, an complete .elf, memory .map file, as well as an raw binary in .bin
 
