@@ -3,7 +3,7 @@
 Some useful stuff related to Simulators nad toolchains. Let us start with...
 
 ## Simulators
-Yes, especially simulators ar gold when developing fro homebrew hardware. Popping flash ROM in an out of breadborads are tedious, and by chance I subled on the sim6000 simulator. An simulator written in C++ and Tkl, but it has two brilliant features:
+Yes, especially simulators are gold when developing for homebrew hardware. Popping flash ROM in an out of breadboards are tedious, and by chance I stumbled over the sim6000 simulator. An simulator written in C++ and Tkl, but it has two brilliant features:
 - Simulation of an mc68681 DUART, with selectable base address! This is golden to test stuff in software. Loads Motorola S-records and of you go. 
 - Multiple definable memory areas
 
