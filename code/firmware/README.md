@@ -5,4 +5,4 @@ Ttis directory contains folders for code related to the m68k Firmware
 
 | Folder     | Description                                                                          |
 |------------|--------------------------------------------------------------------------------------|
-| src        | Code and includefiless for firmware                                                  |
+| src        | Code and include files for firmware                                                  |

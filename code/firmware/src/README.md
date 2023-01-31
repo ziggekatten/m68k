@@ -5,8 +5,9 @@ This is the base folder for all firmware code, including header files
 
 | File/folder       | Description                                                                              |
 |-------------------|------------------------------------------------------------------------------------------|
+| include/boot.h    | Prototypes for exception handlers and kmain external function                              |
 | include/hwdefs.h  | Various basic declarations of hardware specific memory map etc.                          |
-| include/mc68681.h | Prototypes for functions related tio serial communication via DUART                      |
+| include/mc68681.h | Prototypes for functions related to  serial communication via DUART                      |
 | boot.c            | Struct and prototypes for reset vectors, and the entrypoint of the firmware              |
 | m68681.c          | Functions for initialize and use the MC68681 DUART                                       |
 | main.c            | Placeholder for monitor logic                                                            |

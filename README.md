@@ -24,7 +24,7 @@ Initial hardware:
 
 0.1.1 - Milestone. Got a free running CPU stepping through memory and blinking leds, by tying databus to ground (all zeros) throug pulldown resistors
 
-## Toolchain(s)
+## Toolchain(s) and emulators/simulators
 Currently using GCC on Ubuntu 20.04 cross compiled for m68k.
 In parallel building an LLVM toolchain for exploring the capabilities of using Rust and/or Zig instead of C. This is somewhat in an experimental phase, as some basic compilation efforts on LLVM and Rust/Zig is currently beeing tried out. My toolchains run in docker, and Dockerfiles can be found in the [toolchains] folder.
 
