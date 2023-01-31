@@ -288,13 +288,13 @@ uint32_t vectors[] __attribute__ ((section (".ipl_vector"))) = {
 void BUS_ERROR_Handler(void)
 {
     while(1);
-}
+};
 
 /* Generic exception handler */
 void Generic_Handler(void)
 {
     while(1);
-}
+};
 
 /* This function is the entrypoint of execution and it's address is set on boot at memory location: 0x00000004 */
 void Reset_Handler(void)
@@ -331,4 +331,4 @@ void Reset_Handler(void)
     /* Just in case main terminates */
     while(1);
 
-}
+};

@@ -64,3 +64,22 @@ void serial_init_default_port(void)
     serial_baud_rate();
     serial_flow_control();
 };
+
+/* Put char to the DUART*/
+int serial_putchar(char data)
+{
+    /* Create a pointer to the transmitter buffer
+    * TODO: ENsure buffer is not full?
+    */
+    uint32_t volatile *ptrBuffer = (uint32_t volatile *)DUART_TBA;
+
+    /*Send the char*/
+    *ptrBuffer = data;
+    return 0;
+};
+
+/* Get char from the DUART */
+int serial_getchar(void)
+{
+    return 0;
+};

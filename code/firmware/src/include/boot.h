@@ -2,7 +2,7 @@
 * @Author: Mats Brorson
 * @Date: 2023-01-27
 * 
-* @Description: Function prototypes for firmware boot
+* @Description: Function prototypes for exception handlers and firmware boot. Many is just pointing to an useless default error handler.
 */
 #ifndef _MB68K_BOOT_H
 #define _MB68K_BOOT_H

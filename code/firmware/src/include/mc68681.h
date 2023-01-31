@@ -2,11 +2,13 @@
 * @Author: Mats Brorson
 * @Date: 2023-01-27
 * 
-* @Description: Functions to initialize and start serial communications
+* @Description: Function prototypes to initialize and start serial communications, and
+* configure timers and other features of the chip
 */
 #ifndef _MB68K_MC68661_H
 #define _MB68K_MC68681_H
 #include "hwdefs.h"
+#include <stdint.h>
 
 /* 
 * DUART register definition using a base addres from hardware headerfile and adds some offsets
@@ -44,7 +46,7 @@
 
 /* 
 * prototype for initializing Serial commmunication function in DUART. Should
-* probably return something to indicate if it was successful
+* probably should return something to indicate if it was successful
 * TODO:
 * prototypes for (and expose as symbols for those to be configurable in userspace later on)
 * 1. Reset reciever, transmitter, error status, mode register pointer (CRA)
@@ -54,11 +56,27 @@
 * 5. enable Rx and Tx (CRA)
 * 6. set ACR[7] = 0
 * 7. disable interrupt
+* Rmove dependencies to hwdefs in this header for reusability
 */
-void serial_init_default_port(void);        // for initialize default settings at boot
+void serial_init_default_port(void);       // for initialize default settings at boot. In effect, running below functions
 void serial_init(void);                    // Reset of chip
-void serial_flow_control(void);                   // Set up flow control
-void serial_baud_rate(void);                      // Set up baudrate
+void serial_flow_control(void);            // Set up flow control
+void serial_baud_rate(void);               // Set up baudrate
 void serial_enable(void);                  // Enable tranciever and reciever
+
+/* Function: serial_putc: Sends a char to the DUART
+* argument: char to output
+* returns: int) 0 if all ok. 
+*/
+int serial_putchar(char data);
+
+/* Function: serial_getc: Sends a char to the DUART
+* returns: char from DUART buffer.
+* TODO: Interrupt and handler to run this function?
+*/
+int serial_getchar(void);
+
+
+
 
 #endif
