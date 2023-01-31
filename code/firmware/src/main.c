@@ -5,7 +5,7 @@
 * @Description: Main program used for whatever you need
 */
 
-int kmain(void)
+void _fmain(void)
 {
     while(1);
 };

@@ -8,7 +8,7 @@
 #define _MB68K_BOOT_H
 
 /* Prototype for external main call*/
-void kmain(void);
+void _fmain(void);
 
 /* Entrypoint prototype. This function is the start of code execution after vectors are set */
 void Reset_Handler(void);

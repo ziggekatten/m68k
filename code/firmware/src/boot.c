@@ -323,7 +323,7 @@ void Reset_Handler(void)
 
     /* Then execute the main function linked with this file (will be overwritten by 
     * linker as we only have the prototype here), and not the funcction itself */
-    kmain();
+    _fmain();
 
     /* Just in case main terminates */
     while(1);
