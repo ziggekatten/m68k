@@ -1,3 +1,5 @@
+mb68k-backups/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
