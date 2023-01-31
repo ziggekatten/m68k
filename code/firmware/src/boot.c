@@ -321,8 +321,11 @@ void Reset_Handler(void)
 
     /*TODO: Set up and initialize serial I/O */
 
-    /* Then execute the main function linked with this file (will be overwritten by 
-    * linker as we only have the prototype here), and not the funcction itself */
+    /* 
+    * Then execute the main function linked with this file (will be overwritten by 
+    * linker 
+    */
+
     _fmain();
 
     /* Just in case main terminates */

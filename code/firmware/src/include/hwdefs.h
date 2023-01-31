@@ -15,8 +15,10 @@
 #define RAM_BASE        0x00100000
 #define RAM_SIZE        (RAM_BASE + 0x000FFFFF) 
 
-/* Stack pointer at end of onboard 1 MB (must be at even address. 
-* Remember, sp is decreased BEFORE adding data to stack) */
+/* 
+* Stack pointer at end of onboard 1 MB (must be at even address. 
+* Remember, sp is decreased BEFORE adding data to stack) 
+*/
 #define STACK_POINTER   0x00200000
 
 

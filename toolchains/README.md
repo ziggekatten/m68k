@@ -25,4 +25,4 @@ Third option is to use the toolchan created by: https://rosco-m68k.com/
 - Dockerfile.16: LLVM 1.16.x build with m68k support. To be used with rust (experimental and not complete!!!)
 - Dockerfile.rosco: A containerized implementation of Rosco SBC toolchain https://rosco-m68k.com/docs/toolchain-installation
 
-Are you an Windows purist, and don't use Docker, WSL or an Linux VM, there is an precompiled setup available at: https://gnutoolchains.com/m68k-elf. Built witjh older versions f GCC and newlib, but still a working toolchain.
+Are you an Windows purist and don't use Docker, WSL or an Linux VM, there is an precompiled setup available at: https://gnutoolchains.com/m68k-elf. Built with older versions f GCC and newlib, but still a working toolchain.

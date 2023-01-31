@@ -7,7 +7,10 @@
 #ifndef _MB68K_MC68661_H
 #define _MB68K_MC68681_H
 
-/*prototype for initializing Serial commmunication function in DUART */
+/* 
+* prototype for initializing Serial commmunication function in DUART. Should
+* probably return something to indicate if it was successful
+*/
 void Init_Serial(void);
 
 
