@@ -16,6 +16,10 @@ Initial hardware:
 - Reset circuitry based on 555 timer and with both a reset button as well as an single step function, using DTACK.
 
 ## Version history
+0.1.6 - Cleaned upp some code and added some README stuff. All prototypes now in headers.
+
+0.1.5 - Just cleaning stuff
+
 0.1.4 - Milestone. Got my bare Firmware (just ending in an loop) running in sim68000
 
 0.1.3 - Just a bunch of renaming and updates of README files. In essence, cleaning up my own mess
