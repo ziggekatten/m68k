@@ -26,7 +26,7 @@ Initial hardware:
 
 ## Toolchain(s)
 Currently using GCC on Ubuntu 20.04 cross compiled for m68k.
-In parallel building an LLVM toolchain for exploring the capabilities of using Rust and/or Zig instead of C. This is somewhat in an experimental phase, as some basic compilation efforts on LLVM and Rust/Zig is currently beeing tried out. My toolchains run in docker, and Dockerfiles can be foun in the [toolchains] folder.
+In parallel building an LLVM toolchain for exploring the capabilities of using Rust and/or Zig instead of C. This is somewhat in an experimental phase, as some basic compilation efforts on LLVM and Rust/Zig is currently beeing tried out. My toolchains run in docker, and Dockerfiles can be found in the [toolchains] folder.
 
 ## Folder structure
 | Folder     | Description                                                                          |
