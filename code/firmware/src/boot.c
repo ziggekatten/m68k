@@ -320,7 +320,7 @@ void Reset_Handler(void)
 
     /* initialize Port A at 19200 baud, 8 databits, 1 stop bit, no parity, no flow control */
 
-    init_default_serial_port();
+    serial_init_default_port();
     /* 
     * Then execute the main function linked with this file (will be overwritten by 
     * linker 

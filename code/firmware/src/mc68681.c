@@ -11,7 +11,7 @@
 #include "include/mc68681.h"
 
 /* Functions for initializing serial commmunication */
-void init_serial(void)
+void serial_init(void)
 {
 /*
 * TODO: add parameter for port A and B
@@ -26,7 +26,7 @@ void init_serial(void)
     *ptrReset = (uint8_t)0x10;                     // Reset Mode Register pointer to MR1
 };
 
-void flow_control(void)
+void serial_flow_control(void)
 /*
 * TODO: Add parameters for selection of baudrates
 */
@@ -36,7 +36,7 @@ void flow_control(void)
     *ptrFlowControl = (uint8_t)0x07;               //No flowcontrol, 1 stop bit Second write goes into MR2A
 };
 
-void baud_rate(void)
+void serial_baud_rate(void)
 /*
 * TODO: Add parameters for selection of baudrates
 */
@@ -47,7 +47,7 @@ void baud_rate(void)
     *ptrBaudRateACR = (uint8_t)0x80;                // Set bit highest bit in Aux Control Register for 19 200
 };
 
-void enable_serial(void)
+void serial_enable(void)
 {
     uint32_t volatile *ptrEnableSerial = (uint32_t volatile *)DUART_CRA;
     uint32_t volatile *ptrInterrupt = (uint32_t volatile *)DUART_IMR;
@@ -57,10 +57,10 @@ void enable_serial(void)
 };
 
 /* This function to be run for setting Port A to default settings at boot for console access */
-void init_default_serial_port(void)
+void serial_init_default_port(void)
 {
-    init_serial();
-    flow_control();
-    baud_rate();
-    flow_control();
+    serial_init();
+    serial_flow_control();
+    serial_baud_rate();
+    serial_flow_control();
 };

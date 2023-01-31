@@ -1,7 +1,7 @@
 CC=m68k-elf-gcc
 CPU=68010
 OUTDIR=out/
-CFLAGS= -c -nostdlib -mcpu=$(CPU) -o0 -std=gnu11 -Wall
+CFLAGS= -c -nostdlib -mcpu=$(CPU) -o0 -std=gnu11 -Wall -ffreestanding
 LDFLAGS= -nostdlib -mcpu=$(CPU) -T firmware.ld -Wl,-Map=firmware.map
 all: main.o boot.o mc68681.o firmware.elf firmware.bin
 main.o:main.c
