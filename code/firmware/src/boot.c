@@ -320,7 +320,10 @@ void Reset_Handler(void)
 	}   
 
     /*TODO: Set up and initialize serial I/O */
-
+    init_serial();
+    flow_control();
+    baud_rate();
+    enable_serial();
     /* 
     * Then execute the main function linked with this file (will be overwritten by 
     * linker 

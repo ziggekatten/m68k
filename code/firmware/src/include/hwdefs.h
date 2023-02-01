@@ -9,20 +9,23 @@
 #define _MB68K_HWDEFS_H
 
 /* ROM start address */
-#define ROM_BASE        0x00000000
-#define ROM_SIZE        (ROM_BASE + 0x000FFFFF) // 1 MB of ROM (2 * 512k)
+#define ROM_BASE                        0x00000000
+#define ROM_SIZE                        (ROM_BASE + 0x000FFFFF) // 1 MB of ROM (2 * 512k)
 /* RAM start address */
-#define RAM_BASE        0x00100000
-#define RAM_SIZE        (RAM_BASE + 0x000FFFFF) 
+#define RAM_BASE                        0x00100000
+#define RAM_SIZE                        (RAM_BASE + 0x000FFFFF) 
 
 /* 
 * Stack pointer at end of onboard 1 MB (must be at even address. 
 * Remember, sp is decreased BEFORE adding data to stack) 
 */
-#define STACK_POINTER   0x00200000
+#define STACK_POINTER                   0x00200000
 
 
 /* MC68661 DUART definitions */
-#define DUART_BASE      0x00300000 // Base I/O memory mapped address of the DUART
+#define DUART_BASE                      0x00300000 // Base I/O memory mapped address of the DUART
+#define DUART_DEFAULT_STOP_BITS         0x01 // Default stop bits = 1
+#define DUART_DEFAULT_BAUDRATE          0x00 // Deault parity = none
+
 
 #endif
