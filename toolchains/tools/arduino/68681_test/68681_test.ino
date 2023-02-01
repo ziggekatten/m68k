@@ -50,7 +50,9 @@ uint8_t step_pointer = 0;
 uint8_t dtackstate = 0;
 
 void setup() {
-
+  /* Set ther CS pin to output and start at HIGH */
+  pinMode(CS,OUTPUT);
+  digitalWrite(CS, HIGH);
 
 
   /* Now we set the pin for reading DTACKN status*/
@@ -68,7 +70,7 @@ void setup() {
    * code switch to output
    */
 
-  pinMode(RW,OUTPUT);
+  pinMode(RW,INPUT);
 
   /* set up serial feedback */
   Serial.begin(9600);
@@ -91,20 +93,36 @@ void loop() {
 * This will be our main function for handling execution order
 */
 void stepfunction() {
-  Serial.println("We are in STEP interrupt\n");
+  Serial.println("We are in STEP interrupt!");
 }
 
 /* Interrupt function for catching if DTACK is asserted 8going high)
 */
 void dtackfunction() {
-  Serial.println("We are in DTACK interrupt!\n");
+  dtackstate = 1
+  Serial.println("We are in DTACK interrupt!");
 
 }
 
 /* Function for initializing DUART serial commmunication */
 void duart_init(void) {
-  DDRF = B11111111; Set port F to output
-  PORTF = DUART_CRA;
+  digitalWrite(CS,LOW);           // Select the chip
+  pinMode(RW, OUTPUT);            // Set RW pin to output
+  digitalWrite(RW,LOW)            // Set RW pin to WRITE
+  DDRF = B11111111;               // Set all adress bus (port F) pins to output
+  PORTF = DUART_CRA;              // Write address to CRA register on adress bus (port F)
+
+  //Data on bus goes here
+  DDRK = B11111111;               // Set data bus (port K) to output
+  PORTK = B00100000;              // Write first command to CRA register
+
+  while (dtackstate == 0)         // Don't do anything untill DTACK have been asserted
+
+  digitalWrite(CS,HIGH;           // Disable chip
+  pinMode(RW, INPUT);             // Set pin to input acting as Z-state  
+  DDRF = B00000000;               // Set port F to input acting as Z-state
+  DDRK = B00000000;               // Set port K to input acting as Z-state
+  Serial.println("Done init!")    // Print to serial monitor
 }
 
 /* Function for setting flow control */
