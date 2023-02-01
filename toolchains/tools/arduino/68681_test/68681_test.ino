@@ -116,14 +116,13 @@ void duart_init(void) {
   /* Reset reciever by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  digitalWrite(CS,LOW);                       // Select the chip
   DDRF = B11111111;                           // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-
   DDRK = B11111111;                           // Set data bus (port K) to output
   PORTK = B00100000;                          // Write first command to CRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
 
-  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted and flag set to 1
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
 
   digitalWrite(CS,HIGH;                       // Disable chip
   pinMode(RW,INPUT);                          // High impedence
@@ -138,14 +137,13 @@ void duart_init(void) {
   /* Reset transmitter by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  digitalWrite(CS,LOW);                       // Select the chip
   DDRF = B11111111;                           // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-
   DDRK = B11111111;                           // Set data bus (port K) to output
   PORTK = B00110000;                          // Write second command to CRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
 
-  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
 
   digitalWrite(CS,HIGH;                       // Disable chip
   pinMode(RW,INPUT);                          // High impedence
@@ -160,15 +158,14 @@ void duart_init(void) {
   /* Reset error status by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  digitalWrite(CS,LOW);                       // Select the chip
   DDRF = B11111111;                           // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-
   DDRK = B11111111;                           // Set data bus (port K) to output
   PORTK = B01000000;                          // Write third command to CRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
 
-  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
-  
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+
   digitalWrite(CS,HIGH;                       // Disable chip
   pinMode(RW,INPUT);                          // High impedence
   digitalWrite(RW, LOW);                      // High impedence
@@ -182,14 +179,13 @@ void duart_init(void) {
  /*  Reset Mode Register pointer to MR1 */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  digitalWrite(CS,LOW);                       // Select the chip
   DDRF = B11111111;                           // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-
   DDRK = B11111111;                           // Set data bus (port K) to output
   PORTK = B00010000;                          // Write third command to CRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
 
-  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
 
   digitalWrite(CS,HIGH;                       // Disable chip
   pinMode(RW,INPUT);                          // High impedence
