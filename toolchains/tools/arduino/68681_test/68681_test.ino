@@ -50,7 +50,7 @@ uint8_t step_pointer = 0;
 uint8_t dtackstate = 0;
 
 void setup() {
-  /* Set ther CS pin to output and start at HIGH */
+  /* Set the CS pin to OUTPUT and start at HIGH*/
   pinMode(CS,OUTPUT);
   digitalWrite(CS, HIGH);
 
@@ -69,8 +69,14 @@ void setup() {
    /* Now we set the pin for R/W  to inital READ, so it acts as an tristate and let later 
    * code switch to output
    */
+  pinMode(RW,INPUT);
+  digitalWrite(RW, LOW);
 
-  pinMode(RW,OUTPUT);
+  /* Set adress and databus to high impedence*/
+  DDRF = B00000000;
+  PORTF = B00000000;
+  DDRK = B00000000;
+  PORTK = B00000000;  
 
   /* set up serial feedback */
   Serial.begin(9600);
@@ -120,6 +126,12 @@ void duart_init(void) {
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted and flag set to 1
 
   digitalWrite(CS,HIGH;                       // Disable chip
+  pinMode(RW,INPUT);                          // High impedence
+  digitalWrite(RW, LOW);                      // High impedence
+  DDRF = B00000000;                           // High impedence
+  PORTF = B00000000;                          // High impedence
+  DDRK = B00000000;                           // High impedence
+  PORTK = B00000000;                          // High impedence
   dtackstate = 0;                             // Reset DTACK flag
   Serial.println("Done init reciever!")       // Print to serial monitor
 
@@ -134,8 +146,15 @@ void duart_init(void) {
   PORTK = B00110000;                          // Write second command to CRA register
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
-  dtackstate = 0;                             // Reset DTACK flag
+
   digitalWrite(CS,HIGH;                       // Disable chip
+  pinMode(RW,INPUT);                          // High impedence
+  digitalWrite(RW, LOW);                      // High impedence
+  DDRF = B00000000;                           // High impedence
+  PORTF = B00000000;                          // High impedence
+  DDRK = B00000000;                           // High impedence
+  PORTK = B00000000;                          // High impedence
+  dtackstate = 0;                             // Reset DTACK flag
   Serial.println("Done init transmitter!")    // Print to serial monitor
 
   /* Reset error status by setting value in CRA register */
@@ -149,8 +168,15 @@ void duart_init(void) {
   PORTK = B01000000;                          // Write third command to CRA register
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
-  dtackstate = 0;                             // Reset DTACK flag
+  
   digitalWrite(CS,HIGH;                       // Disable chip
+  pinMode(RW,INPUT);                          // High impedence
+  digitalWrite(RW, LOW);                      // High impedence
+  DDRF = B00000000;                           // High impedence
+  PORTF = B00000000;                          // High impedence
+  DDRK = B00000000;                           // High impedence
+  PORTK = B00000000;                          // High impedence
+  dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
   Serial.println("Done init error reg!")      // Print to serial monitor
 
  /*  Reset Mode Register pointer to MR1 */
@@ -164,10 +190,17 @@ void duart_init(void) {
   PORTK = B00010000;                          // Write third command to CRA register
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
-  dtackstate = 0;                             // Reset DTACK flag
+
   digitalWrite(CS,HIGH;                       // Disable chip
+  pinMode(RW,INPUT);                          // High impedence
+  digitalWrite(RW, LOW);                      // High impedence
+  DDRF = B00000000;                           // High impedence
+  PORTF = B00000000;                          // High impedence
+  DDRK = B00000000;                           // High impedence
+  PORTK = B00000000;                          // High impedence
+  dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
   Serial.println("Done setting to MR1!")      // Print to serial monitor
-  
+
 }
 
 /* Function for setting flow control */
