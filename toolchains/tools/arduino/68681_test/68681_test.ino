@@ -70,7 +70,7 @@ void setup() {
    * code switch to output
    */
 
-  pinMode(RW,INPUT);
+  pinMode(RW,OUTPUT);
 
   /* set up serial feedback */
   Serial.begin(9600);
@@ -106,20 +106,68 @@ void dtackfunction() {
 
 /* Function for initializing DUART serial commmunication */
 void duart_init(void) {
-  pinMode(RW, OUTPUT);            // Set RW pin to output
-  digitalWrite(RW,LOW);           // Set RW pin to WRITE
-  digitalWrite(CS,LOW);           // Select the chip
-  DDRF = B11111111;               // Set all adress bus (port F) pins to output
-  PORTF = DUART_CRA;              // Write address to CRA register on adress bus (port F)
 
-  //Data on bus goes here
-  DDRK = B11111111;               // Set data bus (port K) to output
-  PORTK = B00100000;              // Write first command to CRA register
+  /* Reset reciever by setting value in CRA register */
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  digitalWrite(CS,LOW);                       // Select the chip
+  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
 
-  while (dtackstate == 0)         // Don't do anything untill DTACK have been asserted
+  DDRK = B11111111;                           // Set data bus (port K) to output
+  PORTK = B00100000;                          // Write first command to CRA register
 
-  digitalWrite(CS,HIGH;           // Disable chip
-  Serial.println("Done init!")    // Print to serial monitor
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted and flag set to 1
+
+  digitalWrite(CS,HIGH;                       // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
+  Serial.println("Done init reciever!")       // Print to serial monitor
+
+  /* Reset transmitter by setting value in CRA register */
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  digitalWrite(CS,LOW);                       // Select the chip
+  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
+
+  DDRK = B11111111;                           // Set data bus (port K) to output
+  PORTK = B00110000;                          // Write second command to CRA register
+
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
+  dtackstate = 0;                             // Reset DTACK flag
+  digitalWrite(CS,HIGH;                       // Disable chip
+  Serial.println("Done init transmitter!")    // Print to serial monitor
+
+  /* Reset error status by setting value in CRA register */
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  digitalWrite(CS,LOW);                       // Select the chip
+  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
+
+  DDRK = B11111111;                           // Set data bus (port K) to output
+  PORTK = B01000000;                          // Write third command to CRA register
+
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
+  dtackstate = 0;                             // Reset DTACK flag
+  digitalWrite(CS,HIGH;                       // Disable chip
+  Serial.println("Done init error reg!")      // Print to serial monitor
+
+ /*  Reset Mode Register pointer to MR1 */
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  digitalWrite(CS,LOW);                       // Select the chip
+  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
+
+  DDRK = B11111111;                           // Set data bus (port K) to output
+  PORTK = B00010000;                          // Write third command to CRA register
+
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted
+  dtackstate = 0;                             // Reset DTACK flag
+  digitalWrite(CS,HIGH;                       // Disable chip
+  Serial.println("Done setting to MR1!")      // Print to serial monitor
+  
 }
 
 /* Function for setting flow control */
