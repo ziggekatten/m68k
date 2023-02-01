@@ -106,9 +106,9 @@ void dtackfunction() {
 
 /* Function for initializing DUART serial commmunication */
 void duart_init(void) {
-  digitalWrite(CS,LOW);           // Select the chip
   pinMode(RW, OUTPUT);            // Set RW pin to output
-  digitalWrite(RW,LOW)            // Set RW pin to WRITE
+  digitalWrite(RW,LOW);           // Set RW pin to WRITE
+  digitalWrite(CS,LOW);           // Select the chip
   DDRF = B11111111;               // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;              // Write address to CRA register on adress bus (port F)
 
@@ -119,9 +119,6 @@ void duart_init(void) {
   while (dtackstate == 0)         // Don't do anything untill DTACK have been asserted
 
   digitalWrite(CS,HIGH;           // Disable chip
-  pinMode(RW, INPUT);             // Set pin to input acting as Z-state  
-  DDRF = B00000000;               // Set port F to input acting as Z-state
-  DDRK = B00000000;               // Set port K to input acting as Z-state
   Serial.println("Done init!")    // Print to serial monitor
 }
 
