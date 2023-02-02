@@ -55,7 +55,7 @@
 * 6. set ACR[7] = 0
 * 7. disable interrupt
 */
-
+void init_default_serial_port(void);        // for initialize default settings at boot
 void init_serial(void);                    // Reset of chip
 void flow_control(void);                   // Set up flow control
 void baud_rate(void);                      // Set up baudrate

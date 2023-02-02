@@ -6,13 +6,12 @@
 * for code execution. An special .elf section(.ipl-section) to be used by linker to place the 32-bit addresses for entrypoint 
 * at the correct place.
 */
-
+#include <stdint.h>
 #include "include/hwdefs.h"
 #include "include/mc68681.h"
 #include "include/boot.h"
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
-typedef unsigned long int uint32_t;
 
 /* Symbols created by linker to be used for copying .data to correct addresses i RAM and clearing .bss */
 extern uint32_t _etext;
@@ -319,11 +318,9 @@ void Reset_Handler(void)
 		*ptrDestination++ = 0;
 	}   
 
-    /*TODO: Set up and initialize serial I/O */
-    init_serial();
-    flow_control();
-    baud_rate();
-    enable_serial();
+    /* initialize Port A at 19200 baud, 8 databits, 1 stop bit, no parity, no flow control */
+
+    init_default_serial_port();
     /* 
     * Then execute the main function linked with this file (will be overwritten by 
     * linker 

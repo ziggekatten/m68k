@@ -22,10 +22,12 @@
 #define STACK_POINTER                   0x00200000
 
 
-/* MC68661 DUART definitions */
-#define DUART_BASE                      0x00300000 // Base I/O memory mapped address of the DUART
-#define DUART_DEFAULT_STOP_BITS         0x01 // Default stop bits = 1
-#define DUART_DEFAULT_BAUDRATE          0x00 // Deault parity = none
+/* MC68661 DUART definitions used for boot */
+#define DUART_BASE                      0x00300000              // Base I/O memory mapped address of the DUART
+#define DUART_DEFAULT_STOP_BITS         1                       // Default stop bits 
+#define DUART_DEFAULT_BAUDRATE          19200                   // Default baud rate 
+#define DUART_DEFAULT_PARITY            0                       // Default parity
+#define DUART_DEFAULT_FLOWCONTROL       0                       // Default flowcontrol. 0 = none
 
 
 #endif
