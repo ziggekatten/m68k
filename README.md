@@ -1,9 +1,9 @@
 # m68k
-A over ambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. Some decisions made from my part:
+A over ambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. This main README will change frequently and act like an blog with my thoughts and decisions. Some decisions made from my part:
 
-- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more details. I would like to use Zig (primary) or Rust (secondary), but as an non compiler wizard, this is currently on the back foot, and O'l trusted C will do.
+- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more details. I would like to use Zig (primary) or Rust (secondary), but as an non compiler wizard, this is currently on the back foot, and O'l trusted C will do. There are some chanllenges though, that are quite simple in assembler, but when using C and segregation of duty, requires some more thoughts. For example, when using interrupts on the serial line, how do you pass the input from the exceptionhandler to your main kernel code? Simple answer one would say, some defined pseudo registers monitored by your main code in combination of global variables/structs in C. But this comes at an cost of CPU cycles as stuff needs to pass memory in several stages. Not easy decisions. Also, as I'm building some built in monitoring stuff in the firmwware to see values of stack pointer and register values, I might need to add som asssembler in the end. It will be inline if that's the case. It hurts, but unless I can use some GCC low level stuff I probably need to do this.
 - Build my own stdlib based on newlib (https://sourceware.org/newlib/)
-- Serial interface and an HW-moitor as initial I/0 path to the SBC 
+- Serial interface and an HW-monitor as initial I/0 path to the SBC 
 
 Initial hardware:
 - CPU: MC68010@12MHz

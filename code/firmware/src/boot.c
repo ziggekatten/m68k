@@ -13,7 +13,7 @@
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
 
-/* Symbols created by linker to be used for copying .data to correct addresses i RAM and clearing .bss */
+/* Symbols created by linker to be used for copying .data to correct addresses in RAM and clearing .bss */
 extern uint32_t _etext;
 extern uint32_t _sdata;
 extern uint32_t _edata;
@@ -22,8 +22,9 @@ extern uint32_t _sbss;
 extern uint32_t _ebss;
 
 
-/*We add reset and exception vector table with pointers as an array. we place it in our 
+/* We add reset and exception vector table with pointers as an array. we place it in our 
 * own .ipl-vectors section in .elf binary to ensure code ends up starting at 0x00000000
+* by relying on linker script
 */
 uint32_t vectors[] __attribute__ ((section (".ipl_vector"))) = {
     STACK_POINTER,
@@ -296,13 +297,15 @@ void Generic_Handler(void)
     while(1);
 };
 
-/* This function is the entrypoint of execution and it's address is set on boot at memory location: 0x00000004 */
+/* This function is the entrypoint of execution and it's address is set on boot
+* at memory location: 0x00000004 
+*/
 void Reset_Handler(void)
 {
 	/* copy .data section to RAM */
-	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata; // gets the size of .data section
- 	uint32_t *ptrDestination = (uint32_t*)&_sdata; //ram
-	uint32_t *ptrSource = (uint32_t*)&_la_data; //flash
+	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;          // gets the size of .data section
+ 	uint32_t *ptrDestination = (uint32_t*)&_sdata;                  //ram
+	uint32_t *ptrSource = (uint32_t*)&_la_data;                     //flash
 
 	for(uint32_t i =0 ; i < size ; i++)
 	{
@@ -310,20 +313,22 @@ void Reset_Handler(void)
 	}
 
 	/* Zero out the .bss section in RAM */
-	size = (uint32_t)&_ebss - (uint32_t)&_sbss; // Gets the size of .bss
+	size = (uint32_t)&_ebss - (uint32_t)&_sbss;                     // Gets the size of .bss
  	ptrDestination = (uint32_t*)&_sbss;
     
-	for(uint32_t i =0 ; i < size ; i++)
+	for(uint32_t i = 0; i < size ; i++)
 	{
 		*ptrDestination++ = 0;
 	}   
 
-    /* initialize Port A at 19200 baud, 8 databits, 1 stop bit, no parity, no flow control */
+    /* initialize Port A at 19200 baud, 8 databits, 1 stop bit, no parity, no flow control 
+    * TODO: Parameterize this
+    */
 
     serial_init_default_port();
     /* 
-    * Then execute the main function linked with this file (will be overwritten by 
-    * linker 
+    * Then execute the main function linked with this file (will be handled by 
+    * linker) 
     */
 
     _fmain();

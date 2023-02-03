@@ -65,18 +65,17 @@ void serial_baud_rate(void);               // Set up baudrate
 void serial_enable(void);                  // Enable tranciever and reciever
 
 /* Function: serial_putc: Sends a char to the DUART
-* argument: char to output
+* arguments: char to output
 * returns: int) 0 if all ok. 
 */
 int serial_putchar(char data);
 
-/* Function: serial_getc: Sends a char to the DUART
+/* Function: serial_getc: Sends a char to the DUART 
+* parameters: 
 * returns: char from DUART buffer.
 * TODO: Interrupt and handler to run this function?
 */
-int serial_getchar(void);
-
-
+int serial_getchar();
 
 
 #endif
