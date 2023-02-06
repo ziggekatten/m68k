@@ -38,10 +38,23 @@
     )
   )
 
+  (sheet (at 121.92 64.77) (size 13.97 16.51) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid c382627c-aaa0-47a5-a0f7-b0da34ce6bae)
+    (property "Sheet name" "DUART" (id 0) (at 121.92 64.0584 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "DUART.kicad_sch" (id 1) (at 121.92 81.8646 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+  )
+
   (sheet_instances
     (path "/" (page "1"))
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa" (page "2"))
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9" (page "3"))
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae" (page "4"))
   )
 
   (symbol_instances
@@ -182,6 +195,9 @@
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/4be9f2c5-e623-47c5-a2ac-bc80517970ed"
       (reference "U?") (unit 1) (value "68010P10") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/5a8daa73-8d7c-4391-b18d-0c250a2bb8bf"
+      (reference "U?") (unit 1) (value "68681") (footprint "")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/62e3e07a-9380-4c51-acc0-e502eba8f249"
       (reference "U?") (unit 1) (value "74LS245") (footprint "")

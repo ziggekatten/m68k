@@ -66,7 +66,7 @@ void serial_init_default_port(void)
     serial_init();
     serial_flow_control();
     serial_baud_rate();
-    serial_flow_control();
+    serial_flow_enable();
 };
 
 /* Function for putting char to the DUART

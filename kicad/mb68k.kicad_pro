@@ -440,6 +440,10 @@
     [
       "c0b233c3-0354-40a8-9da4-8134543aeba9",
       "CPU"
+    ],
+    [
+      "c382627c-aaa0-47a5-a0f7-b0da34ce6bae",
+      "DUART"
     ]
   ],
   "text_variables": {}
