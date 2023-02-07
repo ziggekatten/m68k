@@ -12,6 +12,7 @@
 #define CS 24                              // Chip select. This is the way to add cycles to the chip
 #define RW 25                              // Read/Write pin
 #define STEP 2                             // A interrupt pin used with button to step through code
+#define RESET 26                           // Chip reset pin
 
 const byte DUART_BASE   =B0000;             // DUART base address 
 const byte DUART_MR1A   =DUART_BASE+B0000;  // Mode Register Port A. first read or write (MR1A)
@@ -53,8 +54,7 @@ void setup() {
   /* Set the CS pin to OUTPUT and start at HIGH*/
   pinMode(CS,OUTPUT);
   digitalWrite(CS, HIGH);
-
-
+  
   /* Now we set the pin for reading DTACKN status*/
   pinMode(DTACK,INPUT);
   attachInterrupt(digitalPinToInterrupt(DTACK), dtackfunction, FALLING);
@@ -65,138 +65,105 @@ void setup() {
    */
   pinMode(STEP,INPUT);
   attachInterrupt(digitalPinToInterrupt(STEP), stepfunction, RISING);
-  
-   /* Now we set the pin for R/W  to inital READ, so it acts as an tristate and let later 
-   * code switch to output
-   */
-  pinMode(RW,INPUT);
-  digitalWrite(RW, LOW);
-
-  /* Set adress and databus to high impedence*/
-  DDRF = B00000000;
+ 
+  /* Set adress and databus to output*/
+  DDRF = B11111111;
   PORTF = B00000000;
-  DDRK = B00000000;
+  DDRK = B11111111;
   PORTK = B00000000;  
-
+  
   /* set up serial feedback */
   Serial.begin(9600);
+  Serial.print("Starting up....\n");
 }
 
 void loop() {
   /* We need to define some use cases her that we can trace in the serial monitor.
-  * This means that we need to use the button to be able to step through things,
+  * This means that we need to use Serial.input() to be able to step through things,
   * and read values from the bus as well as data registers. Tricky stuff
   */
-
-  /* We know that an reset of the chip is a good thing 
-  * then we need to set up a bunch of registers before even thinking about
-  * putting data to the DUART
-  */
-}
-
-
-/* Interrupt function for the button that steps through instructions.
-* This will be our main function for handling execution order
-*/
-void stepfunction() {
-  Serial.println("We are in STEP interrupt!");
-}
-
-/* Interrupt function for catching if DTACK is asserted 8going high)
-*/
-void dtackfunction() {
-  dtackstate = 1
-  Serial.println("We are in DTACK interrupt!");
+  Serial.println("Enter data:");
+  while (Serial.available() == 0) {}     //wait for data available
+  String command = Serial.readString();  //read until timeout
+  command.trim();                        // remove any \r \n whitespace at the end of the String
+  if (command == "init") {
+    duart_init();
+  } else {
+    Serial.println("Invalid command");
+  }
 
 }
 
 /* Function for initializing DUART serial commmunication */
 void duart_init(void) {
-
+  Serial.print("Initializing DUART...\n");
+  
+  /* Reset hard on pin */
+  pinMode(RESET,OUTPUT);
+  digitalWrite(RESET,LOW);
+  delay(2000);
+  digitalWrite(RESET, HIGH);
+  delay(2000);
+  
   /* Reset reciever by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  DDRK = B11111111;                           // Set data bus (port K) to output
   PORTK = B00100000;                          // Write first command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
-
-  digitalWrite(CS,HIGH;                       // Disable chip
-  pinMode(RW,INPUT);                          // High impedence
-  digitalWrite(RW, LOW);                      // High impedence
-  DDRF = B00000000;                           // High impedence
-  PORTF = B00000000;                          // High impedence
-  DDRK = B00000000;                           // High impedence
-  PORTK = B00000000;                          // High impedence
+  delay(1000); 
+  digitalWrite(CS,HIGH);                      // Disable chip
   dtackstate = 0;                             // Reset DTACK flag
-  Serial.println("Done init reciever!")       // Print to serial monitor
-
+  Serial.println("Done init reciever!");       // Print to serial monitor
+  
   /* Reset transmitter by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  DDRK = B11111111;                           // Set data bus (port K) to output
+  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B00110000;                          // Write second command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
 
-  digitalWrite(CS,HIGH;                       // Disable chip
-  pinMode(RW,INPUT);                          // High impedence
-  digitalWrite(RW, LOW);                      // High impedence
-  DDRF = B00000000;                           // High impedence
-  PORTF = B00000000;                          // High impedence
-  DDRK = B00000000;                           // High impedence
-  PORTK = B00000000;                          // High impedence
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
   dtackstate = 0;                             // Reset DTACK flag
-  Serial.println("Done init transmitter!")    // Print to serial monitor
-
+  Serial.println("Done init transmitter!");   // Print to serial monitor
+  delay(1000);
+  
   /* Reset error status by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  DDRK = B11111111;                           // Set data bus (port K) to output
+  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B01000000;                          // Write third command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
-
-  digitalWrite(CS,HIGH;                       // Disable chip
-  pinMode(RW,INPUT);                          // High impedence
-  digitalWrite(RW, LOW);                      // High impedence
-  DDRF = B00000000;                           // High impedence
-  PORTF = B00000000;                          // High impedence
-  DDRK = B00000000;                           // High impedence
-  PORTK = B00000000;                          // High impedence
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
   dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
-  Serial.println("Done init error reg!")      // Print to serial monitor
-
+  Serial.println("Done init error reg!");     // Print to serial monitor
+  delay(2000);
  /*  Reset Mode Register pointer to MR1 */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  DDRF = B11111111;                           // Set all adress bus (port F) pins to output
+  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  DDRK = B11111111;                           // Set data bus (port K) to output
+  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B00010000;                          // Write third command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
-
-  digitalWrite(CS,HIGH;                       // Disable chip
-  pinMode(RW,INPUT);                          // High impedence
-  digitalWrite(RW, LOW);                      // High impedence
-  DDRF = B00000000;                           // High impedence
-  PORTF = B00000000;                          // High impedence
-  DDRK = B00000000;                           // High impedence
-  PORTK = B00000000;                          // High impedence
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
   dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
-  Serial.println("Done setting to MR1!")      // Print to serial monitor
-
+  Serial.println("Done setting to MR1!");     // Print to serial monitor
 }
 
 /* Function for setting flow control */
@@ -211,5 +178,14 @@ void serial_baud_rate(void){
 
 /* Enable reciever and transmitter */
 void serial_enable(void){
+
+}
+
+/* Interrupt function for catching if DTACK is asserted (going high and then low). 
+ * We trigger interrupt on falling edge
+*/
+void dtackfunction() {
+  dtackstate = 1;
+  Serial.println("DTACK have been sent to CPU");
 
 }
