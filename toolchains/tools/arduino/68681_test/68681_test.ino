@@ -54,19 +54,17 @@ void setup() {
   /* Set the CS pin to OUTPUT and start at HIGH*/
   pinMode(CS,OUTPUT);
   digitalWrite(CS, HIGH);
-  
+
+  /* Prepare reet pin */
+  pinMode(RESET,OUTPUT);
+  digitalWrite(RESET,HIGH);
+
+   
   /* Now we set the pin for reading DTACKN status*/
   pinMode(DTACK,INPUT);
   attachInterrupt(digitalPinToInterrupt(DTACK), dtackfunction, FALLING);
-
-   /* Now we set the pin for stepping through code so we se what happens 
-   * and attach an iterruptfunction on transition from LOW to HIGH to it.
-   * That function will becom the main function
-   */
-  pinMode(STEP,INPUT);
-  attachInterrupt(digitalPinToInterrupt(STEP), stepfunction, RISING);
  
-  /* Set adress and databus to output*/
+  /* Set adress and databus to output*/                                                        
   DDRF = B11111111;
   PORTF = B00000000;
   DDRK = B11111111;
@@ -86,20 +84,28 @@ void loop() {
   while (Serial.available() == 0) {}     //wait for data available
   String command = Serial.readString();  //read until timeout
   command.trim();                        // remove any \r \n whitespace at the end of the String
+
+  
   if (command == "init") {
     duart_init();
-  } else {
-    Serial.println("Invalid command");
+    } else if (command == "flow"){
+      serial_flow_control();
+    } else if (command == "baud"){
+      serial_baud_rate();
+    } else if (command == "enable"){
+      serial_enable();
+    } else if (command == "writechar"){
+      print_char();
+    } else {
+      Serial.println("Invalid command");  
+    }
   }
-
-}
 
 /* Function for initializing DUART serial commmunication */
 void duart_init(void) {
   Serial.print("Initializing DUART...\n");
   
   /* Reset hard on pin */
-  pinMode(RESET,OUTPUT);
   digitalWrite(RESET,LOW);
   delay(2000);
   digitalWrite(RESET, HIGH);
@@ -121,9 +127,7 @@ void duart_init(void) {
   /* Reset transmitter by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B00110000;                          // Write second command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
@@ -138,49 +142,118 @@ void duart_init(void) {
   /* Reset error status by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B01000000;                          // Write third command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
   delay(1000);
   digitalWrite(CS,HIGH);                      // Disable chip
-  dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag                    
   Serial.println("Done init error reg!");     // Print to serial monitor
   delay(2000);
  /*  Reset Mode Register pointer to MR1 */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
-  //DDRF = B11111111;                         // Set all adress bus (port F) pins to output
   PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
-  //DDRK = B11111111;                         // Set data bus (port K) to output
   PORTK = B00010000;                          // Write third command to CRA register
   digitalWrite(CS,LOW);                       // Enable the chip
 
   while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
   delay(1000);
   digitalWrite(CS,HIGH);                      // Disable chip
-  dtackstate = 0;                             // Reset DTACK flag                    // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag                    
   Serial.println("Done setting to MR1!");     // Print to serial monitor
 }
 
 /* Function for setting flow control */
 void serial_flow_control(void){
-  
+
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_MR1A;                         // Write address to MR1A register on adress bus (port F)
+  PORTK = 0x13;                               // Write to the first pointer
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
+
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_MR1A;                         // Write address to MR1A register on adress bus (port F)
+  PORTK = 0x07;                               // Write third command to second pointer
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
+  Serial.println("Done setting to 8 data bits, no parity, no flow control, 1 stop bit");
+
 }
 
 /* Set baudrate */  
 void serial_baud_rate(void){
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_CSRA;                         // Write address to CRA register on adress bus (port F)
+  PORTK = 0xCC;                               // Write o CSRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
 
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_ACR;                          // Write address to CRA register on adress bus (port F)
+  PORTK = 0x80;                               // Write o ACR register
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag  
+  Serial.println("Done setting to 9600 baud");  
 }
 
 /* Enable reciever and transmitter */
 void serial_enable(void){
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_CRA;                          // Write address to CRA register on adress bus (port F)
+  PORTK = 0x05;                               // Write o CRA register
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
 
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_IMR;                          // Write address to IMR register on adress bus (port F)
+  PORTK = 0x00;                               // Write o IMR register to disable interrupt
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
+  Serial.println("Done enabling serial port A and disabling interrupt");  
 }
 
+/*Write to DUART port 1*/
+void print_char(void) {
+  pinMode(RW, OUTPUT);                        // Set RW pin to output
+  digitalWrite(RW,LOW);                       // Set RW pin to WRITE
+  PORTF = DUART_TBA;                          // Write address to Transmit buffer register on adress bus (port F)
+  PORTK = 0xFF;                               // Write a byte to TBA register
+  digitalWrite(CS,LOW);                       // Enable the chip
+  while (dtackstate == 0)                     // Don't do anything untill DTACK have been asserted by interrupt handler and flag set to 1
+  delay(1000);
+  digitalWrite(CS,HIGH);                      // Disable chip
+  dtackstate = 0;                             // Reset DTACK flag
+  Serial.println("Done sending character to port");
+}
+  
 /* Interrupt function for catching if DTACK is asserted (going high and then low). 
  * We trigger interrupt on falling edge
 */

@@ -1,0 +1,32 @@
+Name     address_decoder_gal.tru ;
+PartNo   00 ;
+Date     11.02.2023 ;
+Revision 01 ;
+Designer Mats Brorson ;
+Company  unknown ;
+Assembly None ;
+Location unknown ;
+Device   g22v10 ;
+
+ar = 'b'0 ;
+sp = 'b'0 ;
+
+/* inputs */
+PIN 2 = A20;
+PIN 3 = A21;
+PIN 4 = A22;
+PIN 5 = A23;
+PIN 6 = AS;
+PIN 7 = LDS;
+PIN 8 = RW;
+PIN 9 = UDS;
+
+/* outputs */
+PIN 14 = ROM;
+PIN 15 = RAM0;
+PIN 16 = DUART;
+
+/* combinatorial logic */
+DUART = !A20 # !A21 # !A22 # !A23 # AS # LDS # !UDS;
+RAM0 = !A20 # A21 # A22 # A23 # AS # (LDS & UDS) # (RW & UDS);
+ROM = A20 # A21 # A22 # A23 # AS # (LDS & UDS) # !RW;

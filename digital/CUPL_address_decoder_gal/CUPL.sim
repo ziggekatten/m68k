@@ -1,0 +1,61 @@
+%SIGNAL
+PIN   2 =  A20 
+PIN   3 =  A21 
+PIN   4 =  A22 
+PIN   5 =  A23 
+PIN   6 =  AS 
+PIN  16 =  DUART 
+PIN   7 =  LDS 
+PIN  15 =  RAM0 
+PIN  14 =  ROM 
+PIN   8 =  RW 
+PIN   9 =  UDS 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+DUART =>
+    !A20
+  # !A21
+  # !A22
+  # !A23
+  # AS
+  # LDS
+  # !UDS
+
+RAM0 =>
+    !A20
+  # A21
+  # A22
+  # A23
+  # AS
+  # LDS & UDS
+  # RW & UDS
+
+ROM =>
+    A20
+  # A21
+  # A22
+  # A23
+  # AS
+  # LDS & UDS
+  # !RW
+
+ar =>
+    0 
+
+sp =>
+    0 
+
+DUART.oe  =>
+    1 
+
+RAM0.oe  =>
+    1 
+
+ROM.oe  =>
+    1 
+
+%END

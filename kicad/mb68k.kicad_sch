@@ -85,6 +85,12 @@
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/e0cfb0b1-51ea-4250-9e08-2cdafeb839c6"
       (reference "#PWR0105") (unit 1) (value "GND") (footprint "")
     )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/12ebdda9-c5e9-4db8-b856-e7a384e5b914"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/27abe056-90a2-41fd-af0b-2009a6b9f80f"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/30b7daab-9775-43d2-a2a3-d700cb861768"
       (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
     )
@@ -94,13 +100,34 @@
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/4a17a910-fe28-4076-b917-3bfef74fc5ac"
       (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
     )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/5435af89-44b5-4fb3-8da7-6c69f84ce0a8"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/57d89997-e1fd-4aad-a6f6-d5df9ec4d164"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/5bfb0a4c-969d-45f8-85df-394089bc1633"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/60263361-4079-41f6-bdb0-ce979c7c6fa1"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/6dcdcf17-f946-4ffa-a006-e08303d2c4b1"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/6f20c1e2-be8e-4429-8af7-16629bfb646b"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/761bea49-b25b-4fef-a986-99575b8c36f2"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/89f24fee-ae2b-4162-8415-d5d15bf85470"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/96d8c104-257f-475e-accf-ca9e7dd19521"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/a09d76fc-02ae-454f-a6a3-e20afb196660"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/b8ee8455-5d7d-4e3e-b92b-2bbe28e68db0"
@@ -135,6 +162,12 @@
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/becd6238-45ab-406d-a4d1-de589cf3cb17"
       (reference "C5") (unit 1) (value "100nF") (footprint "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/1ab5ae19-7b80-4996-8406-95c89cdf2e97"
+      (reference "C?") (unit 1) (value "C") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/c7009db7-3bf2-49e4-909f-27f84d642f51"
+      (reference "C?") (unit 1) (value "C") (footprint "")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/2c5be3d0-2833-4a40-bdeb-b64ce76d6326"
       (reference "J1") (unit 1) (value "Power") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
@@ -205,14 +238,23 @@
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/7aee9ecf-4051-4a08-859e-12ed26996ea5"
       (reference "U?") (unit 1) (value "74LS245") (footprint "")
     )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/ad2f419f-1c2a-43a9-9637-7a61f1e075c1"
+      (reference "U?") (unit 1) (value "74LS245") (footprint "")
+    )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/c47485b0-05e6-4930-aa44-a56002394ff4"
       (reference "U?") (unit 1) (value "74LS245") (footprint "")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/ea5f3ca2-0b87-46d7-b04c-1f3cb628a088"
+      (reference "U?") (unit 1) (value "74LS244") (footprint "")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/fd53f721-0da0-44c9-907d-4fe2dcf7ab14"
       (reference "U?") (unit 1) (value "74LS245") (footprint "")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/25ccea3e-391e-46e5-a109-828ceb01ac18"
       (reference "X1") (unit 1) (value "SG-8002DB 10Mhz") (footprint "Oscillator:Oscillator_SeikoEpson_SG-8002DB")
+    )
+    (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/5e537764-95c9-4223-94cd-d92b6bc3015c"
+      (reference "Y?") (unit 1) (value "Crystal") (footprint "")
     )
   )
 )
