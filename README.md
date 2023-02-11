@@ -19,6 +19,15 @@ Initial hardware:
 - Use ELF as a base segment standard instead of Motorola S-records. This means that i need to steal someone elses ELF loader I guess... 
 - When basic serial I/O is done. It's time to look at keyboard input as well as graphics display. The keyboard stuff is easy enough if using PS/2 standard. The graphics stuff however is a little bit more complicated. Signal wise it is easy, just output the correct voltages and Bob's your uncle. But getting data in a format that does not bog down CPU to some memory mapped hardware, and the get the display circuit to effectively interpret data and do stuff, is a different story. The 680x0 CPU is not capable to feed pixel data at rates needed if just pushing pixels, so there have to be stuff in between. Amigas, Ataris and others have this done in custom chips, which means that I have to do the same. But this is where I draw the line (pun intended) and don't design my own blitter, copper etc. I will probably interface to already done parts, using APIs or existing hardware designs. In the end, designing at this level means also supply low level libraries and stuff. However, an pure vector based drawing design is in my head, so one never know....
 
+## Memory map of the design
+I keep it simple, and pla using the VBR register in the MC68010, so there is no shadowing or moving of ROM in my design.
+| Address                 | Description                                                             |
+|-------------------------|-------------------------------------------------------------------------|
+| 0x00000000 - 0x000FFFFF | ROM ( 2 x 512K)                                                         |
+| 0x00100000 - 0x001FFFFF | Onboard RAM (1 MB)                                                      |
+| 0x00200000 - 0x00CFFFFF | Space for additional (14 MB) RAM                                        |
+| 0x00D00000 - 0x00FFFFF  | I/O space  (2 MB)                                                       | 
+
 ## Version history
 0.1.6 - Cleaned upp some code and added some README stuff. All prototypes now in headers.
 
