@@ -3,5 +3,5 @@ I use Digital () to do alot of digital circuit designs, and it also have the ver
 
 | File       | Description                                                                          |
 |------------|--------------------------------------------------------------------------------------|
-| address_decoder_gal.tru   | Truth table for address decoding  |
+| address_decoder_gal.tru   | Truth table for address decoding meant for GAL22v10D                  |
 | memorydecoding.dig        | This is an design based on multiplexers (74LS138) instead of an GAL   |
