@@ -1,5 +1,5 @@
 ## Memory map and glue logic
-I use Digital () to do alot of digital circuit designs, and it also have the very conveniant feature of generating circuits from truth tables, and then create .JED files for the GAL's that I'm using (GAL22v10D from Lattice).
+I use Digital (https://github.com/hneemann/Digital) to do alot of digital circuit designs, and it also have the very conveniant feature of generating circuits from truth tables, and then create .JED files for the GAL's that I'm using (GAL22v10D from Lattice).
 
 | File       | Description                                                                          |
 |------------|--------------------------------------------------------------------------------------|
