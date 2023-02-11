@@ -5,7 +5,7 @@
   {Program "CUPL(WM) Version 5.0a"}
   {DBtype "Schematic"}
   {DBvrev 1.01}
-  {DBtime "Sat Feb 11 20:41:35 2023 "}
+  {DBtime "Sat Feb 11 22:34:47 2023 "}
   {DBunit "MIL"}
   {DBgrid 10}
   {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
@@ -41,15 +41,19 @@
    {P LDS {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
    {P RW {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
    {P UDS {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
-   {P ROM {Pt "I/O"}{Lq 0}{Ploc 280 20}}
-   {P RAM0 {Pt "I/O"}{Lq 0}{Ploc 280 40}}
-   {P DUART {Pt "I/O"}{Lq 0}{Ploc 280 60}}
+   {P CS_ROM {Pt "I/O"}{Lq 0}{Ploc 310 20}}
+   {P CSRAM0 {Pt "I/O"}{Lq 0}{Ploc 310 40}}
+   {P CSDUART {Pt "I/O"}{Lq 0}{Ploc 310 60}}
+   {P LOWREAD {Pt "I/O"}{Lq 0}{Ploc 310 80}}
+   {P LOWWRITE {Pt "I/O"}{Lq 0}{Ploc 310 100}}
+   {P UPPERREA {Pt "I/O"}{Lq 0}{Ploc 310 120}}
+   {P UPPERWRI {Pt "I/O"}{Lq 0}{Ploc 310 140}}
   }
 
   {PKG
    [Ly "REFDES"]
    [Ts 25][Tj "CB"][Tr 0][Tm "N"]
-   {Rdl 190 190}
+   {Rdl 205 190}
 
    [Ly "PINNUM"]
    [Ts 15][Tj "RC"]
@@ -62,17 +66,21 @@
    {Pnl 120 50}
    {Pnl 120 30}
    [Ts 15][Tj "LC"]
-   {Pnl 260 30}
-   {Pnl 260 50}
-   {Pnl 260 70}
+   {Pnl 290 30}
+   {Pnl 290 50}
+   {Pnl 290 70}
+   {Pnl 290 90}
+   {Pnl 290 110}
+   {Pnl 290 130}
+   {Pnl 290 150}
 
-   {Sd A 2 3 4 5 6 7 8 9 14 15 16}
+   {Sd A 2 3 4 5 6 7 8 9 14 15 16 17 18 19 20}
   }
 
   {PIC
    [Ly "GATE"]
    [Ts 15][Tj "LC"][Tr 0][Tm "N"]
-   {R 130 180 250 0}
+   {R 130 180 280 0}
    {L 130 160 100 160}
    {L 130 140 100 140}
    {L 130 120 100 120}
@@ -81,9 +89,13 @@
    {L 130 60 100 60}
    {L 130 40 100 40}
    {L 130 20 100 20}
-   {L 250 20 280 20}
-   {L 250 40 280 40}
-   {L 250 60 280 60}
+   {L 280 20 310 20}
+   {L 280 40 310 40}
+   {L 280 60 310 60}
+   {L 280 80 310 80}
+   {L 280 100 310 100}
+   {L 280 120 310 120}
+   {L 280 140 310 140}
    [Ly "PINNAM"]
    [Tj "LC"]
    {T "A20" 140 160}
@@ -95,12 +107,16 @@
    {T "RW" 140 40}
    {T "UDS" 140 20}
    [Tj "RC"]
-   {T "ROM" 240 20}
-   {T "RAM0" 240 40}
-   {T "DUART" 240 60}
+   {T "CS_ROM" 270 20}
+   {T "CSRAM0" 270 40}
+   {T "CSDUART" 270 60}
+   {T "LOWREAD" 270 80}
+   {T "LOWWRITE" 270 100}
+   {T "UPPERREA" 270 120}
+   {T "UPPERWRI" 270 140}
    [Ly "DEVICE"]
    [Tj "CT"]
-   {T "G22V10" 190 -10}
+   {T "G22V10" 205 -10}
   }
 
   {ATR
@@ -111,7 +127,7 @@
    {EX
     [Ly "ATTR2"]
     [Ts 12][Tj "CT"][Tr 0][Tm "N"]
-    {At PLD C:\USERS\MATS BRORSON\DESKTOP\M68K\DIGITAL\CUPL_ADDRESS_DECODER_GAL\CUPL 190 180}
+    {At PLD C:\USERS\MATS BRORSON\DESKTOP\M68K\DIGITAL\CUPL_ADDRESS_DECODER_GAL\CUPL 205 180}
    }
   }
  }
@@ -137,11 +153,19 @@
    }
    {N UDS
    }
-   {N ROM
+   {N CS_ROM
    }
-   {N RAM0
+   {N CSRAM0
    }
-   {N DUART
+   {N CSDUART
+   }
+   {N LOWREAD
+   }
+   {N LOWWRITE
+   }
+   {N UPPERREA
+   }
+   {N UPPERWRI
    }
   }
 

@@ -4,19 +4,23 @@ PIN   3 =  A21
 PIN   4 =  A22 
 PIN   5 =  A23 
 PIN   6 =  AS 
-PIN  16 =  DUART 
+PIN  16 =  CSDUART 
+PIN  15 =  CSRAM0 
+PIN  14 =  CS_ROM 
 PIN   7 =  LDS 
-PIN  15 =  RAM0 
-PIN  14 =  ROM 
+PIN  17 =  LOWREAD 
+PIN  18 =  LOWWRITE 
 PIN   8 =  RW 
 PIN   9 =  UDS 
+PIN  19 =  UPPERREAD 
+PIN  20 =  UPPERWRITE 
 %END
 
 %FIELD
 %END
 
 %EQUATION
-DUART =>
+CSDUART =>
     !A20
   # !A21
   # !A22
@@ -25,16 +29,15 @@ DUART =>
   # LDS
   # !UDS
 
-RAM0 =>
+CSRAM0 =>
     !A20
   # A21
   # A22
   # A23
   # AS
   # LDS & UDS
-  # RW & UDS
 
-ROM =>
+CS_ROM =>
     A20
   # A21
   # A22
@@ -43,19 +46,68 @@ ROM =>
   # LDS & UDS
   # !RW
 
+LOWREAD =>
+    !A20 & A23
+  # A21 & !A23
+  # !A21 & A22
+  # !A22 & A23
+  # A23 & !UDS
+  # AS
+  # LDS
+  # !RW
+
+LOWWRITE =>
+    !A20
+  # A21 & !A23
+  # !A21 & A22
+  # !A22 & A23
+  # A23 & !UDS
+  # AS
+  # LDS
+  # RW
+
+UPPERREAD =>
+    A21
+  # A22
+  # A23
+  # AS
+  # !RW
+  # UDS
+
+UPPERWRITE =>
+    !A20
+  # A21
+  # A22
+  # A23
+  # AS
+  # RW
+  # UDS
+
 ar =>
     0 
 
 sp =>
     0 
 
-DUART.oe  =>
+CSDUART.oe  =>
     1 
 
-RAM0.oe  =>
+CSRAM0.oe  =>
     1 
 
-ROM.oe  =>
+CS_ROM.oe  =>
+    1 
+
+LOWREAD.oe  =>
+    1 
+
+LOWWRITE.oe  =>
+    1 
+
+UPPERREAD.oe  =>
+    1 
+
+UPPERWRITE.oe  =>
     1 
 
 %END

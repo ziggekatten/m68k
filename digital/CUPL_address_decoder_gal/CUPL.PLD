@@ -22,11 +22,20 @@ PIN 8 = RW;
 PIN 9 = UDS;
 
 /* outputs */
-PIN 14 = ROM;
-PIN 15 = RAM0;
-PIN 16 = DUART;
+PIN 14 = CS_ROM;
+PIN 15 = CSRAM0;
+PIN 16 = CSDUART;
+PIN 17 = LOWREAD;
+PIN 18 = LOWWRITE;
+PIN 19 = UPPERREAD;
+PIN 20 = UPPERWRITE;
 
 /* combinatorial logic */
-DUART = !A20 # !A21 # !A22 # !A23 # AS # LDS # !UDS;
-RAM0 = !A20 # A21 # A22 # A23 # AS # (LDS & UDS) # (RW & UDS);
-ROM = A20 # A21 # A22 # A23 # AS # (LDS & UDS) # !RW;
+CSDUART = !A20 # !A21 # !A22 # !A23 # AS # LDS # !UDS;
+CSRAM0 = !A20 # A21 # A22 # A23 # AS # (LDS & UDS);
+CS_ROM = A20 # A21 # A22 # A23 # AS # (LDS & UDS) # !RW;
+LOWREAD = (!A20 & A23) # (A21 & !A23) # (!A21 & A22) # (!A22 & A23) # (A23 & !UDS) # AS # LDS 
+     # !RW;
+LOWWRITE = !A20 # (A21 & !A23) # (!A21 & A22) # (!A22 & A23) # (A23 & !UDS) # AS # LDS # RW;
+UPPERREAD = A21 # A22 # A23 # AS # !RW # UDS;
+UPPERWRITE = !A20 # A21 # A22 # A23 # AS # RW # UDS;
