@@ -1,7 +1,7 @@
 
 CUPL(WM)        5.0a  Serial# 60008009
 Device          g22v10  Library DLIB-h-40-1
-Created         Sat Feb 11 22:34:47 2023
+Created         Sat Feb 11 22:50:32 2023
 Name            address_decoder_gal.tru 
 Partno          00 
 Revision        01 
@@ -101,4 +101,4 @@ Location        unknown
 *L05792 00000000000000000000001111111111
 *L05824 11110011000000110000001000000000
 *C350B
-*F9E6
+*F9DE

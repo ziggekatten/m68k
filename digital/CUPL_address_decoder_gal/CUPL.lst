@@ -1,0 +1,55 @@
+LISTING FOR LOGIC DESCRIPTION FILE: CUPL.pld                         Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Feb 11 22:50:32 2023
+
+  1:Name     address_decoder_gal.tru ;
+  2:PartNo   00 ;
+  3:Date     11.02.2023 ;
+  4:Revision 01 ;
+  5:Designer Mats Brorson ;
+  6:Company  unknown ;
+  7:Assembly None ;
+  8:Location unknown ;
+  9:Device   g22v10 ;
+ 10:
+ 11:ar = 'b'0 ;
+ 12:sp = 'b'0 ;
+ 13:
+ 14:/* inputs */
+ 15:PIN 2 = A20;
+ 16:PIN 3 = A21;
+ 17:PIN 4 = A22;
+ 18:PIN 5 = A23;
+ 19:PIN 6 = AS;
+ 20:PIN 7 = LDS;
+ 21:PIN 8 = RW;
+ 22:PIN 9 = UDS;
+ 23:
+ 24:/* outputs */
+ 25:PIN 14 = CS_ROM;
+ 26:PIN 15 = CSRAM0;
+ 27:PIN 16 = CSDUART;
+ 28:PIN 17 = LOWREAD;
+ 29:PIN 18 = LOWWRITE;
+ 30:PIN 19 = UPPERREAD;
+ 31:PIN 20 = UPPERWRITE;
+ 32:
+ 33:/* combinatorial logic */
+ 34:CSDUART = !A20 # !A21 # !A22 # !A23 # AS # LDS # !UDS;
+ 35:CSRAM0 = !A20 # A21 # A22 # A23 # AS # (LDS & UDS);
+ 36:CS_ROM = A20 # A21 # A22 # A23 # AS # (LDS & UDS) # !RW;
+ 37:LOWREAD = (!A20 & A23) # (A21 & !A23) # (!A21 & A22) # (!A22 & A23) # (A23 & !UDS) # AS # LDS 
+ 38:     # !RW;
+ 39:LOWWRITE = !A20 # (A21 & !A23) # (!A21 & A22) # (!A22 & A23) # (A23 & !UDS) # AS # LDS # RW;
+ 40:UPPERREAD = A21 # A22 # A23 # AS # !RW # UDS;
+ 41:UPPERWRITE = !A20 # A21 # A22 # A23 # AS # RW # UDS;
+ 42:
+ 43:
+
+
+
+Jedec Fuse Checksum       (350b)
+Jedec Transmit Checksum   (f9de)
