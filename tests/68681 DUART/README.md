@@ -1,0 +1,4 @@
+## Arduino code for testing MC68681 DUART
+Here you find an PlatformIO project that uses serial monitor for learning the 68681 chip. I use an Arduino Mega 2560, and hook up RESET, DTACKN, RW, CE, Register Select (address) and databus. Then use serial input to run some functions to configure the DUART. In this way I can learn what to do without flashing ROMs and try things out on the real 68k CPU. Uploading an sketch is so much simpler.....
+
+One thing to note is that my design uses buffers (74LS244 and 74LS245), as can be seen in the Kicad diagrams. Since I plan to use buffers, this have been part of my breadboard running my testing with Arduino.

@@ -52,4 +52,5 @@ In parallel building an LLVM toolchain for exploring the capabilities of using R
 | code       | Code for firmware and other stuff goes in here                                       |
 | kicad      | KiCAD 6.x schematics                                                                 |
 | digital    | Digital simulator for messing with glue logic and generation WinCUPL code in the end |
-| toolchains | THings related to toolchains. Docker files etc                                       |
+| toolchains | Things related to toolchains. Docker files etc                                       |
+| tests      | Arduino stuff used to test and program various parts of the design                   |
