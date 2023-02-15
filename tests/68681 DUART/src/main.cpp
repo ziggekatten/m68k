@@ -115,9 +115,9 @@ void duart_init(void) {
   
   /* Reset hard on pin */
   digitalWrite(RESET,LOW);
-  delay(2000);
+  delay(1000);
   digitalWrite(RESET, HIGH);
-  delay(2000);
+  delay(1000);
   
   /* Reset reciever by setting value in CRA register */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
@@ -159,7 +159,7 @@ void duart_init(void) {
   digitalWrite(CS,HIGH);                      // Disable chip
   dtackstate = 0;                             // Reset DTACK flag                    
   Serial.println("Done init error reg!");     // Print to serial monitor
-  delay(2000);
+  delay(1000);
  /*  Reset Mode Register pointer to MR1 */
   pinMode(RW, OUTPUT);                        // Set RW pin to output
   digitalWrite(RW,LOW);                       // Set RW pin to WRITE
