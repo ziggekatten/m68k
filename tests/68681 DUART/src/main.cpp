@@ -99,6 +99,11 @@ void loop() {
       serial_enable();
     } else if (command == "writechar"){
       print_char();
+    } else if (command == "runall"){
+      duart_init();
+      serial_flow_control();
+      serial_baud_rate();
+      serial_flow_control();
     } else {
       Serial.println("Invalid command");  
     }
