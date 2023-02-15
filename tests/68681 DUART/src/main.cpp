@@ -83,7 +83,7 @@ void loop() {
   * This means that we need to use Serial.input() to be able to step through things,
   * and read values from the bus as well as data registers. Tricky stuff
   */
-  Serial.println("Enter data:");
+  Serial.println("Enter DUART command:");
   while (Serial.available() == 0) {}     //wait for data available
   String command = Serial.readString();  //read until timeout
   command.trim();                        // remove any \r \n whitespace at the end of the String
