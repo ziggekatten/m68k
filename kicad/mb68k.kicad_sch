@@ -103,6 +103,9 @@
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/30b7daab-9775-43d2-a2a3-d700cb861768"
       (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
     )
+    (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/3c2fa108-8279-427b-b0cb-9d33143b8dec"
+      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+    )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/4ce1ada8-01c2-4a3f-8929-ece8614454bd"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
@@ -119,6 +122,9 @@
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/761bea49-b25b-4fef-a986-99575b8c36f2"
+      (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
+    )
+    (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/86be309c-57bd-40ee-9847-252cdcf5a6ba"
       (reference "#PWR?") (unit 1) (value "VCC") (footprint "")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/9499e408-b3d1-402e-ab49-c5563f51ab0b"
@@ -204,6 +210,9 @@
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/e8e24bff-dbf3-4db2-89c0-c4666caf14a0"
       (reference "R7") (unit 1) (value "4K7") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal")
+    )
+    (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/a1260c58-9191-4960-8f85-9817fbcf951e"
+      (reference "R?") (unit 1) (value "4k7") (footprint "")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/9cb0a88e-7b29-4b81-b303-624066e57d9d"
       (reference "S1") (unit 1) (value "10-XX") (footprint "matsb:B3F-10XX")
