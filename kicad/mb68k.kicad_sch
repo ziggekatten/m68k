@@ -173,43 +173,43 @@
       (reference "#PWR0134") (unit 1) (value "GND") (footprint "")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/bba3ee70-5f97-4331-a646-60dd78bebc0e"
-      (reference "C1") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C1") (unit 1) (value "100uF") (footprint "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/f4dd8c97-1491-44aa-950e-0a57f7acb4d1"
-      (reference "C2") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C2") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/39dcfd2a-4b4b-4312-a2cc-d63a4a8b3dbf"
-      (reference "C3") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C3") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/a962788f-3146-4305-88c9-4dca5666298e"
-      (reference "C4") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C4") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/60b3e0cc-7d6f-4628-b20d-5a9d7b2fa5fa/becd6238-45ab-406d-a4d1-de589cf3cb17"
-      (reference "C5") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C5") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/f2316ec1-b2e1-4de2-aef3-fd0f2707c621"
-      (reference "C6") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C6") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/708ca098-5a09-4050-80b1-2938d85ac4fd"
-      (reference "C7") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C7") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/6c149644-9b56-4891-8fa8-70b13e36a56e"
-      (reference "C8") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C8") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/bb6aa028-8f92-4928-b3ff-9d68f39e8a08"
-      (reference "C9") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C9") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/e2ce4dd2-604b-4011-b698-b262d301b001"
-      (reference "C10") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C10") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c0b233c3-0354-40a8-9da4-8134543aeba9/fc25bdf9-2751-454f-82af-0266e904f6d2"
-      (reference "C11") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C11") (unit 1) (value "100nF") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/1ab5ae19-7b80-4996-8406-95c89cdf2e97"
-      (reference "C12") (unit 1) (value "C") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C12") (unit 1) (value "C") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/c7009db7-3bf2-49e4-909f-27f84d642f51"
-      (reference "C13") (unit 1) (value "C") (footprint "Capacitor_THT:CP_Radial_D8.0mm_P5.00mm")
+      (reference "C13") (unit 1) (value "C") (footprint "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm")
     )
     (path "/c382627c-aaa0-47a5-a0f7-b0da34ce6bae/1c937a18-7a9f-4fde-8663-6e13ce7c9e52"
       (reference "J1") (unit 1) (value "Conn_01x06_Male") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical")
