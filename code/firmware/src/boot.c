@@ -321,11 +321,24 @@ void Reset_Handler(void)
 		*ptrDestination++ = 0;
 	}   
 
-    /* initialize Port A at 19200 baud, 8 databits, 1 stop bit, no parity, no flow control 
+    /* initialize Port A at 9600 baud, 8 databits, 1 stop bit, no parity, no flow control 
     * TODO: Parameterize this
     */
 
-    serial_init_default_port();
+    //serial_init_default_port();
+    
+    
+    /* Test code for sim68000 DUART */
+    *DUART_CRA  = 0x10;
+    *DUART_MR1A = 0x23;
+    *DUART_MR1A = 0x07;
+    *DUART_CSRA = 0xBB;
+    *DUART_CRA  = 0x05;
+    *DUART_TBA = 0xAA; 
+    *DUART_TBA = 0xAA;
+    *DUART_TBA = 0xAA;
+    
+    
     /* 
     * Then execute the main function linked with this file (will be handled by 
     * linker) 

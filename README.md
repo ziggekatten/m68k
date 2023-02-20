@@ -1,3 +1,5 @@
+# Note to myself: I hate C pointers.......
+
 # m68k
 A over ambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. This main README will change frequently when I change my mind and decisions. Some decisions made from my part:
 

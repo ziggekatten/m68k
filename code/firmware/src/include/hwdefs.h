@@ -23,9 +23,9 @@
 
 
 /* MC68661 DUART definitions used for boot */
-#define DUART_BASE                      0x00300000              // Base I/O memory mapped address of the DUART
+#define DUART_BASE                      0x00effc01              // Base I/O memory mapped address of the DUART. Odd address (lower 8 bits on the databus)
 #define DUART_DEFAULT_STOP_BITS         1                       // Default stop bits 
-#define DUART_DEFAULT_BAUDRATE          19200                   // Default baud rate 
+#define DUART_DEFAULT_BAUDRATE          9600                    // Default baud rate 
 #define DUART_DEFAULT_PARITY            0                       // Default parity
 #define DUART_DEFAULT_FLOWCONTROL       0                       // Default flowcontrol. 0 = none
 

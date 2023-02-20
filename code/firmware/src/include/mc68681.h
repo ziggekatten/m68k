@@ -11,37 +11,37 @@
 #include <stdint.h>
 
 /* 
-* DUART register definition using a base addres from hardware headerfile and adds some offsets
+* DUART register definition using a base addres from hardware header file and adds some offsets
 * Depending on read or write, the use of register changes for some offsets!
 */
-#define DUART_MR1A      (DUART_BASE+0x00)  // Mode Register Port A. first read or write (MR1A)
-#define DUART_SRA       (DUART_BASE+0x01)  // Status Register A 
-#define DUART_CSRA      (DUART_BASE+0x01)  // Clock-Select Register A 
-#define DUART_CRA       (DUART_BASE+0x02)  // Command Register A. Remember to wwait until command is done!!
-#define DUART_RBA       (DUART_BASE+0x03)  // Receive Buffer A 
-#define DUART_TBA       (DUART_BASE+0x03)  // Transmit Buffer A 
-#define DUART_IPCR      (DUART_BASE+0x04)  // Input Port Change Register 
-#define DUART_ACR       (DUART_BASE+0x04)  // Auxiliary Control Register 
-#define DUART_ISR       (DUART_BASE+0x05)  // Interrupt Status Register 
-#define DUART_IMR       (DUART_BASE+0x05)  // Interrupt Mask Register 
-#define DUART_CUR       (DUART_BASE+0x06)  // Counter Mode: current MSB 
-#define DUART_CTUR      (DUART_BASE+0x06)  // Counter/Timer upper reg 
-#define DUART_CLR       (DUART_BASE+0x07)  // Counter Mode: current LSB 
-#define DUART_CTLR      (DUART_BASE+0x07)  // Counter/Timer lower reg 
-#define DUART_MR1B      (DUART_BASE+0x08)  // Mode Register Port B. first read or write (MR1B) 
-#define DUART_MR2B      (DUART_BASE+0x08)  // Mode Register Port B. second read or write (MR2B) 
-#define DUART_SRB       (DUART_BASE+0x09)  // Status Register B 
-#define DUART_CSRB      (DUART_BASE+0x09)  // Clock-Select Register B 
-#define DUART_CRB       (DUART_BASE+0x0A)  // Command Register B 
-#define DUART_RBB       (DUART_BASE+0x0B)  // Receive Buffer B 
-#define DUART_TBB       (DUART_BASE+0x0B)  // Transmit Buffer A 
-#define DUART_IVR       (DUART_BASE+0x0C)  // Interrupt Vector Register 
-#define DUART_IP        (DUART_BASE+0x0D)  // Input Port 
-#define DUART_OPCR      (DUART_BASE+0x0D)  // Output Port Configuration Reg. 
-#define DUART_STRTCC    (DUART_BASE+0x0E)  // Start-Counter command 
-#define DUART_OPRSET    (DUART_BASE+0x0E)  // Output Port Reg, SET bits 
-#define DUART_STOPCC    (DUART_BASE+0x0F)  // Stop-Counter command 
-#define DUART_OPRRST    (DUART_BASE+0x0F)  // Output Port Reg, ReSeT bits
+#define DUART_MR1A      ((volatile uint8_t *)DUART_BASE+0x00)  // Mode Register Port A. first read or write (MR1A)
+#define DUART_SRA       ((volatile uint8_t *)DUART_BASE+0x02)  // Status Register A 
+#define DUART_CSRA      ((volatile uint8_t *)DUART_BASE+0x02)  // Clock-Select Register A 
+#define DUART_CRA       ((volatile uint8_t *)DUART_BASE+0x04)  // Command Register A. Remember to wait until command is done!!
+#define DUART_RBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Receive Buffer A 
+#define DUART_TBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Transmit Buffer A 
+#define DUART_IPCR      ((volatile uint8_t *)DUART_BASE+0x08)  // Input Port Change Register 
+#define DUART_ACR       ((volatile uint8_t *)DUART_BASE+0x08)  // Auxiliary Control Register 
+#define DUART_ISR       ((volatile uint8_t *)DUART_BASE+0x0A)  // Interrupt Status Register 
+#define DUART_IMR       ((volatile uint8_t *)DUART_BASE+0x0A)  // Interrupt Mask Register 
+#define DUART_CUR       ((volatile uint8_t *)DUART_BASE+0x0C)  // Counter Mode: current MSB 
+#define DUART_CTUR      ((volatile uint8_t *)DUART_BASE+0x0C)  // Counter/Timer upper reg 
+#define DUART_CLR       ((volatile uint8_t *)DUART_BASE+0x0E)  // Counter Mode: current LSB 
+#define DUART_CTLR      ((volatile uint8_t *)DUART_BASE+0x0E)  // Counter/Timer lower reg 
+#define DUART_MR1B      ((volatile uint8_t *)DUART_BASE+0x10)  // Mode Register Port B. first read or write (MR1B) 
+#define DUART_MR2B      ((volatile uint8_t *)DUART_BASE+0x10)  // Mode Register Port B. second read or write (MR2B) 
+#define DUART_SRB       ((volatile uint8_t *)DUART_BASE+0x12)  // Status Register B 
+#define DUART_CSRB      ((volatile uint8_t *)DUART_BASE+0x12)  // Clock-Select Register B 
+#define DUART_CRB       ((volatile uint8_t *)DUART_BASE+0x14)  // Command Register B 
+#define DUART_RBB       ((volatile uint8_t *)DUART_BASE+0x16)  // Receive Buffer B 
+#define DUART_TBB       ((volatile uint8_t *)DUART_BASE+0x16)  // Transmit Buffer A 
+#define DUART_IVR       ((volatile uint8_t *)DUART_BASE+0x18)  // Interrupt Vector Register 
+#define DUART_IP        ((volatile uint8_t *)DUART_BASE+0x1A)  // Input Port 
+#define DUART_OPCR      ((volatile uint8_t *)DUART_BASE+0x1A)  // Output Port Configuration Reg. 
+#define DUART_STRTCC    ((volatile uint8_t *)DUART_BASE+0x1C)  // Start-Counter command 
+#define DUART_OPRSET    ((volatile uint8_t *)DUART_BASE+0x1C)  // Output Port Reg, SET bits 
+#define DUART_STOPCC    ((volatile uint8_t *)DUART_BASE+0x1E)  // Stop-Counter command 
+#define DUART_OPRRST    ((volatile uint8_t *)DUART_BASE+0x1E)  // Output Port Reg, ReSeT bits
 
 
 /* 
@@ -75,7 +75,7 @@ int serial_putchar(char data);
 * returns: char from DUART buffer.
 * TODO: Interrupt and handler to run this function?
 */
-int serial_getchar();
+char serial_getchar();
 
 
 #endif
