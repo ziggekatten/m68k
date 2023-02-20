@@ -337,7 +337,7 @@ void Reset_Handler(void)
 
     /* Let us test some output to terminal in raw hex as no string lib in place*/
     
-    *DUART_TBA = 0x35; 
+    *DUART_TBA = (int) "X"; 
     *DUART_TBA = 0x35;
     *DUART_TBA = 0x45;
     
