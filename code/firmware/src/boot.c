@@ -334,9 +334,12 @@ void Reset_Handler(void)
     *DUART_MR1A = 0x07;
     *DUART_CSRA = 0xBB;
     *DUART_CRA  = 0x05;
-    *DUART_TBA = 0xAA; 
-    *DUART_TBA = 0xAA;
-    *DUART_TBA = 0xAA;
+
+    /* Let us test some output to terminal in raw hex as no string lib in place*/
+    
+    *DUART_TBA = 0x35; 
+    *DUART_TBA = 0x35;
+    *DUART_TBA = 0x45;
     
     
     /* 
