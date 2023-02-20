@@ -13,10 +13,10 @@
 /* 
 * DUART register definition using a base addres from hardware header file and adds some offsets
 * Depending on read or write, the use of register changes for some offsets! Keep in mind two things:
-- Pointers, pointers, pointers....Using pure values in constructor as base for pointers in .c file fails miserably. Defining
-    pointers in the header file seems to work. Must be my lack of C knowledge why this is. Spent hours debugging
-    assembly output before finding that values was sent to registers as values and not as references
-- Odd adresin is key as only lower 8 bits are connected
+    - Pointers, pointers, pointers....Using pure values in constructor as base for pointers in .c file fails miserably. Defining
+        pointers in the header file seems to work. Must be my lack of C knowledge why this is. Spent hours debugging
+        assembly output before finding that values was sent to registers as values and not as references
+    - Odd adressing is key as only lower 8 bits are connected
 */
 #define DUART_MR1A      ((volatile uint8_t *)DUART_BASE+0x00)  // Mode Register Port A. first read or write (MR1A)
 #define DUART_MR2A      ((volatile uint8_t *)DUART_BASE+0x00)  // Mode Register Port A. second read or write (MR1A)
