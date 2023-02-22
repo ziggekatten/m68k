@@ -8,6 +8,10 @@
 #ifndef _MB68K_HWDEFS_H
 #define _MB68K_HWDEFS_H
 
+/* Define Firmware version */
+#define FIRMWARE_VERSION_MAJOR          "0"
+#define FIRMWARE_VERSION_MINOR          "7"
+
 /* ROM start address */
 #define ROM_BASE                        0x00000000
 #define ROM_SIZE                        (ROM_BASE + 0x000FFFFF) // 1 MB of ROM (2 * 512k)

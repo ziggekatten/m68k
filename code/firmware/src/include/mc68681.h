@@ -49,6 +49,11 @@
 #define DUART_STOPCC    ((volatile uint8_t *)DUART_BASE+0x1E)  // Stop-Counter command 
 #define DUART_OPRRST    ((volatile uint8_t *)DUART_BASE+0x1E)  // Output Port Reg, ReSeT bits
 
+/* Some basic ASCII character definitions */
+#define CR              (char)0x0d
+#define LF              (char)0x0a
+#define BLANK           (char)0x20
+
 
 /* 
 * prototype for initializing Serial commmunication function in DUART. Should
@@ -70,13 +75,13 @@ void serial_flow_control(void);            // Set up flow control
 void serial_baud_rate(void);               // Set up baudrate
 void serial_enable(void);                  // Enable tranciever and reciever
 
-/* Function: serial_putc: Sends a char to the DUART
+/* Function: serial_putchar: Sends a char to the DUART
 * arguments: char to output
 * returns: int) 0 if all ok. 
 */
-int serial_putchar(char data);
+int serial_putchar(int ch);
 
-/* Function: serial_getc: Sends a char to the DUART 
+/* Function: serial_getchar: Gets a char to the DUART 
 * parameters: 
 * returns: char from DUART buffer.
 * TODO: Interrupt and handler to run this function?

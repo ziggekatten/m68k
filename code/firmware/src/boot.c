@@ -303,9 +303,9 @@ void Generic_Handler(void)
 void Reset_Handler(void)
 {
 	/* copy .data section to RAM */
-	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;          // gets the size of .data section
- 	uint32_t *ptrDestination = (uint32_t*)&_sdata;                  //ram
-	uint32_t *ptrSource = (uint32_t*)&_la_data;                     //flash
+	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;          // Gets the size of .data section
+ 	uint32_t *ptrDestination = (uint32_t*)&_sdata;                  // ram
+	uint32_t *ptrSource = (uint32_t*)&_la_data;                     // flash
 
 	for(uint32_t i =0 ; i < size ; i++)
 	{
@@ -318,7 +318,7 @@ void Reset_Handler(void)
     
 	for(uint32_t i = 0; i < size ; i++)
 	{
-		*ptrDestination++ = 0;
+		*ptrDestination++ = 0;                                      // Zero out uninitialized values
 	}   
 
     /* initialize Port A at 9600 baud, 8 databits, 1 stop bit, no parity, no flow control 
@@ -328,18 +328,23 @@ void Reset_Handler(void)
     //serial_init_default_port();
     
     
-    /* Test code for sim68000 DUART */
+    /* Test code for init of sim68000 DUART */
     *DUART_CRA  = 0x10;
     *DUART_MR1A = 0x23;
     *DUART_MR1A = 0x07;
     *DUART_CSRA = 0xBB;
     *DUART_CRA  = 0x05;
 
-    /* Let us test some output to terminal in raw hex as no string lib in place*/
+    /* Let us test some output to terminal */
+    const char *build_str = "Version:" FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR __DATE__ " " __TIME__;
+    int i = 0;
+        while (build_str[i] != '\0') {          /* Stop looping when we reach the null-character. */
+         serial_putchar(build_str[i]);          /* Print each character of the string. */
+        i++;
+    }
     
-    *DUART_TBA = (int) "X"; 
-    *DUART_TBA = 0x35;
-    *DUART_TBA = 0x45;
+    *DUART_TBA = CR;
+    *DUART_TBA = LF; 
     
     
     /* 
