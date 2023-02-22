@@ -56,3 +56,14 @@ In parallel building an LLVM toolchain for exploring the capabilities of using R
 | digital    | Digital simulator for messing with glue logic and generation WinCUPL code in the end |
 | toolchains | Things related to toolchains. Docker files etc                                       |
 | tests      | Arduino stuff used to test and program various parts of the design                   |
+
+## Some experiences to share
+
+MC68k memory mapping and external pheripherals are always an challenge. That said, the m6k has the most beautiful register/memory layout and assembler syntax known to man. If todays CPU's had this layout, ohh man... Normally external peripherals only use a few address lines and more importantly only half the data bus (unless on an MC68008). What this means is that you really need to understand how the processor address memory and in which order it's doing stuff. First of all, as you might have noted on the CPU there is no address line of 0. First physical address line is A1, which will cause som confusion to newbies (as it did to me!). To explain this we need to understand two other physical pins on the CPU: UDS and LDS. UDS means Upper Data Strobe, and LDS means Lower Data Strobe. These pins define if you are in the upper 8-bit or lower 8-bit of an word (16 bit). 
+
+Now, this is what caught me, even adresses is always the upper 8-bits. Easiest way of explain this is by starting at at the lowest address in hex: 0x00000000. This is an even address, and accessing this address will assert the UDS-pin signaling that the upper 8-bits of the data bus will be read/written from/to (bit 15-8). When designing your memory map, things can be confusing. Let us say that memory 0x00000000 to 0x000FFFFF is your first MB of RAM, and you think that address 0x00100000 is the first byte in the I/O space, you would be wrong. Address 0x00100000 is the upper 8-bits of the 16-bit word, and if you have the pheriperal connected to the D0-D7, the effective address is actually 0x00100001!. 
+
+What this means is, that you need to take care when accessing 8-bit memory mapped peripherals. Let us take an simple example here using the MC68681 DUART chip as an example. It has an 4-bit addressing bus for it's registers that we normally connect to A1-A4, and an 8-bit address bus, connected to the A0-A7 physical bus. According to the documentation the registers are one byte in between on the chip itself. 
+
+But this is not true in the scope of the CPU, as the least significant address bus is never seen by the chip. It sees A1, not A0(UDS). In effect, this means that your code needs to have an offset of two(2) whereas the chip has an offset of only one(1).
+In general, working with bytes is an pain as you need to think about alignment, and if possible use words....

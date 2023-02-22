@@ -335,23 +335,20 @@ void Reset_Handler(void)
     *DUART_CSRA = 0xBB;
     *DUART_CRA  = 0x05;
 
-    /* Let us test some output to terminal */
-    const char *build_str = "Version:" FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR __DATE__ " " __TIME__;
+    /* Let us output some welcome stuff to console 
+    TODO: Memory check would be nice before this and dump errors to terminal. But how to test memory without using it? Tricky stuff
+    */
+    const char *build_str = "Brocomp 68010 Generic Computer. Version: " FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR " " __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
     int i = 0;
         while (build_str[i] != '\0') {          /* Stop looping when we reach the null-character. */
          serial_putchar(build_str[i]);          /* Print each character of the string. */
         i++;
-    }
-    
-    *DUART_TBA = CR;
-    *DUART_TBA = LF; 
-    
+    } 
     
     /* 
     * Then execute the main function linked with this file (will be handled by 
-    * linker) 
+    * linker) which will me the place for firmware features 
     */
-
     _fmain();
 
     /* Just in case main terminates */
