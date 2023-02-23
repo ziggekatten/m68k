@@ -3,7 +3,7 @@
 * @Date: 2023-01-27
 *
 * @Description: Motorola 68000/68010 vector table and reset Handler to be initialized at boot time, and act as entrypoint
-* for code execution. An special .elf section(.ipl-section) to be used by linker to place the 32-bit addresses for entrypoint 
+* for code execution. An special ELF section(.ipl_vector) to be used by linker to place the 32-bit addresses for entrypoint 
 * at the correct place.
 */
 #include <stdint.h>
