@@ -10,7 +10,8 @@
 
 /* Define Firmware version */
 #define FIRMWARE_VERSION_MAJOR          "0"
-#define FIRMWARE_VERSION_MINOR          "7"
+#define FIRMWARE_VERSION_MINOR          "1"
+#define FIRMWARE_VERSION_PATCH          "8"
 
 /* ROM start address */
 #define ROM_BASE                        0x00000000

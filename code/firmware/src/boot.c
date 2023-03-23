@@ -3,13 +3,15 @@
 * @Date: 2023-01-27
 *
 * @Description: Motorola 68000/68010 vector table and reset Handler to be initialized at boot time, and act as entrypoint
-* for code execution. An special .elf section(.ipl-section) to be used by linker to place the 32-bit addresses for entrypoint 
+* for code execution. An special ELF section(.ipl_vector) to be used by linker to place the 32-bit addresses for entrypoint 
 * at the correct place.
 */
 #include <stdint.h>
+#include <string.h>
 #include "include/hwdefs.h"
 #include "include/mc68681.h"
 #include "include/boot.h"
+#include "include/utils.h"
 #define RESERVED 0 // Set all reserved vectors to zero
 #define USER_DEFINED 0 // Set all user definable vectors to 0
 
@@ -321,6 +323,10 @@ void Reset_Handler(void)
 		*ptrDestination++ = 0;                                      // Zero out uninitialized values
 	}   
 
+    /* TODO: Set up an timer for system tick
+    */
+
+
     /* initialize Port A at 9600 baud, 8 databits, 1 stop bit, no parity, no flow control 
     * TODO: Parameterize this
     */
@@ -338,13 +344,25 @@ void Reset_Handler(void)
     /* Let us output some welcome stuff to console 
     TODO: Memory check would be nice before this and dump errors to terminal. But how to test memory without using it? Tricky stuff
     */
-    const char *build_str = "Brocomp 68010 Generic Computer. Version: " FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR " " __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
-    int i = 0;
-        while (build_str[i] != '\0') {          /* Stop looping when we reach the null-character. */
-         serial_putchar(build_str[i]);          /* Print each character of the string. */
-        i++;
-    } 
+
     
+        
+    char memaddr[8];
+    uint32_t addr = 0xa5b5c5d5;
+    char * outp = itohexa(memaddr, addr);
+    for (int i=0; i <= 9; i++) {
+        serial_putchar(outp[i]);
+    }
+
+
+    const char *build_str = "Brocomp 68010 Generic Computer. Version: " FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR "." FIRMWARE_VERSION_PATCH " " __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
+    
+    for (int i = 0; build_str[i] != '\0'; i++) {                        /* Stop looping when we reach the null-character. */
+        serial_putchar(build_str[i]);                                   /* Print each character of the string. */
+        
+    } 
+
+
     /* 
     * Then execute the main function linked with this file (will be handled by 
     * linker) which will me the place for firmware features 
