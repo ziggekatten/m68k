@@ -65,7 +65,7 @@ void serial_init_default_port(void)
 
 /* Function for putting char to the DUART
 */
-int serial_putchar(int ch)
+int serial_putchar(char ch)
 {
     /* Create a pointer to the transmitter buffer
     * TODO: Handle port as param. Ensure buffer is not full?
@@ -74,11 +74,11 @@ int serial_putchar(int ch)
     /*Send the char*/
     *DUART_TBA = ch;
     return ch;
-};
+}
 
 /* Function for getting char from the DUART
 */
-char serial_getchar()
+char* serial_getchar()
 {
     /* Create a pointer to the recieve buffer
     * TODO: Handle port as param. Ensure buffer is not empty? 

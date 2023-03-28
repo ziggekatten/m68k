@@ -24,7 +24,7 @@
 #define DUART_SRA       ((volatile uint8_t *)DUART_BASE+0x02)  // Status Register A 
 #define DUART_CSRA      ((volatile uint8_t *)DUART_BASE+0x02)  // Clock-Select Register A 
 #define DUART_CRA       ((volatile uint8_t *)DUART_BASE+0x04)  // Command Register A. Remember to wait until command is done!!
-#define DUART_RBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Receive Buffer A 
+#define DUART_RBA       ((volatile uint8_t **)DUART_BASE+0x06)  // Receive Buffer A 
 #define DUART_TBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Transmit Buffer A 
 #define DUART_IPCR      ((volatile uint8_t *)DUART_BASE+0x08)  // Input Port Change Register 
 #define DUART_ACR       ((volatile uint8_t *)DUART_BASE+0x08)  // Auxiliary Control Register 
@@ -48,6 +48,37 @@
 #define DUART_OPRSET    ((volatile uint8_t *)DUART_BASE+0x1C)  // Output Port Reg, SET bits 
 #define DUART_STOPCC    ((volatile uint8_t *)DUART_BASE+0x1E)  // Stop-Counter command 
 #define DUART_OPRRST    ((volatile uint8_t *)DUART_BASE+0x1E)  // Output Port Reg, ReSeT bits
+
+// MC68681 Command Numbers
+#define CMD_RESET_MR			0x10
+#define CMD_RESET_RX			0x20
+#define CMD_RESET_TX			0x30
+#define CMD_RESET_ERROR			0x40
+#define CMD_ENABLE_TX_RX		0x05
+#define CMD_ENABLE_RX			0x01
+#define CMD_DISABLE_RX			0x02
+#define CMD_ENABLE_TX			0x04
+#define CMD_DISABLE_TX			0x08
+#define CMD_START_BREAK			0x60
+#define CMD_STOP_BREAK			0x70
+
+
+// MC68681 Default Configuration Values
+#define MR1A_MODE_A_REG_1_CONFIG	    0b10010011	// RxRTS Enabled, 8 bits, No Parity
+#define MR2A_MODE_A_REG_2_CONFIG	    0b00000111	// Normal mode, CTS Disabled, 1 stop bit
+#define CSRA_CLK_SELECT_REG_A_CONFIG	0b11001100	// 38400 bps @ 3.6864MHz
+#define ACR_AUX_CONTROL_REG_CONFIG	    0b01111000	// Set1, External Clock / 16, IRQs disabled except IP3
+
+
+// Status Register Bits (SRA/SRB)
+#define SR_RECEIVED_BREAK		0x80
+#define SR_FRAMING_ERROR		0x40
+#define SR_PARITY_ERROR			0x20
+#define SR_OVERRUN_ERROR		0x10
+#define SR_TX_EMPTY			    0x08
+#define SR_TX_READY			    0x04
+#define SR_RX_FULL			    0x02
+#define SR_RX_READY			    0x01
 
 /* Some basic ASCII character definitions */
 #define CR              (char)0x0d
@@ -79,7 +110,7 @@ void serial_enable(void);                  // Enable tranciever and reciever
 * arguments: char to output
 * returns: int) 0 if all ok. 
 */
-int serial_putchar(int ch);
+int serial_putchar(char ch);
 
 /* Function: serial_getchar: Gets a char to the DUART 
 * parameters: 

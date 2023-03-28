@@ -5,6 +5,10 @@
 * @Description: Main program used for the built in firmware monitor features. This is an stepping stone into a future OS of
 * some kind. But that is way in the future. All things here will be done using Supervisor mode
 */
+#include <stdint.h>
+#include "include/hwdefs.h"
+#include "include/mc68681.h"
+#include "include/utils.h"
 
 void _fmain(void)
 {
@@ -21,5 +25,28 @@ void _fmain(void)
 * - diagnostics of hardware
 * - change VBR. This might not be an good idea....
 */
-    while(1);
-};
+    char memaddr[8];
+    uint32_t addr = (uint32_t)*DUART_SRA;
+    char * outp = itohexa(memaddr, addr);
+    for (int i=0; i <= 9; i++) {
+        serial_putchar(outp[i]);
+    }
+
+    addr = (uint32_t)*DUART_CRA;
+    outp = itohexa(memaddr, addr);
+    for (int i=0; i <= 9; i++) {
+        serial_putchar(outp[i]);
+    }
+
+    char *inputbuf = "Got a keypress!\r\n";
+    while(1) {
+        if (*DUART_CRA != 0x00) {
+        for (int i = 0; inputbuf[i] != '\0'; i++) { 
+            serial_putchar(inputbuf[i]);
+            //if (DUART_SRA == 0x00) {
+            //    inputbuf = DUART_RBA;
+            //    serial_putchar(*inputbuf);         
+            }
+        }
+    }
+}
