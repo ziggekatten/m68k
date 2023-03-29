@@ -347,6 +347,7 @@ void Reset_Handler(void)
     *DUART_CRA  = 0x10; // Reset MRA pointer
     *DUART_CRA  = 0x20; // Reset RX register
     *DUART_CRA  = 0x30; // Reset TX register
+    *DUART_CRA  = 0x40; // Reset error
     
     *DUART_MR1A = 0x23; // RxRTS Disabled, 8 bits, No Parity
     *DUART_MR1A = 0x07; // Normal mode, CTS Disabled, 1 stop bit, no parity
@@ -369,10 +370,7 @@ void Reset_Handler(void)
 
     const char *build_str = "Brocomp 68010 Generic Computer. Version: " FIRMWARE_VERSION_MAJOR "." FIRMWARE_VERSION_MINOR "." FIRMWARE_VERSION_PATCH " " __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
     
-    for (int i = 0; build_str[i] != '\0'; i++) {                        /* Stop looping when we reach the null-character. */
-        serial_putchar(build_str[i]);                                   /* Print each character of the string. */
-        
-    } 
+    serial_putstr(build_str);
     
     /* 
     * Then execute the main function linked with this file (will be handled by 

@@ -24,7 +24,7 @@
 #define DUART_SRA       ((volatile uint8_t *)DUART_BASE+0x02)  // Status Register A 
 #define DUART_CSRA      ((volatile uint8_t *)DUART_BASE+0x02)  // Clock-Select Register A 
 #define DUART_CRA       ((volatile uint8_t *)DUART_BASE+0x04)  // Command Register A. Remember to wait until command is done!!
-#define DUART_RBA       ((volatile uint8_t **)DUART_BASE+0x06)  // Receive Buffer A 
+#define DUART_RBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Receive Buffer A 
 #define DUART_TBA       ((volatile uint8_t *)DUART_BASE+0x06)  // Transmit Buffer A 
 #define DUART_IPCR      ((volatile uint8_t *)DUART_BASE+0x08)  // Input Port Change Register 
 #define DUART_ACR       ((volatile uint8_t *)DUART_BASE+0x08)  // Auxiliary Control Register 
@@ -118,6 +118,9 @@ int serial_putchar(char ch);
 * TODO: Interrupt and handler to run this function?
 */
 char serial_getchar();
+
+void serial_putstr(char *);
+
 
 
 #endif

@@ -25,28 +25,47 @@ void _fmain(void)
 * - diagnostics of hardware
 * - change VBR. This might not be an good idea....
 */
+    char *text = "SRA: ";
+    char *nl = "\r\n->";
     char memaddr[8];
-    uint32_t addr = (uint32_t)*DUART_SRA;
+    serial_putstr(text);
+    //uint8_t addr = (uint8_t)*DUART_SRA;
+    uint8_t addr = DUART_SRA;
     char * outp = itohexa(memaddr, addr);
-    for (int i=0; i <= 9; i++) {
-        serial_putchar(outp[i]);
-    }
+    serial_putstr(outp);
+    serial_putstr(nl);
 
-    addr = (uint32_t)*DUART_CRA;
+    text = "MR1A: ";
+    serial_putstr(text);
+    addr = DUART_MR1A;
     outp = itohexa(memaddr, addr);
-    for (int i=0; i <= 9; i++) {
-        serial_putchar(outp[i]);
-    }
+    serial_putstr(outp);
+    serial_putstr(nl);
 
+    text = "MR2A: ";
+    serial_putstr(text);
+    addr = DUART_MR1A;
+    outp = itohexa(memaddr, addr);
+    serial_putstr(outp);
+    serial_putstr(nl);
+
+    text = "RBA: ";
+    serial_putstr(text);
+    addr = DUART_RBA;
+    outp = itohexa(memaddr, addr);
+    serial_putstr(outp);
+    serial_putstr(nl);
+    
     char *inputbuf = "Got a keypress!\r\n";
     while(1) {
-        if (*DUART_CRA != 0x00) {
+        uint8_t test = DUART_RBA;
+        if (test != 7) {
         for (int i = 0; inputbuf[i] != '\0'; i++) { 
             serial_putchar(inputbuf[i]);
             //if (DUART_SRA == 0x00) {
             //    inputbuf = DUART_RBA;
             //    serial_putchar(*inputbuf);         
-            }
+            } 
         }
     }
 }

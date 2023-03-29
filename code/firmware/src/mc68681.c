@@ -78,7 +78,7 @@ int serial_putchar(char ch)
 
 /* Function for getting char from the DUART
 */
-char* serial_getchar()
+char serial_getchar()
 {
     /* Create a pointer to the recieve buffer
     * TODO: Handle port as param. Ensure buffer is not empty? 
@@ -86,5 +86,12 @@ char* serial_getchar()
     */
 
     /* Return the byte */
-    return *DUART_RBA;
-};
+    //char x = (char)DUART_RBA;
+    //return x;
+    return 0;
+}
+void serial_putstr(char *inputbuf){
+    for (int i = 0; inputbuf[i] != '\0'; i++) { 
+        serial_putchar(inputbuf[i]);      
+        }
+}
