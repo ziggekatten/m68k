@@ -9,7 +9,7 @@
 #include <stdbool.h>
 #include "mb68ksyscalls.h"
 
-// Enables or disables interrups   
+// Enables or disables interrupts   
 void set_interrupts(bool enabled) {
     if (enabled) {
         /*  Set minimum interupt = 0

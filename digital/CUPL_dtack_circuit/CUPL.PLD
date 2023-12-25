@@ -1,0 +1,24 @@
+Name     dtack_circuit.dig ;
+PartNo   00 ;
+Date     24.12.2023 ;
+Revision 01 ;
+Designer mats ;
+Company  unknown ;
+Assembly None ;
+Location unknown ;
+Device   g22v10 ;
+
+ar = 'b'0 ;
+sp = 'b'0 ;
+
+/* inputs */
+PIN 2 = BUSDTACK;
+PIN 3 = DUARTDTACK;
+PIN 4 = RAMDTACK;
+PIN 5 = ROMDTACK;
+
+/* outputs */
+PIN 14 = DTACK;
+
+/* combinatorial logic */
+DTACK = BUSDTACK & DUARTDTACK & RAMDTACK & ROMDTACK;

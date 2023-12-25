@@ -90,9 +90,9 @@ _start:
         jsr     (%a0)
 
         /* Jump to main() */
-7:      jmp     main
+7:      jmp     _fmain
 
-        /* In a bare metal environment, main() should not return as there is
+        /* In a bare metal environment, _fmain() should not return as there is
          * nowhere to resume execution from. Behaviour is undefined if this
          * happens! */
 
