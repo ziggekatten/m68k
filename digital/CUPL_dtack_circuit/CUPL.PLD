@@ -1,6 +1,6 @@
 Name     dtack_circuit.dig ;
 PartNo   00 ;
-Date     24.12.2023 ;
+Date     25.12.2023 ;
 Revision 01 ;
 Designer mats ;
 Company  unknown ;
@@ -12,13 +12,26 @@ ar = 'b'0 ;
 sp = 'b'0 ;
 
 /* inputs */
-PIN 2 = BUSDTACK;
-PIN 3 = DUARTDTACK;
-PIN 4 = RAMDTACK;
-PIN 5 = ROMDTACK;
+PIN 5 = BUSDTACK;
+PIN 2 = DUARTDTACK;
+PIN 6 = IRQ1;
+PIN 7 = IRQ2;
+PIN 8 = IRQ3;
+PIN 9 = IRQ4;
+PIN 10 = IRQ5;
+PIN 11 = IRQ6;
+PIN 13 = IRQ7;
+PIN 3 = RAM0SEL;
+PIN 4 = ROMSEL;
 
 /* outputs */
 PIN 14 = DTACK;
+PIN 15 = IPL0;
+PIN 16 = IPL1;
+PIN 17 = IPL2;
 
 /* combinatorial logic */
-DTACK = BUSDTACK & DUARTDTACK & RAMDTACK & ROMDTACK;
+DTACK = BUSDTACK & DUARTDTACK & RAM0SEL & ROMSEL;
+IPL0 = (!IRQ1 & IRQ2 & IRQ4 & IRQ6) # (!IRQ3 & IRQ4 & IRQ6) # (!IRQ5 & IRQ6) # !IRQ7;
+IPL1 = (!IRQ2 & IRQ4 & IRQ5) # (!IRQ3 & IRQ4 & IRQ5) # !IRQ6 # !IRQ7;
+IPL2 = !IRQ4 # !IRQ5 # !IRQ6 # !IRQ7;
