@@ -464,6 +464,10 @@
     [
       "f6694799-977c-4bbe-8e17-95004f9be988",
       "DTACK and IRQ circuit"
+    ],
+    [
+      "1dea36bd-d6d9-4a08-972d-1edadec46a75",
+      "Indicators"
     ]
   ],
   "text_variables": {}

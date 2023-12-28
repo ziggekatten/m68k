@@ -14,6 +14,23 @@
   )
 
 
+  (sheet (at 195.58 64.77) (size 12.7 16.51) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 1dea36bd-d6d9-4a08-972d-1edadec46a75)
+    (property "Sheetname" "Indicators" (at 195.58 64.0584 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "indicators.kicad_sch" (at 195.58 81.8646 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "mb68k"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (page "6"))
+      )
+    )
+  )
+
   (sheet (at 58.42 64.77) (size 11.43 16.51) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))

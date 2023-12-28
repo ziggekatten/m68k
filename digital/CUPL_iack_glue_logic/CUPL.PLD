@@ -1,0 +1,41 @@
+Name     iack_glue_logic.dig ;
+PartNo   00 ;
+Date     28.12.2023 ;
+Revision 01 ;
+Designer mats ;
+Company  unknown ;
+Assembly None ;
+Location unknown ;
+Device   g22v10 ;
+
+ar = 'b'0 ;
+sp = 'b'0 ;
+
+/* inputs */
+PIN 5 = A1;
+PIN 6 = A2;
+PIN 7 = A3;
+PIN 8 = AS;
+PIN 2 = FC0;
+PIN 3 = FC1;
+PIN 4 = FC2;
+
+/* outputs */
+PIN 19 = IACK5;
+PIN 17 = IACK3;
+PIN 18 = IACK4;
+PIN 15 = IACK1;
+PIN 16 = IACK2;
+PIN 21 = IACK7;
+PIN 20 = IACK6;
+PIN 14 = IACK0;
+
+/* combinatorial logic */
+IACK0 = (A1 & FC0 & FC1 & FC2 & !AS) # (A2 & FC0 & FC1 & FC2 & !AS) # (A3 & FC0 & FC1 & FC2 & !AS);
+IACK1 = !A1 # A2 # A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK2 = A1 # !A2 # A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK3 = !A1 # !A2 # A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK4 = A1 # A2 # !A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK5 = !A1 # A2 # !A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK6 = A1 # !A2 # !A3 # !FC0 # !FC1 # !FC2 # AS;
+IACK7 = !A1 # !A2 # !A3 # !FC0 # !FC1 # !FC2 # AS;
