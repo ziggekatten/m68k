@@ -14,14 +14,14 @@
   )
 
 
-  (sheet (at 195.58 64.77) (size 12.7 16.51) (fields_autoplaced)
+  (sheet (at 182.88 64.77) (size 12.7 16.51) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid 1dea36bd-d6d9-4a08-972d-1edadec46a75)
-    (property "Sheetname" "Indicators" (at 195.58 64.0584 0)
+    (property "Sheetname" "Indicators" (at 182.88 64.0584 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "indicators.kicad_sch" (at 195.58 81.8646 0)
+    (property "Sheetfile" "indicators.kicad_sch" (at 182.88 81.8646 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
@@ -44,6 +44,23 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (page "2"))
+      )
+    )
+  )
+
+  (sheet (at 58.42 93.98) (size 12.7 16.51) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 6c955f8d-27cd-4aef-8df3-4a7f3323692c)
+    (property "Sheetname" "External bus connectors" (at 58.42 93.2684 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "extbus.kicad_sch" (at 58.42 111.0746 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "mb68k"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (page "7"))
       )
     )
   )

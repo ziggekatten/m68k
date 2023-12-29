@@ -468,6 +468,10 @@
     [
       "1dea36bd-d6d9-4a08-972d-1edadec46a75",
       "Indicators"
+    ],
+    [
+      "6c955f8d-27cd-4aef-8df3-4a7f3323692c",
+      "External bus connectors"
     ]
   ],
   "text_variables": {}
