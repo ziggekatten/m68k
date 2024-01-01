@@ -65,6 +65,23 @@
     )
   )
 
+  (sheet (at 90.17 92.71) (size 12.7 17.78) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 9fd2bd3c-9347-4575-b465-a62477559a86)
+    (property "Sheetname" "Bus arbitration" (at 90.17 91.9984 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "busarb.kicad_sch" (at 90.17 111.0746 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "mb68k"
+        (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (page "8"))
+      )
+    )
+  )
+
   (sheet (at 90.17 64.77) (size 12.7 16.51) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))

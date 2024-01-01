@@ -472,6 +472,10 @@
     [
       "6c955f8d-27cd-4aef-8df3-4a7f3323692c",
       "External bus connectors"
+    ],
+    [
+      "9fd2bd3c-9347-4575-b465-a62477559a86",
+      "Bus arbitration"
     ]
   ],
   "text_variables": {}

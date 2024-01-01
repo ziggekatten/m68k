@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>74175.dig</elementName>
+      <elementAttributes/>
+      <pos x="1620" y="560"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Ground</elementName>
+      <elementAttributes/>
+      <pos x="1480" y="880"/>
+    </visualElement>
+    <visualElement>
+      <elementName>VDD</elementName>
+      <elementAttributes/>
+      <pos x="1860" y="480"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>~AS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1360" y="280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Clock</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>E-clock</string>
+        </entry>
+      </elementAttributes>
+      <pos x="2020" y="900"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>~BERR</string>
+        </entry>
+      </elementAttributes>
+      <pos x="2100" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Not</elementName>
+      <elementAttributes/>
+      <pos x="1420" y="280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Inverted AS comes from decoding GAL pin 22</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1040" y="220"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="1580" y="800"/>
+      <p2 x="1620" y="800"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="800"/>
+      <p2 x="1820" y="800"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="640"/>
+      <p2 x="1620" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="640"/>
+      <p2 x="2100" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="560"/>
+      <p2 x="1860" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1520" y="560"/>
+      <p2 x="1620" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="720"/>
+      <p2 x="2100" y="720"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="720"/>
+      <p2 x="1620" y="720"/>
+    </wire>
+    <wire>
+      <p1 x="2020" y="900"/>
+      <p2 x="2040" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1580" y="980"/>
+      <p2 x="2100" y="980"/>
+    </wire>
+    <wire>
+      <p1 x="1480" y="840"/>
+      <p2 x="1620" y="840"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="840"/>
+      <p2 x="2040" y="840"/>
+    </wire>
+    <wire>
+      <p1 x="1520" y="680"/>
+      <p2 x="1620" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="680"/>
+      <p2 x="1820" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1360" y="280"/>
+      <p2 x="1420" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="1460" y="280"/>
+      <p2 x="1520" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="1520" y="280"/>
+      <p2 x="1520" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1520" y="560"/>
+      <p2 x="1520" y="680"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="640"/>
+      <p2 x="1440" y="720"/>
+    </wire>
+    <wire>
+      <p1 x="1860" y="480"/>
+      <p2 x="1860" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="2100" y="720"/>
+      <p2 x="2100" y="980"/>
+    </wire>
+    <wire>
+      <p1 x="1480" y="840"/>
+      <p2 x="1480" y="880"/>
+    </wire>
+    <wire>
+      <p1 x="2040" y="840"/>
+      <p2 x="2040" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1580" y="800"/>
+      <p2 x="1580" y="980"/>
+    </wire>
+    <wire>
+      <p1 x="1820" y="680"/>
+      <p2 x="1820" y="800"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
