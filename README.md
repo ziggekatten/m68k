@@ -29,9 +29,14 @@ I keep it simple, and plan using the VBR register in the MC68010, so there is no
 | 0x00000000 - 0x000FFFFF | ROM ( 2 x 512K)                                                         |
 | 0x00100000 - 0x001FFFFF | Onboard RAM (1 MB)                                                      |
 | 0x00200000 - 0x00CFFFFF | Space for additional (14 MB) RAM                                        |
-| 0x00D00000 - 0x00FFFFFF  | I/O space  (2 MB)                                                       | 
+| 0x00D00000 -            | I/O space  (2 MB)                                                       | 
+| 0x00D00000 - 0x00D0FFFF | DUART (64KB)                                                            |
 
 ## Version history
+0.1.10 - Use of new approach for using C 
+
+0.1.9 - A lot of reashuffeling
+
 0.1.8 - Switched to PlatformIO for Arduino stuff
 
 0.1.7 - Got the firmware to configure DUART and spit out stuff on the terminal in sim68000 using pure C. Hardware is tested in an sense that I can control the DUART from an Arduiono Mega, and the CPU stuff on the breadboard is free running, and are awaiting the pairing of DUART and firmware code.
