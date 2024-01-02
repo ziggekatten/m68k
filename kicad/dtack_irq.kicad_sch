@@ -5,7 +5,7 @@
   (paper "A4")
 
   (title_block
-    (title "Mats Brorson 68010 SBC DTACK and IRQ")
+    (title "Mats Brorson 68010 SBC IACK and IRQ")
     (date "2023-12-28")
     (rev "1.0-alpha")
   )

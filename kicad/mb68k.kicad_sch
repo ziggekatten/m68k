@@ -120,7 +120,7 @@
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid f6694799-977c-4bbe-8e17-95004f9be988)
-    (property "Sheetname" "DTACK and IRQ circuit" (at 152.4 64.0584 0)
+    (property "Sheetname" "IACK and IRQ circuit" (at 152.4 64.0584 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
     (property "Sheetfile" "dtack_irq.kicad_sch" (at 152.4 81.8646 0)
