@@ -1,6 +1,6 @@
 (kicad_sch (version 20230121) (generator eeschema)
 
-  (uuid 2e100f25-c1f7-4aef-9a63-1c4bc3dfd5c0)
+  (uuid 5ebf7958-e182-4043-9a63-2eb89ed5fdac)
 
   (paper "A4")
 
@@ -319,10 +319,10 @@
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
   )
-  (global_label "AS" (shape input) (at 36.83 97.79 180) (fields_autoplaced)
+  (global_label "_AS" (shape input) (at 36.83 97.79 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 7e523e07-caa9-4025-ba04-3544a6a7c1f9)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 31.6261 97.79 0)
+    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 30.6585 97.79 0)
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )

@@ -1,0 +1,52 @@
+Name     Address Decoder ;
+PartNo   00 ;
+Date     01.01.2024 ;
+Revision 01 ;
+Designer Mats Brorson ;
+Company  unknown ;
+Assembly None ;
+Location unknown ;
+Device   g22v10 ;
+
+/* -------------- INPUT PINS -------------- */
+PIN [5,4,3,2,14,13,11,10] = [A23..16] ;             /* Address pins to used for decoding  */
+PIN 6 = !AS ;                                       /* Address strobe active low */
+PIN 7 = !LDS ;                                      /* Lower/odd data strobe active low */
+PIN 8 = RW ;                                        /* Read/Write. write is low */
+PIN 9 = !UDS ;                                      /* Upper/even data strobe active low */
+
+/* -------------- OUTPUT PINS ------------- */
+
+PIN [17..15] = [CSEL2..0] ;                         /* Output of chip selects */
+PIN [21..18] = [RW3..0] ;                           /* Read / write selects */
+PIN 22 = ASINV ;                                    /* for invering AS */
+ASINV = AS ;                                        /*     ""          */
+
+ROM = ![A23..20]:& ;                                /* select ROM id address lines 20 - 23 is an 0 */
+RAM = ![A23..21]:& & A20 ;                          /* select RAM id address lines 21 -23 is an 0, and line 20 is 1 */ 
+DUART = [A23..22]:& & A20 & !A21 & ![A19..16]:& ;   /* select DUART if A23, A22, A20 is one, and A19  to 16 is 0 */
+
+/* chip select logic first */
+FIELD DEV_ADDR = [AS, ROM, RAM, DUART] ;            /* We use an field for our address selectors */
+FIELD DEV_SELECT = [CSEL6..0] ;                     /* An output field to be used in decode/truth table for chip select*/
+
+TABLE DEV_ADDR => DEV_SELECT {                      /* Match addr state to I/O output state         */
+'b'0XXX => 'b'111 ;                                 /* If AS is false, no output should be selected     */
+'b'1100 => 'b'110 ;                                 /* ROM is selected                                  */
+'b'1010 => 'b'101 ;                                 /* RAM0 is selected                                 */
+'b'1001 => 'b'011 ;                                 /* DUART is selected                                */
+}
+
+/* upper/even, lower/odd read and write logic next */
+FIELD RW_ADDR = [AS, UDS, LDS, RW] ;
+FIELD RW_SELECT = [RW3..0] ;
+
+TABLE RW_ADDR => RW_SELECT {
+'b'0XXX => 'b'1111 ;                                /* No reads or writes enabled without AS */
+'b'1100 => 'b'0111 ;                                /* Upper/even write */
+'b'1101 => 'b'1011 ;                                /* Upper/even read */
+'b'1010 => 'b'1101 ;                                /* Lower/odd write */
+'b'1011 => 'b'1110 ;                                /* Lower/odd read */
+'b'1110 => 'b'0101 ;                                /* Full word write */
+'b'1111 => 'b'1010 ;                                /* Full word read */
+} 

@@ -1,0 +1,17 @@
+GAL22V10
+GLUE
+
+NC    AS   LDS    RW   UDS   NC   NC   NC   NC   NC  NC GND
+NC   OAS  OLDS   ORW  OUDS  IWR  IAS   NC   NC   NC  NC VCC
+
+OAS  = AS  ; Pass AS through
+OLDS = LDS ; Pass LDS through
+ORW  = RW  ; Pass RW through
+OUDS = UDS ; Pass UDS through
+IWR  = /RW ; Invert RW
+IAS = /AS  ; Invert AS
+
+DESCRIPTION
+
+Signaling logic for letting GAL handle control signal
+Inverts some signals.
