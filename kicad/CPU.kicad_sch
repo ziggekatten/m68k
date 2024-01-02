@@ -6431,7 +6431,7 @@
     (property "Value" "Conn_01x01_Pin" (at 207.645 148.59 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 207.01 151.13 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x01_P2.54mm_Vertical" (at 207.01 151.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 207.01 151.13 0)
@@ -6450,13 +6450,13 @@
   (symbol (lib_id "74xx:74LS245") (at 158.75 195.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 19e34a5c-eb70-4f98-ae53-b686df7cbbb0)
-    (property "Reference" "U16" (at 160.7059 175.26 0)
+    (property "Reference" "U13" (at 160.7059 175.26 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS245" (at 160.7059 177.8 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 158.75 195.58 0)
+    (property "Footprint" "Package_DIP:DIP-20_W7.62mm_Socket" (at 158.75 195.58 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS245" (at 158.75 195.58 0)
@@ -6485,7 +6485,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U16") (unit 1)
+          (reference "U13") (unit 1)
         )
       )
     )
@@ -6494,7 +6494,7 @@
   (symbol (lib_id "Device:C") (at 354.33 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1b894a60-9ca0-4627-a309-7490e0f59b13)
-    (property "Reference" "C24" (at 358.14 238.7599 0)
+    (property "Reference" "C17" (at 358.14 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 358.14 241.2999 0)
@@ -6511,7 +6511,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C24") (unit 1)
+          (reference "C17") (unit 1)
         )
       )
     )
@@ -6520,7 +6520,7 @@
   (symbol (lib_id "power:GND") (at 392.43 243.84 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1c61f898-9745-4bcb-9a71-630dc3adf9d0)
-    (property "Reference" "#PWR0111" (at 398.78 243.84 0)
+    (property "Reference" "#PWR036" (at 398.78 243.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 396.24 243.8399 90)
@@ -6536,7 +6536,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0111") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -6545,7 +6545,7 @@
   (symbol (lib_id "Device:C") (at 303.53 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1f5314d6-1d4b-47c8-998c-9d48da8454dc)
-    (property "Reference" "C19" (at 307.34 238.7599 0)
+    (property "Reference" "C13" (at 307.34 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 307.34 241.2999 0)
@@ -6562,7 +6562,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C19") (unit 1)
+          (reference "C13") (unit 1)
         )
       )
     )
@@ -6571,7 +6571,7 @@
   (symbol (lib_id "power:GND") (at 148.59 64.77 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2406d613-7604-45d2-b41f-29c48dd226cf)
-    (property "Reference" "#PWR024" (at 142.24 64.77 0)
+    (property "Reference" "#PWR016" (at 142.24 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 144.78 64.77 90)
@@ -6587,7 +6587,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR016") (unit 1)
         )
       )
     )
@@ -6596,7 +6596,7 @@
   (symbol (lib_id "power:VCC") (at 304.8 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 26775847-d2f8-47da-a55d-e0b86d105d60)
-    (property "Reference" "#PWR0115" (at 304.8 39.37 0)
+    (property "Reference" "#PWR013" (at 304.8 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 304.8 30.48 0)
@@ -6612,7 +6612,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0115") (unit 1)
+          (reference "#PWR013") (unit 1)
         )
       )
     )
@@ -6621,7 +6621,7 @@
   (symbol (lib_id "power:VCC") (at 363.22 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 26cddd1e-9c63-4f5c-ad7a-8c3fb9aff729)
-    (property "Reference" "#PWR0106" (at 363.22 39.37 0)
+    (property "Reference" "#PWR014" (at 363.22 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 363.22 30.48 0)
@@ -6637,7 +6637,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0106") (unit 1)
+          (reference "#PWR014") (unit 1)
         )
       )
     )
@@ -6646,7 +6646,7 @@
   (symbol (lib_id "power:GND") (at 363.22 219.71 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2d28abba-8726-47b5-b7fe-73c74155e647)
-    (property "Reference" "#PWR0113" (at 363.22 226.06 0)
+    (property "Reference" "#PWR033" (at 363.22 226.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 365.76 220.9799 0)
@@ -6662,7 +6662,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0113") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -6671,7 +6671,7 @@
   (symbol (lib_id "power:VCC") (at 66.04 20.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 30b7daab-9775-43d2-a2a3-d700cb861768)
-    (property "Reference" "#PWR0118" (at 66.04 24.13 0)
+    (property "Reference" "#PWR011" (at 66.04 24.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 66.04 15.24 0)
@@ -6687,7 +6687,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0118") (unit 1)
+          (reference "#PWR011") (unit 1)
         )
       )
     )
@@ -6696,13 +6696,13 @@
   (symbol (lib_id "Lattice_GAL_sym:GAL22V10") (at 226.06 173.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3a2ea4a8-ed1d-4c77-b391-b418c7e48684)
-    (property "Reference" "U4" (at 228.0159 153.67 0)
+    (property "Reference" "U10" (at 228.0159 153.67 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "GAL22V10" (at 228.0159 156.21 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 198.12 176.53 0)
+    (property "Footprint" "Package_DIP:DIP-24_W15.24mm_Socket" (at 198.12 176.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 198.12 176.53 0)
@@ -6735,7 +6735,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U4") (unit 1)
+          (reference "U10") (unit 1)
         )
       )
     )
@@ -6744,7 +6744,7 @@
   (symbol (lib_id "Memory_RAM:AS6C4008-55PCN") (at 304.8 184.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3b5d29ed-ef85-4a9e-9f5e-72c5b4b2138d)
-    (property "Reference" "U6" (at 306.8194 153.67 0)
+    (property "Reference" "U11" (at 306.8194 153.67 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "AS6C4008-55PCN" (at 306.8194 156.21 0)
@@ -6791,7 +6791,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U6") (unit 1)
+          (reference "U11") (unit 1)
         )
       )
     )
@@ -6800,7 +6800,7 @@
   (symbol (lib_id "power:GND") (at 125.73 273.05 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 41bc0075-b667-45e0-b265-b06e3ce22dee)
-    (property "Reference" "#PWR030" (at 125.73 279.4 0)
+    (property "Reference" "#PWR037" (at 125.73 279.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 128.27 274.3199 0)
@@ -6816,7 +6816,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -6825,7 +6825,7 @@
   (symbol (lib_id "power:GND") (at 363.22 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 443fe76d-9ff2-4d0f-85bb-5da0c6b7a96a)
-    (property "Reference" "#PWR0108" (at 363.22 129.54 0)
+    (property "Reference" "#PWR023" (at 363.22 129.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 365.76 124.4599 0)
@@ -6841,7 +6841,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0108") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
     )
@@ -6906,13 +6906,13 @@
   (symbol (lib_id "CPU_NXP_68000:68000D") (at 66.04 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4be9f2c5-e623-47c5-a2ac-bc80517970ed)
-    (property "Reference" "U3" (at 70.5994 25.4 0)
+    (property "Reference" "U7" (at 70.5994 25.4 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "68010P10" (at 70.5994 27.94 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "matsb:MC68000-DIL64" (at 66.04 87.63 0)
+    (property "Footprint" "Package_DIP:DIL64" (at 66.04 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.nxp.com/docs/en/reference-manual/MC68000UM.pdf" (at 66.04 87.63 0)
@@ -6985,7 +6985,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U3") (unit 1)
+          (reference "U7") (unit 1)
         )
       )
     )
@@ -6994,7 +6994,7 @@
   (symbol (lib_id "power:GND") (at 304.8 123.19 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4ce1ada8-01c2-4a3f-8929-ece8614454bd)
-    (property "Reference" "#PWR0110" (at 304.8 129.54 0)
+    (property "Reference" "#PWR022" (at 304.8 129.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 307.34 124.4599 0)
@@ -7010,7 +7010,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0110") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
     )
@@ -7019,7 +7019,7 @@
   (symbol (lib_id "Memory_RAM:AS6C4008-55PCN") (at 363.22 184.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4e6e24cd-c4c1-48b5-a92c-adfc1e52144b)
-    (property "Reference" "U8" (at 365.2394 153.67 0)
+    (property "Reference" "U12" (at 365.2394 153.67 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "AS6C4008-55PCN" (at 365.2394 156.21 0)
@@ -7066,7 +7066,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U8") (unit 1)
+          (reference "U12") (unit 1)
         )
       )
     )
@@ -7094,7 +7094,7 @@
           (reference "#PWR038") (unit 1)
         )
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -7103,7 +7103,7 @@
   (symbol (lib_id "power:VCC") (at 148.59 121.92 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 63e2f510-d086-4d41-919f-84b71d065df1)
-    (property "Reference" "#PWR026" (at 152.4 121.92 0)
+    (property "Reference" "#PWR021" (at 152.4 121.92 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 144.78 121.92 90)
@@ -7119,7 +7119,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -7128,7 +7128,7 @@
   (symbol (lib_id "power:VCC") (at 148.59 224.79 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 658db222-5114-4a60-8863-3bf5b106d28f)
-    (property "Reference" "#PWR028" (at 152.4 224.79 0)
+    (property "Reference" "#PWR034" (at 152.4 224.79 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 144.78 224.79 90)
@@ -7144,7 +7144,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -7205,7 +7205,7 @@
   (symbol (lib_id "power:VCC") (at 149.86 72.39 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 77a209c3-542a-4977-89aa-538813db7ae1)
-    (property "Reference" "#PWR025" (at 153.67 72.39 0)
+    (property "Reference" "#PWR017" (at 153.67 72.39 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 146.05 72.39 90)
@@ -7221,7 +7221,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR025") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -7230,13 +7230,13 @@
   (symbol (lib_id "74xx:74LS245") (at 158.75 247.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 77d04b3c-c6bf-4273-aac3-334f2652468b)
-    (property "Reference" "U20" (at 160.7059 227.33 0)
+    (property "Reference" "U14" (at 160.7059 227.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS245" (at 160.7059 229.87 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 158.75 247.65 0)
+    (property "Footprint" "Package_DIP:DIP-20_W7.62mm_Socket" (at 158.75 247.65 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/gpn/sn74LS245" (at 158.75 247.65 0)
@@ -7265,7 +7265,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U20") (unit 1)
+          (reference "U14") (unit 1)
         )
       )
     )
@@ -7274,7 +7274,7 @@
   (symbol (lib_id "power:VCC") (at 392.43 236.22 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7b292ab1-954a-4e1e-9491-c38a40018cab)
-    (property "Reference" "#PWR0112" (at 388.62 236.22 0)
+    (property "Reference" "#PWR035" (at 388.62 236.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 396.24 236.2199 90)
@@ -7290,7 +7290,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0112") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -7299,7 +7299,7 @@
   (symbol (lib_id "power:VCC") (at 158.75 20.32 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7c9ed204-539c-4083-9ab4-627b2c9594c3)
-    (property "Reference" "#PWR021" (at 158.75 24.13 0)
+    (property "Reference" "#PWR012" (at 158.75 24.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 158.75 15.24 0)
@@ -7315,7 +7315,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR012") (unit 1)
         )
       )
     )
@@ -7324,7 +7324,7 @@
   (symbol (lib_id "Device:C") (at 341.63 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8392ba5e-29c0-4d3b-b969-9a8d94fa4065)
-    (property "Reference" "C22" (at 345.44 238.7599 0)
+    (property "Reference" "C16" (at 345.44 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 345.44 241.2999 0)
@@ -7341,7 +7341,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C22") (unit 1)
+          (reference "C16") (unit 1)
         )
       )
     )
@@ -7350,7 +7350,7 @@
   (symbol (lib_id "power:VCC") (at 19.05 102.87 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 86be309c-57bd-40ee-9847-252cdcf5a6ba)
-    (property "Reference" "#PWR0117" (at 22.86 102.87 0)
+    (property "Reference" "#PWR018" (at 22.86 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 13.97 102.87 0)
@@ -7366,7 +7366,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0117") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -7375,7 +7375,7 @@
   (symbol (lib_id "Memory_Flash:SST39SF040") (at 363.22 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 88d0b7f4-be21-455a-9cc4-1567b2027a8d)
-    (property "Reference" "U7" (at 363.22 45.72 0)
+    (property "Reference" "U6" (at 363.22 45.72 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SST39SF040" (at 363.22 48.26 0)
@@ -7422,7 +7422,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U7") (unit 1)
+          (reference "U6") (unit 1)
         )
       )
     )
@@ -7431,7 +7431,7 @@
   (symbol (lib_id "Device:R") (at 33.02 93.98 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 90750bef-6f50-4f78-9a91-77614145711c)
-    (property "Reference" "R32" (at 35.56 92.7099 0)
+    (property "Reference" "R9" (at 35.56 92.7099 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "4k7" (at 35.56 95.2499 0)
@@ -7448,7 +7448,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "R32") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -7457,7 +7457,7 @@
   (symbol (lib_id "power:GND") (at 304.8 219.71 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9499e408-b3d1-402e-ab49-c5563f51ab0b)
-    (property "Reference" "#PWR0114" (at 304.8 226.06 0)
+    (property "Reference" "#PWR032" (at 304.8 226.06 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 307.34 220.9799 0)
@@ -7473,7 +7473,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0114") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -7482,13 +7482,13 @@
   (symbol (lib_id "Connector:Conn_01x06_Pin") (at 204.47 82.55 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9df48691-dd57-4843-882e-ab751afce77b)
-    (property "Reference" "J5" (at 203.2 80.01 0)
+    (property "Reference" "J2" (at 203.2 80.01 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "Conn_01x06_Pin" (at 203.2 82.55 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "" (at 204.47 82.55 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" (at 204.47 82.55 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 204.47 82.55 0)
@@ -7503,7 +7503,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "J5") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
     )
@@ -7538,13 +7538,13 @@
   (symbol (lib_id "74xx:74LS244") (at 158.75 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a5d3cd68-0d46-4e42-9570-29474056d263)
-    (property "Reference" "U18" (at 160.7059 76.2 0)
+    (property "Reference" "U8" (at 160.7059 76.2 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS244" (at 160.7059 78.74 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 158.75 96.52 0)
+    (property "Footprint" "Package_DIP:DIP-20_W7.62mm_Socket" (at 158.75 96.52 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn74ls244.pdf" (at 158.75 96.52 0)
@@ -7573,7 +7573,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U18") (unit 1)
+          (reference "U8") (unit 1)
         )
       )
     )
@@ -7582,7 +7582,7 @@
   (symbol (lib_id "Device:C") (at 316.23 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a7a90044-9247-4e54-992b-924b3390e867)
-    (property "Reference" "C20" (at 320.04 238.7599 0)
+    (property "Reference" "C14" (at 320.04 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 320.04 241.2999 0)
@@ -7599,7 +7599,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C20") (unit 1)
+          (reference "C14") (unit 1)
         )
       )
     )
@@ -7608,7 +7608,7 @@
   (symbol (lib_id "power:VCC") (at 304.8 148.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid a9cca729-9efe-483d-a8de-72adc16fa4d2)
-    (property "Reference" "#PWR0109" (at 304.8 152.4 0)
+    (property "Reference" "#PWR024" (at 304.8 152.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 304.8 143.51 0)
@@ -7624,7 +7624,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0109") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -7633,7 +7633,7 @@
   (symbol (lib_id "power:VCC") (at 147.32 172.72 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a9d5b2c1-3888-4a10-b637-52d98ab83d1d)
-    (property "Reference" "#PWR027" (at 151.13 172.72 0)
+    (property "Reference" "#PWR029" (at 151.13 172.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 143.51 172.72 90)
@@ -7649,7 +7649,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -7658,13 +7658,13 @@
   (symbol (lib_id "74xx:74LS244") (at 158.75 146.05 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid ac18d4b7-c106-4b2c-98d5-12b020c49245)
-    (property "Reference" "U19" (at 160.7059 125.73 0)
+    (property "Reference" "U9" (at 160.7059 125.73 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS244" (at 160.7059 128.27 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 158.75 146.05 0)
+    (property "Footprint" "Package_DIP:DIP-20_W7.62mm_Socket" (at 158.75 146.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn74ls244.pdf" (at 158.75 146.05 0)
@@ -7693,7 +7693,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U19") (unit 1)
+          (reference "U9") (unit 1)
         )
       )
     )
@@ -7702,7 +7702,7 @@
   (symbol (lib_id "power:VCC") (at 363.22 148.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b36c443c-5fdf-40ee-b790-fe7ccb0e8eb9)
-    (property "Reference" "#PWR0107" (at 363.22 152.4 0)
+    (property "Reference" "#PWR025" (at 363.22 152.4 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 363.22 143.51 0)
@@ -7718,7 +7718,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0107") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
     )
@@ -7727,7 +7727,7 @@
   (symbol (lib_id "power:GND") (at 148.59 217.17 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b3741fca-7750-47fe-acaf-14101d3b9430)
-    (property "Reference" "#PWR029" (at 142.24 217.17 0)
+    (property "Reference" "#PWR031" (at 142.24 217.17 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 144.78 217.17 90)
@@ -7743,7 +7743,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
     )
@@ -7752,13 +7752,13 @@
   (symbol (lib_id "Connector:Conn_01x01_Pin") (at 243.84 151.13 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid b69df779-3533-4862-8269-64e34c7c6763)
-    (property "Reference" "J3" (at 244.475 146.05 0)
+    (property "Reference" "J5" (at 244.475 146.05 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x01_Pin" (at 244.475 148.59 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 243.84 151.13 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x01_P2.54mm_Vertical" (at 243.84 151.13 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 243.84 151.13 0)
@@ -7768,7 +7768,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "J3") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -7822,7 +7822,7 @@
           (reference "#PWR039") (unit 1)
         )
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR015") (unit 1)
         )
       )
     )
@@ -7831,13 +7831,13 @@
   (symbol (lib_id "Connector:Conn_01x01_Pin") (at 204.47 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c187e25d-39c8-4401-877d-3c67230832cc)
-    (property "Reference" "J7" (at 205.105 55.88 0)
+    (property "Reference" "J1" (at 205.105 55.88 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x01_Pin" (at 205.105 58.42 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 204.47 60.96 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x01_P2.54mm_Vertical" (at 204.47 60.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 204.47 60.96 0)
@@ -7847,7 +7847,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "J7") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
     )
@@ -7862,7 +7862,7 @@
     (property "Value" "GAL22V10" (at 226.7459 57.15 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 196.85 77.47 0)
+    (property "Footprint" "Package_DIP:DIP-24_W7.62mm_Socket" (at 196.85 77.47 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "" (at 196.85 77.47 0)
@@ -7898,7 +7898,7 @@
           (reference "U12") (unit 1)
         )
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U12") (unit 1)
+          (reference "U4") (unit 1)
         )
       )
     )
@@ -7907,7 +7907,7 @@
   (symbol (lib_id "power:GND") (at 147.32 166.37 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cb69d310-7d32-46d6-a5e2-47ed8dc5a88a)
-    (property "Reference" "#PWR022" (at 140.97 166.37 0)
+    (property "Reference" "#PWR028" (at 140.97 166.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 143.51 166.37 90)
@@ -7923,7 +7923,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -7932,13 +7932,13 @@
   (symbol (lib_id "Connector:Conn_01x01_Pin") (at 242.57 92.71 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cf65c0bf-c738-4554-843f-482c096fec37)
-    (property "Reference" "J6" (at 245.11 92.71 0)
+    (property "Reference" "J3" (at 245.11 92.71 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "Conn_01x01_Pin" (at 243.84 96.52 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 242.57 92.71 0)
+    (property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x01_P2.54mm_Vertical" (at 242.57 92.71 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 242.57 92.71 0)
@@ -7948,7 +7948,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "J6") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
     )
@@ -7957,7 +7957,7 @@
   (symbol (lib_id "power:VCC") (at 226.06 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d00c9222-5c81-4c4a-9584-ce2aa2757df9)
-    (property "Reference" "#PWR0121" (at 226.06 153.67 0)
+    (property "Reference" "#PWR026" (at 226.06 153.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 226.06 144.78 0)
@@ -7973,7 +7973,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0121") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -7982,7 +7982,7 @@
   (symbol (lib_id "power:GND") (at 226.06 200.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid de8454da-889a-4769-a29a-fca4a4dc3448)
-    (property "Reference" "#PWR0120" (at 226.06 207.01 0)
+    (property "Reference" "#PWR030" (at 226.06 207.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 228.6 201.9299 0)
@@ -7998,7 +7998,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0120") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
     )
@@ -8007,7 +8007,7 @@
   (symbol (lib_id "Device:C") (at 290.83 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e0dcd564-f95c-4f3d-b44c-258aaf6acb01)
-    (property "Reference" "C18" (at 294.64 238.7599 0)
+    (property "Reference" "C12" (at 294.64 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 294.64 241.2999 0)
@@ -8024,7 +8024,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C18") (unit 1)
+          (reference "C12") (unit 1)
         )
       )
     )
@@ -8085,7 +8085,7 @@
   (symbol (lib_id "power:GND") (at 66.04 156.21 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f27804ad-1c58-446e-b088-be41234df680)
-    (property "Reference" "#PWR0119" (at 66.04 162.56 0)
+    (property "Reference" "#PWR027" (at 66.04 162.56 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 68.58 157.4799 0)
@@ -8101,7 +8101,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR0119") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -8110,7 +8110,7 @@
   (symbol (lib_id "Device:C") (at 328.93 240.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f4f9cfbc-1536-411c-a93b-3719fa66abe0)
-    (property "Reference" "C21" (at 332.74 238.7599 0)
+    (property "Reference" "C15" (at 332.74 238.7599 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "100nF" (at 332.74 241.2999 0)
@@ -8127,7 +8127,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "C21") (unit 1)
+          (reference "C15") (unit 1)
         )
       )
     )
@@ -8136,13 +8136,13 @@
   (symbol (lib_id "74xx:74LS244") (at 158.75 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid f8b48f3d-4044-4544-b02d-7ed56e9a5085)
-    (property "Reference" "U17" (at 160.7059 24.13 0)
+    (property "Reference" "U3" (at 160.7059 24.13 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "74LS244" (at 160.7059 26.67 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 158.75 44.45 0)
+    (property "Footprint" "Package_DIP:DIP-20_W7.62mm_Socket" (at 158.75 44.45 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "http://www.ti.com/lit/ds/symlink/sn74ls244.pdf" (at 158.75 44.45 0)
@@ -8171,7 +8171,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "U17") (unit 1)
+          (reference "U3") (unit 1)
         )
       )
     )
@@ -8180,7 +8180,7 @@
   (symbol (lib_id "power:GND") (at 148.59 116.84 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fad42474-83f9-4dcb-b264-e13a4acaabd2)
-    (property "Reference" "#PWR023" (at 142.24 116.84 0)
+    (property "Reference" "#PWR020" (at 142.24 116.84 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 144.78 116.84 90)
@@ -8196,7 +8196,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/c0b233c3-0354-40a8-9da4-8134543aeba9"
-          (reference "#PWR023") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )

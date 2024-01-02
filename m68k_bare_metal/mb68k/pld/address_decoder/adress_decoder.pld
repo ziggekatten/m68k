@@ -1,5 +1,8 @@
 GAL22V10
-GLUE
+DECODE
 
-NC   NC   NC   NC   NC   NC   NC   NC   NC   NC  NC GND
-NC   NC   NC   NC   NC   NC   NC   NC   NC   NC  NC VCC
+NC   NC    NC    NC    NC    IRQ1   IRQ1   IRQ1   IRQ1   IRQ1  IRQ1  GND
+NC   IRQ1  IPL0  IPL1  IPL2  NC     NC     NC     NC     NC    NC    VCC
+
+
+DESCRIPTION
