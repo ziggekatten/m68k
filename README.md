@@ -36,6 +36,11 @@ I keep it simple, and plan using the VBR register in the MC68010, so there is no
 | 0x00D00000 -            | I/O space  (2 MB)                                                       | 
 | 0x00D00000 - 0x00D0FFFF | DUART (64KB)                                                            |
 
+## Codebase
+I have switched to use https://github.com/tomstorey/m68k_bare_metal as base for my project instead of inventing all by myself. Sure, my linkerscript, Makefile and stuff was not bad, but was very bare bone. Even if there are a little more assembly, the structure is is more usable as defining exception vectors and stuff are easier. So instead of continuing and reinvent the wheel, I made the choice to use som clever stuff from github. Tom, you made me see a different (or more professional) way of doing stuff by the way you structured your code. Especially the linkerscript was an huge improvement over my amateur cocktail of C code.
+
+All old firmware code are now in the /old_stuff folder and all new under /mb68k_bare_metal/mb68k
+
 ## Version history
 0.1.10 - Use of new approach for using C and design wise introducing buffers and more GALs 
 
