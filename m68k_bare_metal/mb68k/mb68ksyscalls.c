@@ -10,7 +10,7 @@
 #include "mb68ksyscalls.h"
 
 // Enables or disables interrupts   
-void set_interrupts(bool enabled) {
+void disable_interrupts(bool enabled) {
     if (enabled) {
         /*  Set minimum interupt = 0
         * The output of bitwise AND is 1 if the corresponding bits of two operands is 1.

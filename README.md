@@ -1,9 +1,13 @@
 # Note to myself: I hate C pointers and macros.......
-
+I have an blog where I will post my progress and thoughts when I have some spare time: https://brorson.se
 # m68k
-A over ambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. This main README will change frequently when I change my mind and decisions. Some decisions made from my part:
+A overambitious project to build a usable computer from scratch. Based on bits and pieces from the interwebb, but with my own twists and turns. This main README will change frequently when I change my mind and decisions. 
 
-- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more details. I would like to use Zig (primary) or Rust (secondary), but as an non compiler wizard, this is currently on the back foot, and O'l trusted C will do. There are some chanllenges though, that are quite simple in assembler, but when using C and segregation of duty, requires some more thoughts. For example, when using interrupts on the serial line, how do you pass the input from the exceptionhandler to your main kernel code? Simple answer one would say, some defined pseudo registers monitored by your main code in combination of global variables/structs in C. But this comes at an cost of CPU cycles as stuff needs to pass memory in several stages. Not easy decisions. Also, as I'm building some built in monitoring stuff in the firmwware to see values of stack pointer and register values, I might need to add som asssembler in the end. It will be inline if that's the case. It hurts, but unless I can use some GCC low level stuff I probably need to do this.
+It's not the goal that matters, is the journey....and it's true. Getting your thoughts and ideas into circuits and code is an iterative process, and for each success you get satisfaction. For every failure.....you get a reason for a big drink and rethink your decisions, just to fix the issue and start an new iteration. Add oh boy, the satisfaction when your idea works...priceless! 
+
+Some decisions made from my part:
+
+- Assembler is fun in small doses, so my plan is to NOT write firmware in assembler, but instead go down the C route and messing with sections and linkerscripts. Reason beeing that this will make me learn not only the various segments and the ELF format, but also how the GCC/LLVM toolchains works in more detail. I would like to use Zig (primary) or Rust (secondary), but as an non compiler wizard, this is currently on the backfoot, and O'l trusted C will do. There are some challenges though, that are quite simple in assembler, but when using C and segregation of duty, requires some more thoughts. For example, when using interrupts on the serial line, how do you pass the input from the exceptionhandler to your main kernel code? Simple answer one would say, some defined pseudo registers monitored by your main code in combination of global variables/structs in C. But this comes at an cost of CPU cycles as stuff needs to pass memory in several stages. Not easy decisions. Also, as I'm building some built in monitoring stuff in the firmwware to see values of stack pointer and register values, I might need to add som asssembler in the end. It will be inline if that's the case. It hurts, but unless I can use some GCC low level stuff I probably need to do this.
 - Build my own stdlib based on newlib (https://sourceware.org/newlib/)
 - Serial interface and an HW-monitor as initial I/0 path to the SBC 
 
@@ -19,7 +23,7 @@ Initial hardware:
 
 ## Some loose thoughts
 - Use ELF as a base segment standard instead of Motorola S-records. This means that i need to steal someone elses ELF loader I guess... 
-- When basic serial I/O is done. It's time to look at keyboard input as well as graphics display. The keyboard stuff is easy enough if using PS/2 standard. The graphics stuff however is a little bit more complicated. Signal wise it is easy, just output the correct voltages and Bob's your uncle. But getting data in a format that does not bog down CPU to some memory mapped hardware, and the get the display circuit to effectively interpret data and do stuff, is a different story. The 680x0 CPU is not capable to feed pixel data at rates needed if just pushing pixels, so there have to be stuff in between. Amigas, Ataris and others have this done in custom chips, which means that I have to do the same. But this is where I draw the line (pun intended) and don't design my own blitter, copper etc. I will probably interface to already done parts, using APIs or existing hardware designs. In the end, designing at this level means also supply low level libraries and stuff. However, an pure vector based drawing design is in my head, so one never know....
+- When basic serial I/O is done. It's time to look at keyboard input as well as graphics display. The keyboard stuff is easy enough if using PS/2 standard. The graphics stuff however is a little bit more complicated. Signal wise it is easy, just output the correct voltages and Bob's your uncle. But getting data in a format that does not bog down CPU to some memory mapped hardware, and the get the display circuit to effectively interpret data and do stuff, is a different story. Text based stuff are easy using predetermined fonts, but The 680x0 CPU is not capable to feed pixel data at rates needed if just pushing pixels, so there have to be stuff in between. Amigas, Ataris and others have this done in custom chips, which means that I have to do it in an similar way. But this is where I draw the line (pun intended) and don't design my own blitter, copper etc. I will probably interface to already done parts, using APIs or existing hardware designs. In the end, designing at this level means also supply low level libraries and stuff. However, an pure vector based drawing design is in my head, so one never know....
 
 ## Memory map of the design
 I keep it simple, and plan using the VBR register in the MC68010, so there is no shadowing or moving of ROM in my design.
@@ -33,9 +37,9 @@ I keep it simple, and plan using the VBR register in the MC68010, so there is no
 | 0x00D00000 - 0x00D0FFFF | DUART (64KB)                                                            |
 
 ## Version history
-0.1.10 - Use of new approach for using C 
+0.1.10 - Use of new approach for using C and design wise introducing buffers and more GALs 
 
-0.1.9 - A lot of reashuffeling
+0.1.9 - A lot of reshuffeling
 
 0.1.8 - Switched to PlatformIO for Arduino stuff
 
@@ -61,7 +65,7 @@ In parallel building an LLVM toolchain for exploring the capabilities of using R
 | Folder     | Description                                                                          |
 |------------|--------------------------------------------------------------------------------------|
 | code       | Code for firmware and other stuff goes in here                                       |
-| kicad      | KiCAD 6.x schematics                                                                 |
+| kicad      | KiCAD 7.x schematics                                                                 |
 | digital    | Digital simulator for messing with glue logic and generation WinCUPL code in the end |
 | toolchains | Things related to toolchains. Docker files etc                                       |
 | tests      | Arduino stuff used to test and program various parts of the design                   |
@@ -70,9 +74,9 @@ In parallel building an LLVM toolchain for exploring the capabilities of using R
 
 MC68000/10 memory mapping and external pheripherals are always an challenge. That said, the m68k has the most beautiful register/memory layout and assembler syntax known to man. If todays CPU's had this layout, ohh man... Normally external peripherals only use a few address lines and more importantly only half the data bus (unless on an MC68008). What this means is that you really need to understand how the processor address memory and in which order it's doing stuff. First of all, as you might have noted on the CPU there is no address line of 0. First physical address line is A1, which will cause som confusion to newbies (as it did to me!). To explain this we need to understand two other physical pins on the CPU: UDS and LDS. UDS means Upper Data Strobe, and LDS means Lower Data Strobe. These pins define if you are in the upper 8-bit or lower 8-bit of an word (16 bit). 
 
-Now, this is what caught me, even adresses is always the upper 8-bits. Easiest way of explain this is by starting at at the lowest address in hex: 0x00000000. This is an even address, and accessing this address will assert the UDS-pin signaling that the upper 8-bits of the data bus will be read/written from/to (bit 15-8). When designing your memory map, things can be confusing. Let us say that memory 0x00000000 to 0x000FFFFF is your first MB of RAM, and you think that address 0x00100000 is the first byte in the I/O space, you would be wrong. Address 0x00100000 is the upper 8-bits of the 16-bit word, and if you have the pheriperal connected to the D0-D7, the effective address is actually 0x00100001!. 
+Now, this is what caught me, since the CPU is Big Endeian, even adresses is always the upper 8-bits. Easiest way of explain this is by starting at at the lowest address in hex: 0x00000000. This is an even address, and accessing this address will assert the UDS-pin signaling that the upper 8-bits of the data bus will be read/written from/to (bit 15-8). When designing your memory map, things can be confusing. Let us say that memory 0x00000000 to 0x000FFFFF is your first MB of RAM, and you think that address 0x00100000 is the first byte in the I/O space, you would be wrong. Address 0x00100000 is the upper 8-bits of the 16-bit word, and if you have the pheriperal connected to the D0-D7, the effective address is actually 0x00100001!. 
 
 What this means is, that you need to take care when accessing 8-bit memory mapped peripherals. Let us take an simple example here using the MC68681 DUART chip as an example. It has an 4-bit addressing bus for it's registers that we normally connect to A1-A4, and an 8-bit address bus, connected to the A0-A7 physical bus. According to the documentation the registers are one byte in between on the chip itself. 
 
-But this is not true in the scope of the CPU, as the least significant address bus is never seen by the chip. It sees A1, not A0(UDS). In effect, this means that your code needs to have an offset of two(2) whereas the chip has an offset of only one(1).
+But this is not true in the scope of the CPU, as the most significant byte is never seen by the chip. It sees A1, not A0(UDS). In effect, this means that your code needs to have an offset of two(2) whereas the chip has an offset of only one(1).
 In general, working with bytes is an pain as you need to think about alignment, and if possible use words....

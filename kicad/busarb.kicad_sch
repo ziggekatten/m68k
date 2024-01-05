@@ -414,7 +414,7 @@
   (symbol (lib_id "power:VCC") (at 58.42 57.15 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7e5373ad-f70f-4080-9c47-db2b7cda330f)
-    (property "Reference" "#PWR067" (at 58.42 60.96 0)
+    (property "Reference" "#PWR068" (at 58.42 60.96 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "VCC" (at 58.42 52.07 0)
@@ -430,7 +430,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/9fd2bd3c-9347-4575-b465-a62477559a86"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR068") (unit 1)
         )
       )
     )
@@ -459,7 +459,7 @@
           (reference "C24") (unit 1)
         )
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/9fd2bd3c-9347-4575-b465-a62477559a86"
-          (reference "C26") (unit 1)
+          (reference "C27") (unit 1)
         )
       )
     )
@@ -468,7 +468,7 @@
   (symbol (lib_id "power:GND") (at 58.42 113.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e19a4a8d-777d-4ed1-ab9b-d3c8acc9f511)
-    (property "Reference" "#PWR068" (at 58.42 119.38 0)
+    (property "Reference" "#PWR069" (at 58.42 119.38 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 58.42 118.11 0)
@@ -484,7 +484,7 @@
     (instances
       (project "mb68k"
         (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/9fd2bd3c-9347-4575-b465-a62477559a86"
-          (reference "#PWR068") (unit 1)
+          (reference "#PWR069") (unit 1)
         )
       )
     )

@@ -20,7 +20,7 @@ Revision:   2023-12-01
 #define     FW_AUTHOR     "Author: Mats Brorson"
 #define     FW_LICENSE    "Released under MIT license. Happy hacking!"
 #define     FW_PROMPT      "->"
-#define     DUART_BASE    0x00D00001
-#define     CF_BASE       0x00E00001
+#define     DUART_BASE    0x00D00000
+#define     CF_BASE       0x00E00000
 
 #endif

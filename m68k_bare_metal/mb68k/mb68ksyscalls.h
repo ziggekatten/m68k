@@ -5,10 +5,10 @@
 * @Description: Function prototypes for syscalls that have to be
 * done by using assembler
 */
-
+#include <stdbool.h>
 #ifndef MB68K_SYSCALLS_H_
 #define MB68K_SYSCALLS_H_
 
-void set_interrupts(bool enabled);
+void disable_interrupts(bool enabled);
 
 #endif

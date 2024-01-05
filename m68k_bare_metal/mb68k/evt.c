@@ -9,3 +9,8 @@ void __attribute__((interrupt))
     ZeroDivide(void){
 
 }
+
+void __attribute__((interrupt))
+    IRQ5(void){
+
+}

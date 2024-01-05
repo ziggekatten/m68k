@@ -5818,7 +5818,7 @@
 
   (footprint "Package_DIP:DIP-20_W7.62mm_Socket" (layer "F.Cu")
     (tstamp 6dbebe31-6f72-41d0-bc71-79e0061a0111)
-    (at 473.39 210.82)
+    (at 452.12 208.28)
     (descr "20-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils), Socket")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil Socket")
     (property "Sheetfile" "indicators.kicad_sch")
