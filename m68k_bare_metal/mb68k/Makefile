@@ -51,12 +51,12 @@ DEP=$(SRC:%.c=%.d)
 %/%.o: %.s
 	$(CC) $(CFLAGS) -c $<
 
-bmbinary: $(OBJ)
+bmbinary.dump: $(OBJ)
 	$(LD) -o $@ $(OBJ) $(LFLAGS)
 
 -include $(DEP)
 
-all: bmbinary rom
+all: bmbinary.dump rom
 
 crt:
 	$(CC) $(CFLAGS) -c crt0.S
@@ -65,8 +65,8 @@ clean:
 	rm -f $(OBJ) $(DEP)
 
 rom:
-	$(OBJCOPY) -O binary bmbinary bmbinary.rom
-	$(OBJCOPY) -O srec bmbinary bmbinary.srec
+	$(OBJCOPY) -O binary bmbinary.dump bmbinary.rom
+	$(OBJCOPY) -O srec bmbinary.dump bmbinary.srec
 
 dump:
 	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.evt bmbinary.dump
