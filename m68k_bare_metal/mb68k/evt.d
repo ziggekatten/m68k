@@ -1,1 +1,0 @@
-evt.o: evt.c
