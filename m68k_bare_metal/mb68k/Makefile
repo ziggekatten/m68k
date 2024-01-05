@@ -69,14 +69,14 @@ rom:
 	$(OBJCOPY) -O srec bmbinary bmbinary.srec
 
 dump:
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.evt bmbinary
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -dt -j.text bmbinary
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.rodata -j.data -j.bss -j.heap -j.stack bmbinary
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.evt bmbinary.dump
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -dt -j.text bmbinary.dump
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.rodata -j.data -j.bss -j.heap -j.stack bmbinary.dump
 
 dumps:
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.evt bmbinary
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -St -j.text bmbinary
-	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.rodata -j.data -j.bss -j.heap -j.stack bmbinary
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.evt bmbinary.dump
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -St -j.text bmbinary.dump
+	$(OBJDUMP) -mm68k:$(CPU) -belf32-m68k -st -j.rodata -j.data -j.bss -j.heap -j.stack bmbinary.dump
 
 hexdump:
 	hexdump -C bmbinary.rom
