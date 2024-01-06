@@ -2,7 +2,7 @@
 
   (uuid 2bdd0de3-f69f-4ace-9499-fbf926e9e905)
 
-  (paper "A4")
+  (paper "A3")
 
   (title_block
     (title "Mats Brorson 68010 SBC LED indicators")
