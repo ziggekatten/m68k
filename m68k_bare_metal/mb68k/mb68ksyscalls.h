@@ -13,7 +13,7 @@
 void disable_interrupts();
 void enable_interrupts();
 
-static inline get_sr() {
+static inline uint16_t get_sr() {
     uint16_t result;
     __asm__ volatile (
         "move.w %%sr, %0"
@@ -23,15 +23,4 @@ static inline get_sr() {
     );
     return result;
 }
-
-static inline void set_sr(uint16_t value) {
-    __asm__ volatile (
-        "move.w %0, %%sr"
-        :
-        : "d" (value)
-        : "memory"
-    );
-}
-
-
 #endif

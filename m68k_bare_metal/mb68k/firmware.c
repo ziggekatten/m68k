@@ -55,60 +55,25 @@ int _fmain(void){
         6. enable RX
         */
     /* Test code for init of pysim DUART */
-    *DUART_IMR  = 0x00; // Disable interrupts
-    /* *DUART_ACR  = 0x60; // set 115kbaud
-    *DUART_CSRA = 0x66; // set 115kbaud
-    *DUART_CUR  = 0x00; // set 115kbaud
-    *DUART_CLR  = 0x02; // set 115kbaud */
+    serial_init();              // Initialize DUART
 
-    *DUART_CRA  = 0x10; // Reset MRA pointer
-    *DUART_CRA  = 0x20; // Reset RX register
-    *DUART_CRA  = 0x30; // Reset TX register
-    *DUART_CRA  = 0x40; // Reset error
-    
-    *DUART_MR1A = 0x13; // RxRTS Disabled, 8 bits, No Parity
-    *DUART_MR2A = 0x07; // Normal mode, CTS Disabled, 1 stop bit, no parity
-    *DUART_MR1B = 0x13; // RxRTS Disabled, 8 bits, No Parity
-    *DUART_MR2B = 0x07; // Normal mode, CTS Disabled, 1 stop bit, no parity
-    *DUART_CSRA = 0xCC; // 9600 bps @ 3.6864MHz
-    *DUART_CRA  = 0x05; // Enable TX and RX
-    *DUART_IVR  = 0x40; // Set vector for IRQ (using IRQ5)
-    *DUART_IMR  = 0x02; // Enable interupt on rx-ready
+    enable_interrupts();        // Enable CPU interrupts
 
-
-
-
-    enable_interrupts();       // Enable CPU interrupts
-
-    /* Let us output some welcome stuff to console 
-    TODO: Memory check would be nice before this and dump errors to terminal. But how to test memory without using it? Tricky stuff
-    */
-
-    
-    /*    
-    char memaddr[8];
-    uint32_t addr = 0xa5b5c5d5;
-    char * outp = itohexa(memaddr, addr);
-    for (int i=0; i <= 9; i++) {
-        serial_putchar(outp[i]);
-    }
-    */
-
+    // Some welcome stuff
     char *build_str = "Brocomp 68010 Generic Computer. Version:" __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
     printf(build_str);
-    char *adr = "kalle";
-    printf("Address: %p has value: %s\n", adr, adr );
+
+    //char *adr = "kalle";
+    //printf("Address: %p has value: %s\n", adr, adr );
     
     //uint8_t *t = DUART_RBA; 
-    printf("Interrupt vector register IVR set to: %u\n", *DUART_IVR);
-    printf("SRA set to: %u\n", *DUART_SRA);
-    //printf("Recieve buffer register RBA set to: %u\n", *DUART_RBA);
-    //printf("Recieve buffer register RBB set to: %u\n", *DUART_RBB);
-    printf("MR1A set to: %u\n", *DUART_MR1A);
-    printf("MR2A set to: %u\n", *DUART_MR2A);
-    printf("ISR set to: %u\n", *DUART_ISR);
-    uint16_t statusreg = get_sr();
-    printf("Status register: %x\n", statusreg);
+    //printf("Interrupt vector register IVR set to: %u\n", *DUART_IVR);
+    //printf("SRA set to: %u\n", *DUART_SRA);
+    //printf("MR1A set to: %u\n", *DUART_MR1A);
+    //printf("MR2A set to: %u\n", *DUART_MR2A);
+    //printf("ISR set to: %u\n", *DUART_ISR);
+    //uint16_t statusreg = get_sr();
+    //printf("Status register: %x\n", statusreg);
     
     while (1){
 
