@@ -1,10 +1,30 @@
 /**
-* @Author: Mats Brorson
-* @Date: 2023-01-27
-* 
-* @Description: Functions to initialize and configure serial communication, timers and other 
-* features using Motorola MC68681 DUART at boot time, but also for enabling control in software, 
-* for example enabling port B, or changing speed, parity, flow control etc
+ * @author (c) Mats Brorson ()
+ *             2023-2024, Sweden
+ *
+ * @brief Functions to initialize and configure serial communication, timers and other 
+ * features using Motorola MC68681 DUART at boot time, but also for enabling control in software, 
+ * for example enabling port B, or changing speed, parity, flow control etc
+ * 
+ * @license The MIT License (MIT)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
 */
 
 #include <stdint.h>

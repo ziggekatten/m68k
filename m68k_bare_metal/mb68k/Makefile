@@ -13,7 +13,7 @@
 #
 # The compiler will automatically choose the correct source file (.c, .s etc)
 # according to the object file (.o) to be created.
-OBJ=main.o evt.o mb68ksyscalls.o mc68681.o
+OBJ=firmware.o evt.o mb68ksyscalls.o mc68681.o
 
 # Specify the CPU type that you are targeting your build towards.
 #

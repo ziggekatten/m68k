@@ -120,6 +120,10 @@ SECTIONS {
         LONG(0); /* Unassigned, reserved */
         LONG(0); /* Unassigned, reserved */
         LONG(0); /* Unassigned, reserved */
+        . = 0x100;
+        LONG(ABSOLUTE(DUARTInterruptHandler));
+
+
 /*
  *
  * User Interrupt Vectors

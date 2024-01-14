@@ -14,14 +14,14 @@
   )
 
 
-  (sheet (at 87.63 59.69) (size 12.7 16.51) (fields_autoplaced)
+  (sheet (at 87.63 60.96) (size 12.7 16.51) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid 1dea36bd-d6d9-4a08-972d-1edadec46a75)
-    (property "Sheetname" "Indicators" (at 87.63 58.9784 0)
+    (property "Sheetname" "Indicators" (at 87.63 60.2484 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "indicators.kicad_sch" (at 87.63 76.7846 0)
+    (property "Sheetfile" "indicators.kicad_sch" (at 87.63 78.0546 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
