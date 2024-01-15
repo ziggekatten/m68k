@@ -3,12 +3,12 @@
 * @Date: 2023-11-27
 * 
 * @Description: Syscalls that have to be
-* done by using assembler (SR/SP-operations)
+* done by using assembler (SR/SP-operations) or gluelogic towards
+* libmetal and other C-libraries
 */
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "mb68ksyscalls.h"
 
 // Enables or disables interrupts   
 void disable_interrupts() {
@@ -28,3 +28,4 @@ void enable_interrupts() {
     asm("and.w #0xF8FF, %sr");
 
 }
+

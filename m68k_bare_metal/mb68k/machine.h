@@ -12,8 +12,11 @@ Revision:   2023-12-01
  *                                          |_|                 
  */
 
+
+
 #ifndef MB68K_MACHINE_H_
 #define MB68K_MACHINE_H_
+#include <stdint.h>
 
 #define     FW_MACHINE_ID "BroComp 68010 Generic Computer."
 #define     FW_VERSION    "Version: " + __DATE__
@@ -23,5 +26,27 @@ Revision:   2023-12-01
 #define     DUART_BASE    0x00D00000
 #define     DUART_IV_ADR  0x40
 #define     CF_BASE       0x00E00000
+
+/* Some basic ASCII character definitions */
+#define CR              (char)0x0d
+#define LF              (char)0x0a
+#define BLANK           (char)0x20
+#define FW_HELP         (char)0x68
+#define FW_READ         (char)0x72
+#define FW_WRITE        (char)0x77
+#define FW_BOOT         (char)0x62
+
+
+/* Enums for various stuff */
+
+
+
+/* Global buffer for basic firmware serial input */
+extern char ser_buf[64];
+extern uint8_t ser_buf_idx;
+
+
+
+
 
 #endif

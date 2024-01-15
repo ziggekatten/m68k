@@ -100,12 +100,6 @@
 #define SR_RX_FULL			    0x02
 #define SR_RX_READY			    0x01
 
-/* Some basic ASCII character definitions */
-#define CR              (char)0x0d
-#define LF              (char)0x0a
-#define BLANK           (char)0x20
-
-
 /* 
 * prototype for initializing Serial commmunication function in DUART. Should
 * probably should return something to indicate if it was successful

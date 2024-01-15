@@ -30,6 +30,7 @@
 #include <stdint.h>
 #include "mc68681.h"
 #include "machine.h"
+#include "firmware.h"
 
 /* 
 * Exception handlers do not return a value, so they are void. 
@@ -43,15 +44,17 @@ void __attribute__((interrupt)) ZeroDivide(void){
 }
 
 /* IRQ5 is used for the duart, and we have chosen to use vector 64 dec (40 hex)
- * See machine.h
+ * See: machine.h and platform.ld
  */
 void __attribute__((interrupt)) DUARTInterruptHandler(void) {
-    char c = *DUART_RBA;
-    const char *prompt = FW_PROMPT;
-    if (c == CR) {
-        printf("\n%s", prompt);
-    } else {
-    printf("%c", c);
+    /* We first need to check what is causing the interrupt
+     * This is done by checking the ISR register and AND it 
+     * with the value set in the IMR register to know what fired the interrupt
+    */
+    char isr = *DUART_ISR & 0x02;   // Bitwise AND with defined Interrupt mask
+    if (isr == 2) {                 // Check if this an Serial RXRDY interrupt
+        char c = *DUART_RBA;        // Get data from DUART port A
+        printf("%c", c);            // Output char to console
+        KeyboardHandler(c);         // Call keyboard handles
     }
 }
-

@@ -33,35 +33,58 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 
 /* The glue function for libmetal printf */
-int putchar_(char buf) {
-    serial_putchar(buf);
-    return 0;
+int putchar_(char c) {
+    serial_putchar(c);
+    return c;
 }
 
+/* Set serial input buffer and index to initial value */
+uint8_t ser_buf_idx = 0;
+char ser_buf[64];
+
+/* Default fimware prompt */
+const char *prompt = FW_PROMPT;
+
+/* Parse function for incoming data from keyboard or serial communication*/
+void ParseCommand() {
+    switch (ser_buf[0]) {
+        case FW_HELP:
+            printf("Help goes here...\n%s", prompt);
+            memset(ser_buf, 0, sizeof(ser_buf));    // Reset input buffer completely!!! Otherwise bad things WILL happen....                
+            ser_buf_idx = 0;                        // Reset buffer index
+            break;
+        default:
+            printf("Invalid command! Type 'h' for help.\n%s", prompt);
+            memset(ser_buf, 0, sizeof(ser_buf));
+            ser_buf_idx = 0;
+        }
+
+}
+
+/* Keyboard handler used by interrupt service routine for serial PORTA*/
+void KeyboardHandler(char character) {
+    ser_buf[ser_buf_idx] = character;
+    if (character == CR){
+        ParseCommand();
+    } else {
+        ser_buf_idx++;
+    }
+}
 
 int _fmain(void){
     disable_interrupts();       // Disable CPU interrupts
 
-        /*
-        1. disable CPU interrupts
-        2. disable DUART interrupts
-        3. initialize DUART
-        4. disable rx
-        5. hw and memtest
-        6. enable CPU interrupts
-        7. enable DUART interrupts
-        6. enable RX
-        */
-    /* Test code for init of pysim DUART */
     serial_init();              // Initialize DUART
 
-    enable_interrupts();        // Enable CPU interrupts
+    /*  Some welcome stuff */
+    char *build_str = "Brocomp 68010 Generic Computer. Version:" __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!";
+    printf("%s\n%s", build_str, FW_PROMPT);
 
-    // Some welcome stuff
-    char *build_str = "Brocomp 68010 Generic Computer. Version:" __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!\r\n->";
-    printf(build_str);
+    enable_interrupts();        // Enable CPU interrupts so we can get keyboard input and stuff
+
 
     //char *adr = "kalle";
     //printf("Address: %p has value: %s\n", adr, adr );
@@ -76,6 +99,6 @@ int _fmain(void){
     //printf("Status register: %x\n", statusreg);
     
     while (1){
-
+        
     };
 }
