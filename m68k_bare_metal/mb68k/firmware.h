@@ -26,5 +26,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef MB68K_FIRMWARE_H_
+#define MB68K_FIRMWARE_H_
 
 void KeyboardHandler(char);
+void SerialHandler();
+
+#endif

@@ -52,9 +52,12 @@ void __attribute__((interrupt)) DUARTInterruptHandler(void) {
      * with the value set in the IMR register to know what fired the interrupt
     */
     char isr = *DUART_ISR & 0x02;   // Bitwise AND with defined Interrupt mask
-    if (isr == 2) {                 // Check if this an Serial RXRDY interrupt
-        char c = *DUART_RBA;        // Get data from DUART port A
-        printf("%c", c);            // Output char to console
-        KeyboardHandler(c);         // Call keyboard handles
+    switch (isr) {
+        case 2:                     // rx ready port A is source of interrupt
+            SerialHandler();        // call serial handler. ToDo: define port that called interrupt with call to function
+            break;
+        default:
+            break;
     }
+
 }
