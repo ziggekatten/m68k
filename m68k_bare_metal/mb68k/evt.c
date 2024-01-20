@@ -54,7 +54,7 @@ void __attribute__((interrupt)) DUARTInterruptHandler(void) {
     char isr = *DUART_ISR & 0x02;   // Bitwise AND with defined Interrupt mask
     switch (isr) {
         case 2:                     // rx ready port A is source of interrupt
-            SerialHandler();        // call serial handler. ToDo: define port that called interrupt with call to function
+            serialhandler();        // call serial handler. ToDo: define port that called interrupt with call to function
             break;
         default:
             break;

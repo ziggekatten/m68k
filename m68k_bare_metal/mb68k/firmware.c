@@ -35,11 +35,27 @@
 #include <stdio.h>
 #include <string.h>
 
-/* The glue function for libmetal printf using function in the MC68681 library*/
-int putchar_(char c) {
-    serial_putchar(c);
-    return c;
-}
+/* We need some basic stuff to determine if we are in firmware,
+ * OS, or application mode. This is mainly for leaving control
+ * of I/O devices to apropriate destination */
+enum state {
+    FW = 0,
+    OS = 1,
+    EASY68K = 2 
+};
+
+/* Initialize state to Firmware state */
+enum state runstate = FW;   
+
+/* Struct used for serial data stuff*/
+typedef struct serialstruct{
+    char buf_a[64];
+    uint8_t idx_a;
+    char buf_b;
+    uint8_t idx_b;
+} serialstruct;
+serialstruct serialdata;
+
 
 /* Set serial input buffer and index to initial values */
 uint8_t ser_buf_a_idx = 0;
@@ -50,9 +66,15 @@ char ser_buf_b[64];
 /* Default fimware prompt */
 const char *prompt = FW_PROMPT;
 
+/* The glue function for libmetal printf using function in the MC68681 library*/
+int putchar_(char c) {
+    serial_putchar(c);
+    return c;
+}
+
 /* Pseudo parse function for incoming data from keyboard or serial communication 
 * This will be an true tree parser at some point.... */
-void ParseCommand() {
+void parsecommand() {
     switch (ser_buf_a[0]) {
         case FW_HELP:
             printf("Help goes here...\n%s", prompt);
@@ -71,14 +93,14 @@ void ParseCommand() {
 /* Serial port handler.
  * ToDo: handle both port A and B
  * ToDo: Handle state. Firmware, OS or Trap handler? */
-void SerialHandler() {
+void serialhandler() {
     disable_interrupts();                         // disable CPU interrupts until some logic is done
-    ser_buf_a[ser_buf_a_idx] = *DUART_RBA;        // Get data from DUART RX port A into buffer
-    printf("%c", ser_buf_a[ser_buf_a_idx]);       // Output char to console
-    if (ser_buf_a[ser_buf_a_idx]== CR){           // Check if we have an CR, and if so
-        ParseCommand();                           // We have pressed enter. Let us try interpret the command
+    serialdata.buf_a[serialdata.idx_a] = *DUART_RBA;        // Get data from DUART RX port A into buffer
+    printf("%c", serialdata.buf_a[serialdata.idx_a]);       // Output char to console
+    if (serialdata.buf_a[serialdata.idx_a]== CR){           // Check if we have an CR, and if so
+        parsecommand();                           // We have pressed enter. Let us try interpret the command
     } else {
-        ser_buf_a_idx++;                          // No enter, so we just increase index of buffer
+        serialdata.idx_a++;                          // No enter, so we just increase index of buffer
     }
     enable_interrupts();                          // Enable CPU interrupts again
 }
@@ -87,30 +109,16 @@ void SerialHandler() {
 /* Firmware main */
 int _fmain(void){
 
-    disable_interrupts();       // Disable CPU interrupts
-    serial_init();              // Initialize DUART
+    serialdata.idx_a = 0;                         // initialize serial buffer index
+    serialdata.idx_b = 0;                         // initialize serial buffer index
+    disable_interrupts();                         // Disable CPU interrupts
+    serial_init();                                // Initialize DUART
 
     /*  Some welcome stuff */
     char *build_str = "Brocomp 68010 Generic Computer. Version:" __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!";
     printf("%s\n%s", build_str, FW_PROMPT);
 
-    enable_interrupts();        // Enable CPU interrupts so we can get keyboard input and stuff
-
-    //char *adr = "kalle";
-    //printf("Address: %p has value: %s\n", adr, adr );
-    
-    //uint8_t *t = DUART_RBA; 
-    //printf("Interrupt vector register IVR set to: %u\n", *DUART_IVR);
-    //printf("SRA set to: %u\n", *DUART_SRA);
-    //printf("MR1A set to: %u\n", *DUART_MR1A);
-    //printf("MR2A set to: %u\n", *DUART_MR2A);
-    //printf("ISR set to: %u\n", *DUART_ISR);
-    //uint16_t statusreg = get_sr();
-    //printf("Status register: %x\n", statusreg);
-    
-
-    
-
+    enable_interrupts();                          // Enable CPU interrupts so we can get keyboard input and stuff
 
     while (1){
 

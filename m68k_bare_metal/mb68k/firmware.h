@@ -29,7 +29,6 @@
 #ifndef MB68K_FIRMWARE_H_
 #define MB68K_FIRMWARE_H_
 
-void KeyboardHandler(char);
-void SerialHandler();
+void serialhandler();
 
 #endif
