@@ -75,16 +75,16 @@ int putchar_(char c) {
 /* Pseudo parse function for incoming data from keyboard or serial communication 
 * This will be an true tree parser at some point.... */
 void parsecommand() {
-    switch (ser_buf_a[0]) {
+    switch (serialdata.buf_a[0]) {
         case FW_HELP:
             printf("Help goes here...\n%s", prompt);
-            memset(ser_buf_a, 0, sizeof(ser_buf_a));    // Reset input buffer completely!!! Otherwise bad things WILL happen....                
-            ser_buf_a_idx = 0;                        // Reset buffer index
+            memset(serialdata.buf_a, 0, sizeof(serialdata.buf_a));    // Reset input buffer completely!!! Otherwise bad things WILL happen....                
+            serialdata.idx_a = 0;                                     // Reset buffer index
             break;
         default:
             printf("Invalid command! Type 'h' for help.\n%s", prompt);
-            memset(ser_buf_a, 0, sizeof(ser_buf_a));
-            ser_buf_a_idx = 0;
+            memset(serialdata.buf_a, 0, sizeof(serialdata.buf_a));
+            serialdata.idx_a = 0;
             break;
         }
 
@@ -94,15 +94,15 @@ void parsecommand() {
  * ToDo: handle both port A and B
  * ToDo: Handle state. Firmware, OS or Trap handler? */
 void serialhandler() {
-    disable_interrupts();                         // disable CPU interrupts until some logic is done
+    disable_interrupts();                                   // disable CPU interrupts until some logic is done
     serialdata.buf_a[serialdata.idx_a] = *DUART_RBA;        // Get data from DUART RX port A into buffer
     printf("%c", serialdata.buf_a[serialdata.idx_a]);       // Output char to console
     if (serialdata.buf_a[serialdata.idx_a]== CR){           // Check if we have an CR, and if so
-        parsecommand();                           // We have pressed enter. Let us try interpret the command
+        parsecommand();                                     // We have pressed enter. Let us try interpret the command
     } else {
-        serialdata.idx_a++;                          // No enter, so we just increase index of buffer
+        serialdata.idx_a++;                                 // No enter, so we just increase index of buffer
     }
-    enable_interrupts();                          // Enable CPU interrupts again
+    enable_interrupts();                                    // Enable CPU interrupts again
 }
 
 
