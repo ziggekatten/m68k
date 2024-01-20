@@ -23,14 +23,15 @@ Revision:   2023-12-01
 #define     FW_AUTHOR     "Author: Mats Brorson"
 #define     FW_LICENSE    "Released under MIT license. Happy hacking!"
 #define     FW_PROMPT      "->"
-#define     DUART_BASE    0x00D00000
-#define     DUART_IV_ADR  0x40
-#define     CF_BASE       0x00E00000
+#define     DUART_BASE    0x00D00000        // Base address of the mc68681
+#define     DUART_IV_ADR  0x40              // Interupt vector address used for mc6861 
+#define     CF_BASE       0x00E00000        // Base address for IDE CompactFlash
 
-/* Some basic ASCII character definitions */
+/* Some basic ASCII character definitions used by firmware/monitor */
 #define CR              (char)0x0d
 #define LF              (char)0x0a
 #define BLANK           (char)0x20
+#define BACKSPACE       (char)0x08
 #define FW_HELP         (char)0x68
 #define FW_READ         (char)0x72
 #define FW_WRITE        (char)0x77
