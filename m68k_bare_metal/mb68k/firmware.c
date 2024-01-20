@@ -97,30 +97,28 @@ void parsecommand() {
  * ToDo: handle both port A and B
  * ToDo: Handle state. Firmware, OS or Trap handler? */
 void serialhandler() {
-    if (serialdata.idx_a < sizeof(serialdata.buf_a)) {                  // Ensure that we don't get an buffer overflow
-        disable_interrupts();                                           // disable CPU interrupts until some logic is done
-        
-        serialdata.buf_a[serialdata.idx_a] = *DUART_RBA;                // Get data from DUART RX port A into buffer
-        if (serialdata.buf_a[serialdata.idx_a]== CR){                   // Check if we have an CR, and if so
-            printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
-            parsecommand();                                             // We have pressed enter. Let us try interpret the command
-
-        } else if (serialdata.buf_a[serialdata.idx_a] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
-            if (serialdata.idx_a !=0){                                  
-                printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
-                serialdata.buf_a[serialdata.idx_a] = 0;                 // Clear buffer
-                serialdata.idx_a--;                                     // Decrement index
-            } 
-                                        
-        } else {
-            printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
-            serialdata.idx_a++;                                         // No enter, so we just increase index of buffer
-        }
-        enable_interrupts();                                            // Enable CPU interrupts again
-    } else {
-        printf("\nInvalid command!");
-        resetbuffer();
+    disable_interrupts();                                           // disable CPU interrupts until some logic is done
+    if (serialdata.idx_a > sizeof(serialdata.buf_a)-1) {            // Buffer owerflow protection!
+        serialdata.idx_a--;                                         // Decrement index
     }
+    serialdata.buf_a[serialdata.idx_a] = *DUART_RBA;                // Get data from DUART RX port A into buffer
+    if (serialdata.buf_a[serialdata.idx_a]== CR){                   // Check if we have an CR, and if so
+        printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
+        parsecommand();                                             // We have pressed enter. Let us try interpret the command
+
+    } else if (serialdata.buf_a[serialdata.idx_a] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
+        if (serialdata.idx_a !=0){                                  
+            printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
+            serialdata.buf_a[serialdata.idx_a] = 0;                 // Clear buffer
+            serialdata.idx_a--;                                     // Decrement index
+        } 
+                                    
+    } else {
+        printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
+        serialdata.idx_a++;                                         // No enter, so we just increase index of buffer
+    }
+    enable_interrupts();                                            // Enable CPU interrupts again
+
 }
 
 
