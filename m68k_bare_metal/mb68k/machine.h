@@ -37,17 +37,13 @@ Revision:   2023-12-01
 #define FW_WRITE        (char)0x77
 #define FW_BOOT         (char)0x62
 
+#define DUART_IRQ_MASK  (char)0x02
 
-/* Enums for various stuff */
-
-
-
-/* Global buffer for basic firmware serial input */
-extern char ser_buf[64];
-extern uint8_t ser_buf_idx;
-
-
-
+/* Enums for i/o ports */
+enum ioports {
+    SER_A = 0,
+    SER_B = 1
+};
 
 
 #endif

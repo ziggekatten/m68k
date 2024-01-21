@@ -49,19 +49,12 @@ enum state runstate = FW;
 
 /* Struct used for serial data stuff*/
 typedef struct serialstruct{
-    char buf_a[64];
-    uint8_t idx_a;
-    char buf_b;
-    uint8_t idx_b;
+    char buf[64];
+    uint8_t idx;
 } serialstruct;
-serialstruct serialdata;
 
-
-/* Set serial input buffer and index to initial values */
-//uint8_t ser_buf_a_idx = 0;
-//char ser_buf_a[64];
-//uint8_t ser_buf_b_idx = 0;
-//char ser_buf_b[64];
+/* Initialize data buffers for DUART */  
+serialstruct serialdata_a;
 
 /* Default fimware prompt */
 const char *prompt = FW_PROMPT;
@@ -71,23 +64,24 @@ int putchar_(char c) {
     serial_putchar(c);
     return c;
 }
-//reset serial buffer. ToDo: handle selectable buffer
-void resetbuffer() {
-    memset(serialdata.buf_a, 0, sizeof(serialdata.buf_a));    // Reset input buffer completely!!! Otherwise bad things WILL happen....                
-    serialdata.idx_a = 0;                                     // Reset buffer index
+
+/* reset serial buffer. ToDo: handle selectable buffer */
+void resetbuffer(serialstruct *buf) {
+    memset(buf->buf, 0, sizeof(buf->buf));            // Reset input buffer completely!!! Otherwise bad things WILL happen....                
+    buf->idx = 0;                                     // Reset buffer index
 }
 
 /* Pseudo parse function for incoming data from keyboard or serial communication 
 * This will be an true tree parser at some point.... */
-void parsecommand() {
-    switch (serialdata.buf_a[0]) {
+void parsecommand(serialstruct *buf) {
+    switch (buf->buf[0]) {
         case FW_HELP:
             printf("Help goes here...\n%s", prompt);
-            resetbuffer();
+            resetbuffer(buf);
             break;
         default:
-            printf("Invalid command! Type 'h' for help.\n%s", prompt);
-            resetbuffer();
+            printf("Invalid command! Type 'h' for help.\b\e[K\n%s", prompt);
+            resetbuffer(buf);
             break;
         }
 
@@ -96,37 +90,42 @@ void parsecommand() {
 /* Serial port handler.
  * ToDo: handle both port A and B
  * ToDo: Handle state. Firmware, OS or Trap handler? */
-void serialhandler() {
-    disable_interrupts();                                           // disable CPU interrupts until some logic is done
-    if (serialdata.idx_a > sizeof(serialdata.buf_a)-1) {            // Buffer owerflow protection!
-        serialdata.idx_a--;                                         // Decrement index
-    }
-    serialdata.buf_a[serialdata.idx_a] = *DUART_RBA;                // Get data from DUART RX port A into buffer
-    if (serialdata.buf_a[serialdata.idx_a]== CR){                   // Check if we have an CR, and if so
-        printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
-        parsecommand();                                             // We have pressed enter. Let us try interpret the command
+void serialhandler(char port) {
+    switch (port) {
+        case 0:                                                             // First DUART port is console
+            disable_interrupts();                                           // disable CPU interrupts until some logic is done
+            if (serialdata_a.idx > sizeof(serialdata_a.buf)-1) {            // Buffer owerflow protection!
+                serialdata_a.idx--;                                         // Decrement index
+            }
 
-    } else if (serialdata.buf_a[serialdata.idx_a] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
-        if (serialdata.idx_a !=0){                                  
-            printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
-            serialdata.buf_a[serialdata.idx_a] = 0;                 // Clear buffer
-            serialdata.idx_a--;                                     // Decrement index
-        } 
-                                    
-    } else {
-        printf("%c", serialdata.buf_a[serialdata.idx_a]);           // Output char to console
-        serialdata.idx_a++;                                         // No enter, so we just increase index of buffer
-    }
-    enable_interrupts();                                            // Enable CPU interrupts again
+            serialdata_a.buf[serialdata_a.idx] = *DUART_RBA;                // Get data from DUART RX port A into buffer
+            if (serialdata_a.buf[serialdata_a.idx]== CR){                   // Check if we have an CR, and if so
+                printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
+                parsecommand(&serialdata_a);                                // We have pressed enter. Let us try interpret the command
 
+            } else if (serialdata_a.buf[serialdata_a.idx] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
+                if (serialdata_a.idx !=0){                                  
+                    printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
+                    serialdata_a.buf[serialdata_a.idx] = 0;                 // Clear buffer
+                    serialdata_a.idx--;                                     // Decrement index
+                } 
+                                            
+            } else {
+                printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
+                serialdata_a.idx++;                                         // No enter, so we just increase index of buffer
+            }
+            enable_interrupts();                                            // Enable CPU interrupts again
+            break;
+        default:
+            break;
+    }
 }
 
 
 /* Firmware main */
 int _fmain(void){
 
-    serialdata.idx_a = 0;                         // initialize serial buffer index
-    serialdata.idx_b = 0;                         // initialize serial buffer index
+    serialdata_a.idx = 0;                           // initialize serial buffer index
     disable_interrupts();                         // Disable CPU interrupts
     serial_init();                                // Initialize DUART
 

@@ -42,19 +42,19 @@ void serial_init(void)
     *DUART_CUR  = 0x00; // set 115kbaud
     *DUART_CLR  = 0x02; // set 115kbaud */
 
-    *DUART_CRA  = 0x10;         // Reset MRA pointer
-    *DUART_CRA  = 0x20;         // Reset RX register
-    *DUART_CRA  = 0x30;         // Reset TX register
-    *DUART_CRA  = 0x40;         // Reset error
+    *DUART_CRA  = 0x10;           // Reset MRA pointer
+    *DUART_CRA  = 0x20;           // Reset RX register
+    *DUART_CRA  = 0x30;           // Reset TX register
+    *DUART_CRA  = 0x40;           // Reset error
     
-    *DUART_MR1A = 0x13;         // RxRTS Disabled, 8 bits, No Parity
-    *DUART_MR2A = 0x07;         // Normal mode, CTS Disabled, 1 stop bit, no parity
-    *DUART_MR1B = 0x13;         // RxRTS Disabled, 8 bits, No Parity
-    *DUART_MR2B = 0x07;         // Normal mode, CTS Disabled, 1 stop bit, no parity
-    *DUART_CSRA = 0xCC;         // 9600 bps @ 3.6864MHz
-    *DUART_CRA  = 0x05;         // Enable TX and RX
-    *DUART_IVR  = DUART_IV_ADR; // Set vector for IRQ (using IRQ5)
-    *DUART_IMR  = 0x02;         // Enable interupt on rx-ready
+    *DUART_MR1A = 0x13;           // RxRTS Disabled, 8 bits, No Parity
+    *DUART_MR2A = 0x07;           // Normal mode, CTS Disabled, 1 stop bit, no parity
+    *DUART_MR1B = 0x13;           // RxRTS Disabled, 8 bits, No Parity
+    *DUART_MR2B = 0x07;           // Normal mode, CTS Disabled, 1 stop bit, no parity
+    *DUART_CSRA = 0xCC;           // 9600 bps @ 3.6864MHz
+    *DUART_CRA  = 0x05;           // Enable TX and RX
+    *DUART_IVR  = DUART_IV_ADR;   // Set vector for IRQ (using IRQ5)
+    *DUART_IMR  = DUART_IRQ_MASK; // Default value from machine.h
     
     //*DUART_CRA = (uint8_t)0x20;                                          // Reset reciever by setting value in CRA register
     /* delay should go here*/
