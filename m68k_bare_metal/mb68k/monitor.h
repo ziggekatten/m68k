@@ -2,8 +2,7 @@
  * @author (c) Mats Brorson ()
  *             2023-2024, Sweden
  *
- * @brief Base firmware header for the BroCom m68k homebrew computer used to initialize
- * hardware and set up firmware stuff for parsing commands
+ * @brief Prototypes firmware monitor such as reading and writing to memory
  *
  *
  * @license The MIT License (MIT)
@@ -26,20 +25,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#ifndef MB68K_MONITOR_H_
+#define MB68K_MONITOR_H_
+#include "firmware.h"
 
-
-#ifndef MB68K_FIRMWARE_H_
-#define MB68K_FIRMWARE_H_
-
-#include <stdint.h>
-/* Struct used for serial data stuff*/
-typedef struct serialstruct{
-    char buf[64];
-    uint8_t idx;
-} serialstruct;
-
-extern const char *prompt;
-/* Prototype for function called by evt using enum: ioports */
-void serialhandler(char);
+/* Prototype for parsing commands*/
+void parsecommand(serialstruct*);
 
 #endif

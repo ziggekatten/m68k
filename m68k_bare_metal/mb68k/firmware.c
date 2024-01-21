@@ -34,6 +34,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include "monitor.h"
+#include "firmware.h"
 
 /* We need some basic stuff to determine if we are in firmware,
  * OS, or application mode. This is mainly for leaving control
@@ -47,11 +49,6 @@ enum state {
 /* Initialize state to Firmware state */
 enum state runstate = FW;   
 
-/* Struct used for serial data stuff*/
-typedef struct serialstruct{
-    char buf[64];
-    uint8_t idx;
-} serialstruct;
 
 /* Initialize data buffers for DUART */  
 serialstruct serialdata_a;
@@ -65,27 +62,6 @@ int putchar_(char c) {
     return c;
 }
 
-/* reset serial buffer. ToDo: handle selectable buffer */
-void resetbuffer(serialstruct *buf) {
-    memset(buf->buf, 0, sizeof(buf->buf));            // Reset input buffer completely!!! Otherwise bad things WILL happen....                
-    buf->idx = 0;                                     // Reset buffer index
-}
-
-/* Pseudo parse function for incoming data from keyboard or serial communication 
-* This will be an true tree parser at some point.... */
-void parsecommand(serialstruct *buf) {
-    switch (buf->buf[0]) {
-        case FW_HELP:
-            printf("Help goes here...\n%s", prompt);
-            resetbuffer(buf);
-            break;
-        default:
-            printf("Invalid command! Type 'h' for help.\b\e[K\n%s", prompt);
-            resetbuffer(buf);
-            break;
-        }
-
-}
 
 /* This function handles console communication 
  * ToDo: Make ths parameterized for ps/2 keyboard*/
