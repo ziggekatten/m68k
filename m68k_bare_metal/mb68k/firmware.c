@@ -87,34 +87,41 @@ void parsecommand(serialstruct *buf) {
 
 }
 
-/* Serial port handler.
+/* This function handles console communication 
+ * ToDo: Make ths parameterized for ps/2 keyboard*/
+void consolehandler() {
+    disable_interrupts();                                           // disable CPU interrupts until some logic is done
+    if (serialdata_a.idx > sizeof(serialdata_a.buf)-1) {            // Buffer owerflow protection!
+        serialdata_a.idx--;                                         // Decrement index
+    }
+
+    serialdata_a.buf[serialdata_a.idx] = *DUART_RBA;                // Get data from DUART RX port A into buffer
+    if (serialdata_a.buf[serialdata_a.idx]== CR){                   // Check if we have an CR, and if so
+        printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
+        parsecommand(&serialdata_a);                                // We have pressed enter. Let us try interpret the command
+
+    } else if (serialdata_a.buf[serialdata_a.idx] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
+        if (serialdata_a.idx !=0){                                  
+            printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
+            serialdata_a.buf[serialdata_a.idx] = 0;                 // Clear buffer
+            serialdata_a.idx--;                                     // Decrement index
+        } 
+                                    
+    } else {
+        printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
+        serialdata_a.idx++;                                         // No enter, so we just increase index of buffer
+    }
+    enable_interrupts();                                            // Enable CPU interrupts again
+
+}
+
+/* Serial port handler called from interrupt routines in evt.c
  * ToDo: handle both port A and B
  * ToDo: Handle state. Firmware, OS or Trap handler? */
 void serialhandler(char port) {
     switch (port) {
-        case 0:                                                             // First DUART port is console
-            disable_interrupts();                                           // disable CPU interrupts until some logic is done
-            if (serialdata_a.idx > sizeof(serialdata_a.buf)-1) {            // Buffer owerflow protection!
-                serialdata_a.idx--;                                         // Decrement index
-            }
-
-            serialdata_a.buf[serialdata_a.idx] = *DUART_RBA;                // Get data from DUART RX port A into buffer
-            if (serialdata_a.buf[serialdata_a.idx]== CR){                   // Check if we have an CR, and if so
-                printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
-                parsecommand(&serialdata_a);                                // We have pressed enter. Let us try interpret the command
-
-            } else if (serialdata_a.buf[serialdata_a.idx] == BACKSPACE) {   // Handle backspace so we clear buffer and decrement index
-                if (serialdata_a.idx !=0){                                  
-                    printf("\b\e[K");                                       // Sending vt100 ESC-code to erase char in terminal
-                    serialdata_a.buf[serialdata_a.idx] = 0;                 // Clear buffer
-                    serialdata_a.idx--;                                     // Decrement index
-                } 
-                                            
-            } else {
-                printf("%c", serialdata_a.buf[serialdata_a.idx]);           // Output char to console
-                serialdata_a.idx++;                                         // No enter, so we just increase index of buffer
-            }
-            enable_interrupts();                                            // Enable CPU interrupts again
+        case 0:                                                     // First DUART port is console
+            consolehandler();                                       // Call console routine
             break;
         default:
             break;

@@ -29,6 +29,7 @@
 #ifndef MB68K_FIRMWARE_H_
 #define MB68K_FIRMWARE_H_
 
-void serialhandler();
+/* Prototype for function called by evt using enum: ioports */
+void serialhandler(char);
 
 #endif
