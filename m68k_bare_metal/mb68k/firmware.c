@@ -108,12 +108,12 @@ void serialhandler(char port) {
 /* Firmware main */
 int _fmain(void){
 
-    serialdata_a.idx = 0;                           // initialize serial buffer index
+    serialdata_a.idx = 0;                         // initialize serial buffer index
     disable_interrupts();                         // Disable CPU interrupts
     serial_init();                                // Initialize DUART
 
     /*  Some welcome stuff */
-    char *build_str = "Brocomp 68010 Generic Computer. Version:" __DATE__ " " __TIME__ "\r\nReleased under MIT license\r\nHappy hacking!";
+    char *build_str = FW_BOOT_TEXT;
     printf("%s\n%s", build_str, FW_PROMPT);
 
     enable_interrupts();                          // Enable CPU interrupts so we can get keyboard input and stuff

@@ -29,6 +29,19 @@
 #define MB68K_MONITOR_H_
 #include "firmware.h"
 
+/* Monitor commands*/
+#define FW_HELP         (char)0x68
+#define FW_READ         (char)0x72
+#define FW_WRITE        (char)0x77
+#define FW_BOOT         (char)0x62
+#define FW_BYTE         (char)0x62
+#define FW_WORD         (char)0x77
+#define FW_LONG         (char)0x6C
+
+/* Monitor help*/
+#define HELP_H          "\n'h'. Displays this help\n'r' <address>. Displays memory starting at closest even address\n'w' <b|w|l> <value> <address>. Writes an byte/word/longword at address\n"
+                        
+
 /* Prototype for parsing commands*/
 void parsecommand(serialstruct*);
 

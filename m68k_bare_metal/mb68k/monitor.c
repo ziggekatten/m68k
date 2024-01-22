@@ -25,7 +25,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#include "firmware.h"
+#include "monitor.h"
 #include "machine.h"
 #include <stdint.h>
 #include <stdbool.h>
@@ -33,6 +33,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+const char *fwhelp = HELP_H; 
 #define DATA_ROW = "%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n";
 static char *header = "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n"
                       "-----------------------------------------------------------\n";
@@ -65,7 +66,7 @@ void resetbuffer(serialstruct *buf) {
 void parsecommand(serialstruct *buf) {
     switch (buf->buf[0]) {
         case FW_HELP:
-            printf("Help goes here...\n%s", prompt);
+            printf("%s\n%s", fwhelp, prompt);
             resetbuffer(buf);
             break;
         default:

@@ -18,10 +18,8 @@ Revision:   2023-12-01
 #define MB68K_MACHINE_H_
 #include <stdint.h>
 
-#define     FW_MACHINE_ID "BroComp 68010 Generic Computer."
-#define     FW_VERSION    "Version: " + __DATE__
 #define     FW_AUTHOR     "Author: Mats Brorson"
-#define     FW_LICENSE    "Released under MIT license. Happy hacking!"
+#define     FW_BOOT_TEXT  "Brocomp 68010 Generic Computer firmware.\r\nVersion: " __DATE__ " " __TIME__ " " FW_AUTHOR "\r\nReleased under MIT license\r\nType 'h' for help. Happy hacking!\n\n"
 #define     FW_PROMPT      "->"
 #define     DUART_BASE    0x00D00000        // Base address of the mc68681
 #define     DUART_IV_ADR  0x40              // Interupt vector address used for mc6861 
@@ -32,10 +30,7 @@ Revision:   2023-12-01
 #define LF              (char)0x0a
 #define BLANK           (char)0x20
 #define BACKSPACE       (char)0x08
-#define FW_HELP         (char)0x68
-#define FW_READ         (char)0x72
-#define FW_WRITE        (char)0x77
-#define FW_BOOT         (char)0x62
+
 
 #define DUART_IRQ_MASK  (char)0x02
 
