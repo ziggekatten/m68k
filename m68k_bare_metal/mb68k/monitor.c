@@ -33,13 +33,14 @@
 #include <string.h>
 #include <stdlib.h>
 
+static char *header = "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n"
+                      "-----------------------------------------------------------\n";
+
 void readmem(uint32_t baseadr) {
     //char h[16] = {"0","1","2","3","4","5","6","7","8","A","B","C","D","E","F"};
-    
-    printf("\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n");
-    printf("-----------------------------------------------------------\n");
-    volatile uint8_t *p = (uint8_t *)baseadr;
-    int rows;                                       // rows to return. set in for loop
+    printf("%s",header);
+    volatile uint8_t *p = (uint8_t *)baseadr;       // Pointer to base address to read
+    int rows;                                       // Rows to return. set in for loop
     for (rows = 0; rows < 20; rows++){
         printf("%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n", (uint32_t)p, 
             *p, *(p+1), *(p+2), *(p+3),
@@ -50,19 +51,6 @@ void readmem(uint32_t baseadr) {
         p = p + 16;                                 // Increment address pointer
     } 
     printf("\n%s", prompt);
-
-    /* this works!
-    char b[320];
-    int i;
-    for (i = 0; i < 32; i++) {
-        char t = *((volatile uint8_t *)baseadr+i);
-        b[i] = t;
-        printf("%02x %02x\n ", t, b[i]);
-    } 
-    printf("\n%s", prompt);
-    char* test = "9";
-    printf("This represents: %02x",atoi(test)); */
-
 }
 
 /* reset serial buffer. ToDo: handle selectable buffer */
