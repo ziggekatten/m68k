@@ -33,6 +33,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define DATA_ROW = "%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n";
 static char *header = "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n"
                       "-----------------------------------------------------------\n";
 
