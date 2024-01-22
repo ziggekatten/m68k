@@ -33,29 +33,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-void readmem() {
+void readmem(uint32_t baseadr) {
     //char h[16] = {"0","1","2","3","4","5","6","7","8","A","B","C","D","E","F"};
     
-    uint32_t baseadr = 0x1850;
-    printf("\nAddress   | 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n");
+    printf("\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n");
     printf("-----------------------------------------------------------\n");
-
-    int rows;                                       // rows to return
-    int byte = 0;                                   // Byte counter
-    char b[320];                                    // Array to store all bytes 20 rows times 16 bytes
-    int i;
-    for (i = 0; i < 320; i++){
-        b[i] = *((volatile uint8_t *)baseadr+i);
-    }
-    i = 0; 
+    volatile uint8_t *p = (uint8_t *)baseadr;
+    int rows;                                       // rows to return. set in for loop
     for (rows = 0; rows < 20; rows++){
-        printf("%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n", baseadr+byte, 
-            b[byte], b[byte+1], b[byte+2], b[byte+3],
-            b[byte+4], b[byte+5], b[byte+6], b[byte+7],
-            b[byte+8], b[byte+9], b[byte+10], b[byte+11],
-            b[byte+12], b[byte+13], b[byte+14], b[byte+15]
+        printf("%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n", (uint32_t)p, 
+            *p, *(p+1), *(p+2), *(p+3),
+            *(p+4), *(p+5), *(p+6), *(p+7),
+            *(p+8), *(p+9), *(p+10), *(p+11),
+            *(p+12), *(p+13), *(p+14), *(p+15)
             );
-        byte = byte + 16;                           // Increment by 16 bytes
+        p = p + 16;                                 // Increment address pointer
     } 
     printf("\n%s", prompt);
 
@@ -89,7 +81,7 @@ void parsecommand(serialstruct *buf) {
             break;
         default:
             printf("Invalid command! Type 'h' for help.\b\e[K\n%s", prompt);
-            readmem();
+            readmem(0x1850);
             resetbuffer(buf);
             break;
         }
