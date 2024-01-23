@@ -39,7 +39,10 @@
 #define FW_LONG         (char)0x6C
 
 /* Monitor help*/
-#define HELP_H          "\n'h'. Displays this help\n'r' <address>. Displays memory starting at closest even address\n'w' <b|w|l> <value> <address>. Writes an byte/word/longword at address\n"
+#define HELP_H          "\n'h'. Displays this help\n" \
+                        "'r' <address>. Displays memory starting at closest even address\n" \
+                        "'w' <b|w|l> <value> <address>. Writes an byte/word/longword at address\n" \
+                        "'e' <address>. Start execution of code at address"
                         
 
 /* Prototype for parsing commands*/

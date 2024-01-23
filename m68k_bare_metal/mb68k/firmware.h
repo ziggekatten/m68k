@@ -34,7 +34,7 @@
 #include <stdint.h>
 /* Struct used for serial data stuff*/
 typedef struct serialstruct{
-    char buf[64];
+    char buf[65];  // One extra byte for '\0'
     uint8_t idx;
 } serialstruct;
 
