@@ -19,7 +19,10 @@ Revision:   2023-12-01
 #include <stdint.h>
 
 #define     FW_AUTHOR     "Author: Mats Brorson"
-#define     FW_BOOT_TEXT  "Brocomp 68010 Generic Computer firmware.\r\nVersion: " __DATE__ " " __TIME__ " " FW_AUTHOR "\r\nReleased under MIT license\r\nType 'h' for help. Happy hacking!\n\n"
+#define     FW_BOOT_TEXT  "Brocomp 68010 Generic Computer firmware.\r\n" \
+                          "Version: " __DATE__ " " __TIME__ " " FW_AUTHOR "\r\n" \
+                          "Released under MIT license\r\nType 'h' for help. Happy hacking!\n\n"
+                          
 #define     FW_PROMPT      "->"
 #define     DUART_BASE    0x00D00000        // Base address of the mc68681
 #define     DUART_IV_ADR  0x40              // Interupt vector address used for mc6861 

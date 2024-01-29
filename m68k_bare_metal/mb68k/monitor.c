@@ -25,6 +25,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #include "monitor.h"
 #include "machine.h"
 #include <stdint.h>
@@ -33,14 +34,30 @@
 #include <string.h>
 #include <stdlib.h>
 
-const char *fwhelp = HELP_H; 
-#define DATA_ROW = "%#010x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n";
-static char *header = "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n"
-                      "-----------------------------------------------------------\n";
+const char *fwhelp = HELP_H;                        // Help text 
+const char *header = READ_MEM_HEADER;               // Header when reading memory
+
+/* reset serial buffer. ToDo: handle selectable buffer */
+void resetbuffer(serialstruct *buf) {
+    memset(buf->buf, 0, sizeof(buf->buf));            // Reset input buffer completely!!! Otherwise bad things WILL happen....                
+    buf->idx = 0;                                     // Reset buffer index
+}
+
+/* Print help message and reset input buffer */
+void printhelp(serialstruct *buf) {
+    printf("%s\n%s", fwhelp, prompt);
+    resetbuffer(buf);
+}
+
+/* This is an generic struct used for comparing command strings */
+typedef struct ParseStruct {
+    char     *parse;                // String to parse
+    uint32_t *parsefunc;            // Function pointer for further parsing
+} ParseStruct;
+
 
 void readmem(uint32_t baseadr) {
-    //char h[16] = {"0","1","2","3","4","5","6","7","8","A","B","C","D","E","F"};
-    printf("%s",header);
+    printf("%s", header);
     volatile uint8_t *p = (uint8_t *)baseadr;       // Pointer to base address to read
     int rows;                                       // Rows to return. set in for loop
     for (rows = 0; rows < 20; rows++){
@@ -55,11 +72,6 @@ void readmem(uint32_t baseadr) {
     printf("\n%s", prompt);
 }
 
-/* reset serial buffer. ToDo: handle selectable buffer */
-void resetbuffer(serialstruct *buf) {
-    memset(buf->buf, 0, sizeof(buf->buf));            // Reset input buffer completely!!! Otherwise bad things WILL happen....                
-    buf->idx = 0;                                     // Reset buffer index
-}
 
 /* Pseudo parse function for incoming data from keyboard or serial communication 
 * This will be an true tree parser at some point.... */
@@ -70,8 +82,10 @@ void parsecommand(serialstruct *buf) {
             resetbuffer(buf);
             break;
         default:
-            printf("Invalid command! Type 'h' for help.\b\e[K\n%s", prompt);
-            readmem(0x1850);
+            //\b\e[K\n
+            printf("Invalid command: %s\n",(char*)buf->buf);
+            printf("Type 'h' for help.\n %s", prompt);
+            readmem(0x00100010);
             resetbuffer(buf);
             break;
         }

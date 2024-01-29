@@ -43,7 +43,11 @@
                         "'r' <address>. Displays memory starting at closest even address\n" \
                         "'w' <b|w|l> <value> <address>. Writes an byte/word/longword at address\n" \
                         "'e' <address>. Start execution of code at address"
-                        
+
+/* Monitor header for reading memory*/
+#define READ_MEM_HEADER "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n" \
+                        "-----------------------------------------------------------\n"                        
+
 
 /* Prototype for parsing commands*/
 void parsecommand(serialstruct*);
