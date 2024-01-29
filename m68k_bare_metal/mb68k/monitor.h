@@ -28,6 +28,7 @@
 #ifndef MB68K_MONITOR_H_
 #define MB68K_MONITOR_H_
 #include "firmware.h"
+#include <stdint.h>
 
 /* Monitor commands*/
 #define FW_HELP         (char)0x68
@@ -48,6 +49,12 @@
 #define READ_MEM_HEADER "\nAddress     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F \n" \
                         "-----------------------------------------------------------\n"                        
 
+
+/* This is an generic struct used for comparing command strings */
+typedef struct ParseStruct {
+    char     parse[6];                           // String to parse
+    void    (*parsefunc)(serialstruct *);        // Function pointer for further parsing
+} ParseStruct;
 
 /* Prototype for parsing commands*/
 void parsecommand(serialstruct*);

@@ -43,18 +43,31 @@ void resetbuffer(serialstruct *buf) {
     buf->idx = 0;                                     // Reset buffer index
 }
 
+/* Print invalid command*/
+void printinvalid(serialstruct *buf) {
+    printf("Invalid command: %s\n",(char*)buf->buf);
+    printf("Type 'h' for help.\n %s", prompt);
+    resetbuffer(buf);    
+}
+
 /* Print help message and reset input buffer */
 void printhelp(serialstruct *buf) {
     printf("%s\n%s", fwhelp, prompt);
     resetbuffer(buf);
 }
 
-/* This is an generic struct used for comparing command strings */
-typedef struct ParseStruct {
-    char     *parse;                // String to parse
-    uint32_t *parsefunc;            // Function pointer for further parsing
-} ParseStruct;
+// Used to parse an read command
+void parseread(serialstruct *buf) {
+    printf("%s\n%s", fwhelp, prompt);
+    resetbuffer(buf);
+}
 
+/* Help struct*/
+ParseStruct c_help = {"help ", printhelp};
+/* Read struct */
+ParseStruct c_read = {"read ", parseread};
+/* Put the structs in an array */
+ParseStruct *parser[2] = {&c_help, &c_read};
 
 void readmem(uint32_t baseadr) {
     printf("%s", header);
@@ -76,6 +89,7 @@ void readmem(uint32_t baseadr) {
 /* Pseudo parse function for incoming data from keyboard or serial communication 
 * This will be an true tree parser at some point.... */
 void parsecommand(serialstruct *buf) {
+    //c_help.parsefunc(buf);
     switch (buf->buf[0]) {
         case FW_HELP:
             printf("%s\n%s", fwhelp, prompt);
